@@ -1,7 +1,7 @@
 {
   "name": "Alltagshelfer – Ihr Service vor Ort",
   "short_name": "Alltagshelfer",
-  "description": "Zuverlässige Alltagshilfe – Einkäufe, Gartenarbeit, Reparaturen, Fahrdienste und mehr.",
+  "description": "Zuverlässige Alltagshilfe – Gartenarbeit, Grabpflege, Reparaturen, Haushalt und Kfz-Hilfe.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
