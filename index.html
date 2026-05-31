@@ -945,6 +945,72 @@
       .photo-frame { max-width: 200px; aspect-ratio: 1; }
     }
 
+    /* Statistik-Leiste Über mich */
+    .ueber-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      margin-bottom: var(--sp-24);
+    }
+
+    .ueber-stat {
+      background: var(--surface);
+      padding: var(--sp-16) var(--sp-12);
+      text-align: center;
+      transition: background 0.18s;
+    }
+    .ueber-stat:hover { background: var(--bg-alt); }
+
+    .ueber-stat-val {
+      display: block;
+      font-size: var(--fs-2xl);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: var(--sp-4);
+    }
+
+    .ueber-stat-label {
+      display: block;
+      font-size: var(--fs-xs);
+      color: var(--text-3);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 480px) {
+      .ueber-stats { grid-template-columns: 1fr 1fr; }
+      .ueber-stats .ueber-stat:last-child { grid-column: 1 / -1; }
+    }
+
+    /* Zertifikat-Badge */
+    .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-8);
+      margin-bottom: var(--sp-24);
+    }
+
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-6);
+      padding: var(--sp-6) var(--sp-12);
+      background: var(--primary-faint);
+      border: 1px solid rgba(44,94,67,0.15);
+      border-radius: var(--r-full);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .cert-badge svg { flex-shrink: 0; }
+
     /* ═══════════════════════════════════════
        KONTAKT
     ═══════════════════════════════════════ */
@@ -1563,7 +1629,8 @@
           <span>Ihr Foto</span>
         </div>
         <div class="photo-meta">
-          <strong>Vorname Nachname</strong>
+          <!-- ANPASSEN: Ihren echten Namen eintragen -->
+          <strong>Ihr Name</strong>
           <span>Ihr Alltagshelfer vor Ort</span>
         </div>
       </div>
@@ -1572,13 +1639,51 @@
         <span class="eyebrow">Über mich</span>
         <h2 id="ueber-h2">Ihr verlässlicher<br>Partner im Alltag</h2>
 
+        <!-- Statistiken -->
+        <div class="ueber-stats" aria-label="Auf einen Blick">
+          <!-- ANPASSEN: Echte Jahreszahl eintragen, z.B. "8+" -->
+          <div class="ueber-stat">
+            <span class="ueber-stat-val">5+</span>
+            <span class="ueber-stat-label">Jahre Erfahrung</span>
+          </div>
+          <!-- ANPASSEN: Echte Kundenzahl, z.B. "120+" -->
+          <div class="ueber-stat">
+            <span class="ueber-stat-val">100+</span>
+            <span class="ueber-stat-label">Zufriedene Kunden</span>
+          </div>
+          <!-- ANPASSEN: Echtee Leistungsanzahl bleibt 7 -->
+          <div class="ueber-stat">
+            <span class="ueber-stat-val">7</span>
+            <span class="ueber-stat-label">Leistungen</span>
+          </div>
+        </div>
+
         <div class="quote-block">
           <p>„Gönnen Sie sich mehr freie Zeit und Lebensqualität. Gemeinsam finden wir die passende Unterstützung für Ihren Alltag – damit Ihr Leben leichter wird."</p>
         </div>
 
         <div class="ueber-body">
-          <p>Als Alltagshelfer aus Ihrer Region ist es mir ein persönliches Anliegen, Menschen zu entlasten, die im Alltag Unterstützung benötigen – ob vorübergehend oder regelmäßig.</p>
-          <p>Ich lege großen Wert auf Vertrauen, Zuverlässigkeit und eine menschliche, respektvolle Zusammenarbeit. Bei mir sind Sie keine Nummer – Sie sind mein Auftraggeber und verdienen den besten Service.</p>
+          <!-- ANPASSEN: Eigene Geschichte eintragen -->
+          <p>Die Idee, als Alltagshelfer tätig zu werden, entstand aus einer persönlichen Erfahrung: Ich erlebte hautnah, wie viel Kraft und Zeit alltägliche Aufgaben von Menschen nehmen können, die eigentlich Unterstützung verdienen. Das hat mich bewogen, einen Dienst anzubieten, der wirklich hilft – menschlich, verlässlich und mit echtem Herzblut.</p>
+          <!-- ANPASSEN: Servicegebiet eintragen, z.B. "im Raum München und Umgebung" -->
+          <p>Ich bin in Ihrer Region tätig und kenne die Gegend, die Menschen und die besonderen Bedürfnisse vor Ort sehr gut. Kurze Wege, schnelle Reaktion und ein offenes Ohr – das zeichnet meine Arbeit aus.</p>
+        </div>
+
+        <!-- Zertifikate -->
+        <!-- ANPASSEN: Eigene Zertifikate / Ausbildungen eintragen oder entfernen -->
+        <div class="cert-list" aria-label="Qualifikationen">
+          <span class="cert-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Erste Hilfe zertifiziert
+          </span>
+          <span class="cert-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Führerschein Kl. B
+          </span>
+          <span class="cert-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Vertraulich &amp; diskret
+          </span>
         </div>
 
         <ul class="values-list" aria-label="Meine Werte">
@@ -1775,11 +1880,26 @@
       </button>
     </div>
     <h3>Angaben gemäß § 5 TMG</h3>
-    <address>Vorname Nachname<br>Musterstraße 1<br>12345 Musterstadt</address>
+    <!-- ANPASSEN: Echten Namen und Adresse eintragen -->
+    <address>
+      [Ihr vollständiger Name]<br>
+      [Straße und Hausnummer]<br>
+      [PLZ und Ort]<br>
+      Deutschland
+    </address>
     <h3>Kontakt</h3>
-    <p>Telefon: +49 (0) 000 000 000<br>E-Mail: info@ihr-alltagshelfer.de</p>
+    <!-- ANPASSEN: Echte Telefonnummer und E-Mail eintragen -->
+    <p>
+      Telefon: <a href="tel:+490000000000" style="color:var(--primary)">+49 (0) 000 000 000</a><br>
+      E-Mail: <a href="mailto:info@ihr-alltagshelfer.de" style="color:var(--primary)">info@ihr-alltagshelfer.de</a>
+    </p>
     <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
-    <p>Vorname Nachname (Anschrift wie oben)</p>
+    <!-- ANPASSEN: Namen eintragen -->
+    <p>[Ihr vollständiger Name] (Anschrift wie oben)</p>
+    <h3>Haftungsausschluss</h3>
+    <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.</p>
+    <h3>Urheberrecht</h3>
+    <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf dieser Website unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet.</p>
   </div>
 </div>
 
@@ -1792,7 +1912,8 @@
       </button>
     </div>
     <h3>1. Verantwortlicher</h3>
-    <p>Vorname Nachname, Musterstraße 1, 12345 Musterstadt – info@ihr-alltagshelfer.de</p>
+    <!-- ANPASSEN: Echte Daten eintragen -->
+    <p>[Ihr vollständiger Name], [Ihre Adresse] – <a href="mailto:info@ihr-alltagshelfer.de" style="color:var(--primary)">info@ihr-alltagshelfer.de</a></p>
     <h3>2. Erhobene Daten</h3>
     <p>Diese Website speichert keine personenbezogenen Daten auf einem Server. Das Kontaktformular öffnet Ihr lokales E-Mail-Programm – Ihre Daten werden ausschließlich über Ihre eigene E-Mail übermittelt.</p>
     <h3>3. Cookies & Tracking</h3>
