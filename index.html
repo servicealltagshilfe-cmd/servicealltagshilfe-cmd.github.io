@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ihr zuverlässiger Alltagshelfer vor Ort – Einkäufe, Gartenarbeit, Grabpflege, Reparaturen, Fahrdienste und mehr. Persönlich, fair und diskret.">
+  <meta name="theme-color" content="#2C5E43">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Alltagshelfer">
+  <meta property="og:title" content="Alltagshelfer – Ihr zuverlässiger Service vor Ort">
+  <meta property="og:description" content="Persönliche Alltagshilfe – Einkäufe, Gartenarbeit, Reparaturen, Fahrdienste und mehr.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://servicealltagshilfe-cmd.github.io/">
+  <meta property="og:locale" content="de_DE">
+  <title>Alltagshelfer – Ihr zuverlässiger Service vor Ort</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <style>
+    /* ═══════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════ */
+    :root {
+      /* Farben */
+      --bg:           #FAFAF7;
+      --bg-alt:       #F0EAE0;
+      --surface:      #FFFFFF;
+      --primary:      #2C5E43;
+      --primary-d:    #1E4530;
+      --primary-l:    #3A7558;
+      --primary-faint:rgba(44,94,67,0.09);
+      --accent:       #A04500;
+      --accent-h:     #883A00;
+      --accent-faint: rgba(160,69,0,0.10);
+      --text-1:       #1C1917;
+      --text-2:       #4C4743;
+      --text-3:       #96908A;
+      --border:       rgba(28,25,23,0.10);
+      --border-s:     rgba(28,25,23,0.06);
+
+      /* Schatten (Emil-Stil: 3 Ebenen) */
+      --sh-xs: 0 1px 2px rgba(28,25,23,0.05), 0 0 0 1px rgba(28,25,23,0.04);
+      --sh-sm: 0 1px 3px rgba(28,25,23,0.05), 0 3px 8px rgba(28,25,23,0.06), 0 0 0 1px rgba(28,25,23,0.04);
+      --sh-md: 0 2px 6px rgba(28,25,23,0.05), 0 8px 24px rgba(28,25,23,0.08), 0 0 0 1px rgba(28,25,23,0.04);
+      --sh-lg: 0 4px 12px rgba(28,25,23,0.06), 0 20px 48px rgba(28,25,23,0.10), 0 0 0 1px rgba(28,25,23,0.04);
+      --sh-xl: 0 8px 24px rgba(28,25,23,0.08), 0 32px 72px rgba(28,25,23,0.13), 0 0 0 1px rgba(28,25,23,0.04);
+
+      /* Spring-Animationen */
+      --spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-o:  cubic-bezier(0.16, 1, 0.3, 1);
+
+      /* Typografie – GROSS für ältere Menschen */
+      --font:   system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --fs-xs:  0.875rem;   /* 14px */
+      --fs-sm:  1rem;       /* 16px */
+      --fs-md:  1.125rem;   /* 18px */
+      --fs-base:1.25rem;    /* 20px – Basis-Fließtext */
+      --fs-lg:  1.5rem;     /* 24px */
+      --fs-xl:  1.875rem;   /* 30px */
+      --fs-2xl: clamp(2.125rem, 4.5vw, 3rem);    /* 34–48px */
+      --fs-3xl: clamp(2.75rem,  7vw,   4.25rem);  /* 44–68px */
+
+      /* Abstände */
+      --sp-2:4px; --sp-4:8px; --sp-6:12px; --sp-8:16px;
+      --sp-10:20px; --sp-12:24px; --sp-16:32px; --sp-20:40px;
+      --sp-24:48px; --sp-32:64px; --sp-40:80px; --sp-48:96px;
+
+      --r-sm:  8px;
+      --r-md:  12px;
+      --r-lg:  18px;
+      --r-xl:  24px;
+      --r-2xl: 32px;
+      --r-full:9999px;
+
+      --max-w: 1120px;
+      --hdr-h: 72px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:       #111110;
+        --bg-alt:   #1C1916;
+        --surface:  #201E1B;
+        --text-1:   #F5F0E8;
+        --text-2:   #A8A29E;
+        --text-3:   #57534E;
+        --border:   rgba(245,240,232,0.08);
+        --border-s: rgba(245,240,232,0.05);
+        --sh-sm: 0 1px 3px rgba(0,0,0,0.20), 0 3px 8px rgba(0,0,0,0.28), 0 0 0 1px rgba(245,240,232,0.06);
+        --sh-md: 0 2px 6px rgba(0,0,0,0.24), 0 8px 24px rgba(0,0,0,0.36), 0 0 0 1px rgba(245,240,232,0.06);
+        --sh-lg: 0 4px 12px rgba(0,0,0,0.28), 0 20px 48px rgba(0,0,0,0.44), 0 0 0 1px rgba(245,240,232,0.06);
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       RESET
+    ═══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; font-size: 100%; }
+    body {
+      font-family: var(--font);
+      font-size: var(--fs-base);
+      color: var(--text-1);
+      background: var(--bg);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+    input, textarea, select { font: inherit; color: inherit; }
+    ::selection { background: var(--primary); color: #fff; }
+
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: var(--r-sm);
+    }
+
+    /* Barrierefreiheit */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0; overflow: hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       LAYOUT
+    ═══════════════════════════════════════ */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: var(--sp-24);
+    }
+    @media (max-width: 640px) {
+      .container { padding-inline: var(--sp-16); }
+    }
+
+    /* ═══════════════════════════════════════
+       REVEAL-ANIMATION
+    ═══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s var(--ease-o), transform 0.55s var(--ease-o);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s var(--ease-o), transform 0.5s var(--ease-o);
+    }
+    .stagger.in > *:nth-child(1) { opacity:1;transform:none;transition-delay:.04s }
+    .stagger.in > *:nth-child(2) { opacity:1;transform:none;transition-delay:.10s }
+    .stagger.in > *:nth-child(3) { opacity:1;transform:none;transition-delay:.16s }
+    .stagger.in > *:nth-child(4) { opacity:1;transform:none;transition-delay:.22s }
+    .stagger.in > *:nth-child(5) { opacity:1;transform:none;transition-delay:.28s }
+    .stagger.in > *:nth-child(6) { opacity:1;transform:none;transition-delay:.34s }
+    .stagger.in > *:nth-child(7) { opacity:1;transform:none;transition-delay:.40s }
+
+    /* ═══════════════════════════════════════
+       SECTION SYSTEM
+    ═══════════════════════════════════════ */
+    .section { padding-block: var(--sp-48); }
+    .section-alt {
+      background: var(--bg-alt);
+      border-block: 1px solid var(--border-s);
+    }
+
+    .section-head { margin-bottom: var(--sp-40); }
+    .section-head.center { text-align: center; }
+    .section-head.center p { margin-inline: auto; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-8);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: var(--sp-10);
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 1px;
+    }
+
+    .section-head h2 {
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: var(--sp-12);
+      color: var(--text-1);
+    }
+    .section-head p {
+      font-size: var(--fs-base);
+      color: var(--text-2);
+      max-width: 40rem;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════
+       BUTTONS – große Tap-Targets für ältere Menschen
+    ═══════════════════════════════════════ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-8);
+      min-height: 56px;
+      padding-inline: var(--sp-24);
+      border-radius: var(--r-lg);
+      font-size: var(--fs-base);
+      font-weight: 600;
+      white-space: nowrap;
+      transition:
+        background   0.15s,
+        box-shadow   0.22s var(--spring),
+        transform    0.22s var(--spring),
+        color 0.15s;
+      will-change: transform;
+      letter-spacing: -0.01em;
+    }
+    .btn:active { transform: scale(0.97) !important; transition-duration: 0.09s; }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--sh-sm), inset 0 1px 0 rgba(255,255,255,0.10);
+    }
+    .btn-primary:hover {
+      background: var(--primary-d);
+      box-shadow: var(--sh-md), inset 0 1px 0 rgba(255,255,255,0.10);
+      transform: translateY(-2px);
+    }
+
+    .btn-phone {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: var(--sh-sm), inset 0 1px 0 rgba(255,255,255,0.12);
+      font-size: var(--fs-lg);
+      min-height: 64px;
+      padding-inline: var(--sp-32);
+      border-radius: var(--r-xl);
+    }
+    .btn-phone:hover {
+      background: var(--accent-h);
+      box-shadow: var(--sh-lg);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: var(--surface);
+      color: var(--text-1);
+      box-shadow: var(--sh-sm);
+    }
+    .btn-outline:hover {
+      box-shadow: var(--sh-md);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-2);
+    }
+    .btn-ghost:hover { background: var(--bg-alt); color: var(--text-1); }
+
+    /* ═══════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════ */
+    #header {
+      position: fixed;
+      inset-block-start: 0;
+      inset-inline: 0;
+      height: var(--hdr-h);
+      z-index: 100;
+      transition: background 0.28s, box-shadow 0.28s;
+    }
+
+    #header.scrolled {
+      background: rgba(250,250,247,0.92);
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      box-shadow: 0 0 0 1px var(--border), 0 2px 12px rgba(28,25,23,0.06);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #header.scrolled { background: rgba(17,17,16,0.92); }
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-16);
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo-img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* Fallback wenn Logo nicht lädt */
+    .logo-fallback {
+      display: none;
+      align-items: center;
+      gap: var(--sp-8);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+    }
+    .logo-fallback .mark {
+      width: 36px; height: 36px;
+      border-radius: var(--r-sm);
+      background: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+    .nav-links a {
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      color: var(--text-2);
+      padding: var(--sp-6) var(--sp-10);
+      border-radius: var(--r-md);
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-links a:hover { color: var(--text-1); background: var(--bg-alt); }
+
+    /* Telefon immer im Header sichtbar */
+    .header-phone {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-8);
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--accent);
+      padding: var(--sp-8) var(--sp-16);
+      border-radius: var(--r-lg);
+      border: 2px solid var(--accent);
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .header-phone:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Mobile Menu Toggle */
+    .nav-toggle {
+      display: none;
+      width: 44px; height: 44px;
+      border-radius: var(--r-md);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    .nav-toggle:hover { background: var(--bg-alt); }
+    .nav-toggle span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text-1);
+      border-radius: 1px;
+      transition: transform 0.28s var(--spring), opacity 0.2s;
+    }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    #mobile-menu {
+      display: none;
+      position: fixed;
+      inset: var(--hdr-h) 0 0 0;
+      background: var(--bg);
+      z-index: 99;
+      padding: var(--sp-20) var(--sp-24);
+      flex-direction: column;
+      gap: var(--sp-4);
+      overflow-y: auto;
+    }
+    #mobile-menu.open { display: flex; }
+
+    #mobile-menu a {
+      display: flex;
+      align-items: center;
+      font-size: var(--fs-lg);
+      font-weight: 600;
+      color: var(--text-1);
+      padding: var(--sp-16) var(--sp-16);
+      border-radius: var(--r-lg);
+      transition: background 0.15s;
+    }
+    #mobile-menu a:hover { background: var(--bg-alt); }
+
+    .mobile-divider {
+      height: 1px;
+      background: var(--border);
+      margin-block: var(--sp-8);
+    }
+
+    #mobile-menu .mobile-phone {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-12);
+      font-size: var(--fs-xl);
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent);
+      padding: var(--sp-20) var(--sp-24);
+      border-radius: var(--r-xl);
+      margin-top: var(--sp-8);
+    }
+
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+    }
+    @media (max-width: 680px) {
+      .header-phone span.phone-text { display: none; }
+      .nav-toggle { display: flex; }
+      .header-phone { padding: var(--sp-8); border-radius: var(--r-md); }
+    }
+    @media (max-width: 480px) {
+      .header-phone { display: none; }
+    }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding-block-start: var(--hdr-h);
+      padding-block-end: var(--sp-48);
+      position: relative;
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    /* Dezentes Punkt-Raster */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(ellipse 75% 75% at 50% 40%, black 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 40%, black 20%, transparent 80%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: var(--sp-48);
+      align-items: center;
+      padding-block-start: var(--sp-48);
+    }
+
+    .hero-text { max-width: 46rem; }
+
+    .hero-text .eyebrow { margin-bottom: var(--sp-16); }
+
+    .hero-h1 {
+      font-size: var(--fs-3xl);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.06;
+      margin-bottom: var(--sp-20);
+      color: var(--text-1);
+    }
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .hero-lead {
+      font-size: var(--fs-lg);
+      color: var(--text-2);
+      line-height: 1.65;
+      max-width: 36rem;
+      margin-bottom: var(--sp-32);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-16);
+      align-items: center;
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-24);
+      margin-top: var(--sp-32);
+      padding-top: var(--sp-24);
+      border-top: 1px solid var(--border-s);
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-8);
+      font-size: var(--fs-sm);
+      color: var(--text-2);
+      font-weight: 500;
+    }
+    .trust-badge svg { color: var(--primary); flex-shrink: 0; }
+
+    /* Hero-Karte rechts */
+    .hero-card {
+      background: var(--surface);
+      border-radius: var(--r-2xl);
+      box-shadow: var(--sh-xl);
+      padding: var(--sp-24);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-6);
+    }
+
+    .hero-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--sp-8);
+      padding-bottom: var(--sp-16);
+      border-bottom: 1px solid var(--border-s);
+    }
+
+    .hero-card-title {
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-3);
+    }
+
+    .online-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--fs-xs);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .online-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 2px rgba(34,197,94,0.25);
+      animation: blink 2.5s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { box-shadow: 0 0 0 2px rgba(34,197,94,0.25); }
+      50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0.08); }
+    }
+
+    .hero-service-row {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-12);
+      padding: var(--sp-10) var(--sp-12);
+      border-radius: var(--r-md);
+      transition: background 0.15s;
+      cursor: default;
+    }
+    .hero-service-row:hover { background: var(--bg-alt); }
+
+    .hero-service-icon {
+      width: 34px; height: 34px;
+      border-radius: var(--r-sm);
+      background: var(--primary-faint);
+      color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.18s var(--spring), color 0.18s, transform 0.18s var(--spring);
+    }
+    .hero-service-row:hover .hero-service-icon {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.1) rotate(-5deg);
+    }
+    .hero-service-row span { font-size: var(--fs-sm); font-weight: 600; color: var(--text-1); }
+
+    .hero-card-footer {
+      margin-top: var(--sp-8);
+      padding-top: var(--sp-16);
+      border-top: 1px solid var(--border-s);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-12);
+    }
+
+    .hero-card-footer small {
+      font-size: var(--fs-xs);
+      color: var(--text-3);
+    }
+
+    @media (max-width: 900px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+    }
+    @media (max-width: 600px) {
+      .hero-h1 { letter-spacing: -0.03em; }
+      .hero-lead { font-size: var(--fs-base); }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn { justify-content: center; }
+    }
+
+    /* ═══════════════════════════════════════
+       TRUST BAR
+    ═══════════════════════════════════════ */
+    .trust-bar {
+      background: var(--primary);
+      padding-block: var(--sp-24);
+    }
+    .trust-bar-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-16);
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-4);
+      text-align: center;
+      padding: var(--sp-12);
+    }
+    .trust-item-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--r-md);
+      background: rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      margin-bottom: var(--sp-6);
+    }
+    .trust-item strong {
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .trust-item span {
+      font-size: var(--fs-xs);
+      color: rgba(255,255,255,0.70);
+    }
+    @media (max-width: 640px) {
+      .trust-bar-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 380px) {
+      .trust-bar-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════
+       LEISTUNGEN
+    ═══════════════════════════════════════ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+      gap: 1px;
+      background: var(--border-s);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: var(--sh-sm);
+    }
+
+    .service-card {
+      background: var(--surface);
+      padding: var(--sp-24) var(--sp-20);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-12);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.22s;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 25% 25%, var(--primary-faint) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity 0.28s;
+      pointer-events: none;
+    }
+    .service-card:hover { background: var(--bg-alt); }
+    .service-card:hover::after { opacity: 1; }
+
+    .service-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--r-md);
+      background: var(--primary-faint);
+      color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.22s var(--spring), color 0.22s, transform 0.22s var(--spring);
+    }
+    .service-card:hover .service-icon {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.08) rotate(-6deg);
+    }
+
+    .service-card h3 {
+      font-size: var(--fs-md);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-1);
+    }
+    .service-card p {
+      font-size: var(--fs-sm);
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════
+       WIE ES FUNKTIONIERT
+    ═══════════════════════════════════════ */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-16);
+      position: relative;
+    }
+
+    /* Verbindungslinie zwischen Steps */
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(16.67% + 28px);
+      right: calc(16.67% + 28px);
+      height: 2px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--primary) 0,
+        var(--primary) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+      z-index: 0;
+    }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: var(--sp-32) var(--sp-24);
+      text-align: center;
+      box-shadow: var(--sh-sm);
+      transition: box-shadow 0.25s var(--spring), transform 0.25s var(--spring);
+      position: relative;
+      z-index: 1;
+    }
+    .step:hover {
+      box-shadow: var(--sh-lg);
+      transform: translateY(-4px);
+    }
+
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: var(--fs-xl);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto var(--sp-20);
+      box-shadow: 0 4px 16px rgba(44,94,67,0.35);
+    }
+
+    .step h3 {
+      font-size: var(--fs-lg);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-1);
+      margin-bottom: var(--sp-10);
+    }
+    .step p {
+      font-size: var(--fs-base);
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 720px) {
+      .steps-grid { grid-template-columns: 1fr; }
+      .steps-grid::before { display: none; }
+    }
+
+    /* ═══════════════════════════════════════
+       ÜBER MICH
+    ═══════════════════════════════════════ */
+    .ueber-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--sp-48);
+      align-items: start;
+    }
+
+    .photo-wrap { position: relative; }
+
+    .photo-frame {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: var(--r-2xl);
+      background: linear-gradient(160deg, var(--primary) 0%, var(--primary-d) 100%);
+      box-shadow: var(--sh-xl);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: var(--sp-12);
+      color: rgba(255,255,255,0.45);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      overflow: hidden;
+      position: relative;
+    }
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 35% 25%, rgba(255,255,255,0.10) 0%, transparent 60%);
+    }
+    .photo-frame svg { position: relative; opacity: 0.4; }
+
+    .photo-meta {
+      margin-top: var(--sp-16);
+      text-align: center;
+    }
+    .photo-meta strong {
+      display: block;
+      font-size: var(--fs-md);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-1);
+    }
+    .photo-meta span {
+      font-size: var(--fs-sm);
+      color: var(--text-3);
+    }
+
+    .ueber-text .eyebrow { margin-bottom: var(--sp-16); }
+
+    .ueber-text h2 {
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+      color: var(--text-1);
+      margin-bottom: var(--sp-24);
+    }
+
+    .quote-block {
+      position: relative;
+      padding: var(--sp-20) var(--sp-24);
+      background: var(--primary-faint);
+      border-radius: var(--r-lg);
+      border-left: 4px solid var(--accent);
+      margin-bottom: var(--sp-24);
+    }
+    .quote-block p {
+      font-size: var(--fs-lg);
+      color: var(--text-1);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .ueber-body p {
+      font-size: var(--fs-base);
+      color: var(--text-2);
+      line-height: 1.72;
+      margin-bottom: var(--sp-16);
+    }
+    .ueber-body p:last-child { margin-bottom: var(--sp-24); }
+
+    .values-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-8);
+      margin-bottom: var(--sp-24);
+    }
+    .value-item {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-12);
+      font-size: var(--fs-base);
+      font-weight: 500;
+      color: var(--text-1);
+    }
+    .value-check {
+      width: 28px; height: 28px;
+      border-radius: var(--r-sm);
+      background: var(--primary);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 720px) {
+      .ueber-layout { grid-template-columns: 1fr; }
+      .photo-wrap { display: flex; flex-direction: column; align-items: center; }
+      .photo-frame { max-width: 200px; aspect-ratio: 1; }
+    }
+
+    /* ═══════════════════════════════════════
+       KONTAKT
+    ═══════════════════════════════════════ */
+    .kontakt-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--sp-48);
+      align-items: start;
+    }
+
+    .kontakt-info .eyebrow { margin-bottom: var(--sp-16); }
+
+    .kontakt-info h2 {
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-1);
+      margin-bottom: var(--sp-12);
+      line-height: 1.15;
+    }
+
+    .kontakt-info > p {
+      font-size: var(--fs-base);
+      color: var(--text-2);
+      line-height: 1.65;
+      margin-bottom: var(--sp-24);
+    }
+
+    .contact-options {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-10);
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-16);
+      padding: var(--sp-16) var(--sp-20);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh-xs);
+      color: var(--text-1);
+      transition: box-shadow 0.22s var(--spring), transform 0.22s var(--spring), border-color 0.15s;
+    }
+    .contact-btn:hover {
+      box-shadow: var(--sh-md);
+      transform: translateX(4px);
+      border-color: var(--border);
+    }
+
+    .contact-btn-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-btn-icon.tel   { background: rgba(22,163,74,0.10);  color: #16a34a; }
+    .contact-btn-icon.wa    { background: rgba(37,211,102,0.10); color: #1da851; }
+    .contact-btn-icon.email { background: var(--primary-faint);  color: var(--primary); }
+
+    .contact-btn-label small {
+      display: block;
+      font-size: var(--fs-xs);
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+    }
+    .contact-btn-label strong {
+      display: block;
+      font-size: var(--fs-md);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    /* Formular */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-2xl);
+      box-shadow: var(--sh-lg);
+      padding: var(--sp-32);
+    }
+
+    .form-card h3 {
+      font-size: var(--fs-xl);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-1);
+      margin-bottom: var(--sp-6);
+    }
+    .form-card > p {
+      font-size: var(--fs-sm);
+      color: var(--text-3);
+      margin-bottom: var(--sp-24);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-12);
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-6);
+      margin-bottom: var(--sp-12);
+    }
+    .field.full { grid-column: 1/-1; }
+
+    .field label {
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-3);
+    }
+    .field label .req { color: var(--accent); }
+
+    .field input, .field select, .field textarea {
+      height: 52px;
+      padding-inline: var(--sp-16);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--bg);
+      font-size: var(--fs-base);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      width: 100%;
+    }
+    .field textarea { height: auto; min-height: 112px; padding-block: var(--sp-16); resize: vertical; }
+    .field input::placeholder, .field textarea::placeholder { color: var(--text-3); }
+    .field select { cursor: pointer; }
+
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(44,94,67,0.12);
+      outline: none;
+    }
+    .field input[aria-invalid="true"], .field textarea[aria-invalid="true"] {
+      border-color: #dc2626;
+      box-shadow: 0 0 0 4px rgba(220,38,38,0.10);
+    }
+
+    .field-err {
+      font-size: var(--fs-xs);
+      color: #dc2626;
+      font-weight: 500;
+      display: none;
+    }
+    .field-err.show { display: block; }
+
+    .form-submit-row {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-16);
+      flex-wrap: wrap;
+      margin-top: var(--sp-8);
+    }
+    .form-submit-row .btn { flex: 1; justify-content: center; }
+
+    .form-hint {
+      font-size: var(--fs-xs);
+      color: var(--text-3);
+      line-height: 1.5;
+      flex: 2;
+    }
+    .form-hint strong { color: var(--text-2); }
+
+    @media (max-width: 760px) {
+      .kontakt-layout { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    #footer {
+      background: var(--primary-d);
+      padding-block: var(--sp-48);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: var(--sp-40);
+      padding-bottom: var(--sp-32);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: var(--sp-24);
+    }
+
+    .footer-brand img.logo-footer {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: var(--sp-16);
+      /* Helle Version: brightness filter falls nötig */
+      filter: brightness(10);
+    }
+
+    .footer-brand p {
+      font-size: var(--fs-sm);
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      max-width: 22rem;
+    }
+
+    .footer-col h5 {
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: var(--sp-16);
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: var(--sp-10); }
+    .footer-col a {
+      font-size: var(--fs-sm);
+      color: rgba(255,255,255,0.45);
+      transition: color 0.15s;
+    }
+    .footer-col a:hover { color: rgba(255,255,255,0.90); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--sp-12);
+      font-size: var(--fs-xs);
+      color: rgba(255,255,255,0.35);
+    }
+
+    .pwa-install {
+      display: none;
+      align-items: center;
+      gap: var(--sp-8);
+      padding: var(--sp-8) var(--sp-16);
+      border-radius: var(--r-md);
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.70);
+      font-size: var(--fs-xs);
+      font-weight: 500;
+      transition: background 0.15s;
+    }
+    .pwa-install.show { display: flex; }
+    .pwa-install:hover { background: rgba(255,255,255,0.12); }
+
+    @media (max-width: 720px) {
+      .footer-grid { grid-template-columns: 1fr; gap: var(--sp-24); }
+    }
+
+    /* ═══════════════════════════════════════
+       MODALS
+    ═══════════════════════════════════════ */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(28,25,23,0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 300;
+      padding: var(--sp-20);
+      align-items: flex-end;
+      justify-content: center;
+    }
+    @media (min-width: 520px) { .modal-overlay { align-items: center; } }
+    .modal-overlay.open { display: flex; }
+
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-2xl);
+      box-shadow: var(--sh-xl);
+      padding: var(--sp-32);
+      width: 100%;
+      max-width: 38rem;
+      max-height: 82vh;
+      overflow-y: auto;
+    }
+
+    .modal-top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: var(--sp-24);
+    }
+    .modal-top h2 {
+      font-size: var(--fs-xl);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    .modal-close {
+      width: 36px; height: 36px;
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-3);
+      transition: background 0.15s, color 0.15s;
+    }
+    .modal-close:hover { background: var(--bg-alt); color: var(--text-1); }
+
+    .modal-box h3 {
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--text-1);
+      margin-top: var(--sp-20);
+      margin-bottom: var(--sp-8);
+    }
+    .modal-box p, .modal-box address {
+      font-size: var(--fs-sm);
+      color: var(--text-2);
+      line-height: 1.7;
+      margin-bottom: var(--sp-8);
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header id="header">
+  <div class="container header-inner">
+
+    <a href="/" class="logo-link" aria-label="Alltagshelfer – Zur Startseite">
+      <img src="logo.avif"
+           alt="Alltagshelfer"
+           class="logo-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <span class="logo-fallback" style="display:none">
+        <span class="mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </span>
+        Alltagshelfer
+      </span>
+    </a>
+
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#wie-es-geht">So geht's</a>
+      <a href="#ueber">Über mich</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <a href="tel:+490000000000" class="header-phone" aria-label="Anrufen: +49 (0) 000 000 000">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.59 1.31h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/>
+      </svg>
+      <span class="phone-text">+49 (0) 000 000 000</span>
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile-Menü -->
+<nav id="mobile-menu" aria-label="Mobile Navigation">
+  <a href="#leistungen">Leistungen</a>
+  <a href="#wie-es-geht">So geht's</a>
+  <a href="#ueber">Über mich</a>
+  <a href="#kontakt">Kontakt</a>
+  <div class="mobile-divider" aria-hidden="true"></div>
+  <a href="tel:+490000000000" class="mobile-phone" aria-label="Anrufen">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.59 1.31h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/>
+    </svg>
+    +49 (0) 000 000 000
+  </a>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="hero" aria-labelledby="hero-h1">
+  <div class="container">
+    <div class="hero-layout">
+
+      <div class="hero-text reveal">
+        <span class="eyebrow">Ihr persönlicher Alltagshelfer</span>
+        <h1 class="hero-h1" id="hero-h1">
+          Zuverlässige Hilfe –<br>
+          <em>wann immer Sie<br>sie brauchen.</em>
+        </h1>
+        <p class="hero-lead">
+          Ich übernehme die Aufgaben, die Ihnen Zeit und Kraft kosten:
+          Einkäufe, Gartenarbeit, Reparaturen, Fahrdienste und vieles mehr.
+          Persönlich, fair und immer verlässlich.
+        </p>
+        <div class="hero-actions">
+          <a href="tel:+490000000000" class="btn btn-phone">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.59 1.31h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/>
+            </svg>
+            Jetzt anrufen
+          </a>
+          <a href="#leistungen" class="btn btn-outline">Alle Leistungen ansehen</a>
+        </div>
+        <div class="hero-trust" aria-label="Vertrauensmerkmale">
+          <span class="trust-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Persönlich & direkt
+          </span>
+          <span class="trust-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Auch kurzfristig
+          </span>
+          <span class="trust-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Faire Preise
+          </span>
+          <span class="trust-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Diskret & vertrauensvoll
+          </span>
+        </div>
+      </div>
+
+      <!-- Karte rechts (Desktop) -->
+      <div class="hero-card reveal" aria-hidden="true">
+        <div class="hero-card-head">
+          <span class="hero-card-title">Meine Leistungen</span>
+          <span class="online-badge">
+            <span class="online-dot"></span>
+            Verfügbar
+          </span>
+        </div>
+        <div class="hero-service-row">
+          <span class="hero-service-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+          <span>Einkäufe</span>
+        </div>
+        <div class="hero-service-row">
+          <span class="hero-service-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></span>
+          <span>Gartenarbeit</span>
+        </div>
+        <div class="hero-service-row">
+          <span class="hero-service-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          <span>Kleine Reparaturen</span>
+        </div>
+        <div class="hero-service-row">
+          <span class="hero-service-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+          <span>Fahrdienste</span>
+        </div>
+        <div class="hero-service-row">
+          <span class="hero-service-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          <span>Haushalt &amp; Wohnung</span>
+        </div>
+        <div class="hero-card-footer">
+          <small>+ Grabpflege &amp; Kfz-Hilfe</small>
+          <a href="#kontakt" class="btn btn-primary" style="min-height:40px;padding-inline:18px;font-size:var(--fs-sm);border-radius:var(--r-md);">
+            Anfragen
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     TRUST BAR
+══════════════════════════════════════════ -->
+<div class="trust-bar" aria-label="Unsere Stärken">
+  <div class="container">
+    <div class="trust-bar-inner stagger">
+      <div class="trust-item">
+        <div class="trust-item-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <strong>Persönlich</strong>
+        <span>Kein Call-Center</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-item-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <strong>Flexibel</strong>
+        <span>Auch kurzfristig</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-item-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <strong>Faire Preise</strong>
+        <span>Keine versteckten Kosten</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-item-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <strong>Diskret</strong>
+        <span>Vertrauensvoller Umgang</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     LEISTUNGEN
+══════════════════════════════════════════ -->
+<section id="leistungen" class="section section-alt" aria-labelledby="leistungen-h2">
+  <div class="container">
+    <header class="section-head center reveal">
+      <span class="eyebrow">Was ich anbiete</span>
+      <h2 id="leistungen-h2">Meine Leistungen</h2>
+      <p>Von der täglichen Besorgung bis zur saisonalen Gartenarbeit –<br>ich helfe da, wo Sie es wirklich brauchen.</p>
+    </header>
+
+    <div class="services-grid stagger" role="list">
+
+      <article class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <h3>Einkäufe</h3>
+        <p>Lebensmittel, Apotheke, Drogerien – ich erledige Ihre Einkäufe sorgfältig und bringe sie bis zur Haustür.</p>
+      </article>
+
+      <article class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10"/><path d="M12 6v6l3 3"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Gartenarbeit</h3>
+        <p>Rasenmähen, Unkraut jäten, Hecken schneiden – ich halte Ihren Garten das ganze Jahr über gepflegt.</p>
+      </article>
+
+      <article class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <h3>Grabpflege</h3>
+        <p>Ich pflege Gräber liebevoll und zuverlässig – mit frischen Blumen, Reinigung und sorgfältiger Pflege.</p>
+      </article>
+
+      <article class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Kleine Reparaturen</h3>
+        <p>Lampen wechseln, Möbel aufbauen, Kleinreparaturen – handwerkliche Unterstützung ohne langen Vorlauf.</p>
+      </article>
+
+      <article class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Fahrdienste</h3>
+        <p>Arzt, Behörden, Flughafen, Einkaufszentrum – ich fahre Sie sicher, pünktlich und entspannt ans Ziel.</p>
+      </article>
+
+      <article class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Haushalt &amp; Wohnung</h3>
+        <p>Reinigung, Ordnung schaffen, Umzugshilfe – ich unterstütze Sie rund um Ihr Zuhause.</p>
+      </article>
+
+      <article class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Hilfe beim Kfz</h3>
+        <p>TÜV-Termin, Werkstattfahrt, Reifenwechsel koordinieren – ich kümmere mich ums Drumherum.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     WIE ES FUNKTIONIERT
+══════════════════════════════════════════ -->
+<section id="wie-es-geht" class="section" aria-labelledby="wie-h2">
+  <div class="container">
+    <header class="section-head center reveal">
+      <span class="eyebrow">Einfach &amp; unkompliziert</span>
+      <h2 id="wie-h2">So einfach funktioniert's</h2>
+      <p>Drei Schritte – und schon kann ich Ihnen helfen.</p>
+    </header>
+    <div class="steps-grid stagger">
+      <div class="step">
+        <div class="step-num" aria-hidden="true">1</div>
+        <h3>Anrufen oder schreiben</h3>
+        <p>Rufen Sie mich einfach an oder schicken Sie mir eine Nachricht per WhatsApp oder über das Kontaktformular. Kein langes Herumsuchen – ich bin direkt erreichbar.</p>
+      </div>
+      <div class="step">
+        <div class="step-num" aria-hidden="true">2</div>
+        <h3>Termin vereinbaren</h3>
+        <p>Wir besprechen gemeinsam, was Sie benötigen, und finden einen Termin, der Ihnen passt. Auch kurzfristige Anfragen sind herzlich willkommen.</p>
+      </div>
+      <div class="step">
+        <div class="step-num" aria-hidden="true">3</div>
+        <h3>Entspannt zurücklehnen</h3>
+        <p>Ich erledige alles zuverlässig und sorgfältig für Sie – Sie gewinnen wertvolle Zeit und können das Leben genießen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ÜBER MICH
+══════════════════════════════════════════ -->
+<section id="ueber" class="section section-alt" aria-labelledby="ueber-h2">
+  <div class="container">
+    <div class="ueber-layout">
+
+      <div class="photo-wrap reveal">
+        <div class="photo-frame" role="img" aria-label="Profilbild – Platzhalter für Ihr Foto">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Ihr Foto</span>
+        </div>
+        <div class="photo-meta">
+          <strong>Vorname Nachname</strong>
+          <span>Ihr Alltagshelfer vor Ort</span>
+        </div>
+      </div>
+
+      <div class="ueber-text reveal">
+        <span class="eyebrow">Über mich</span>
+        <h2 id="ueber-h2">Ihr verlässlicher<br>Partner im Alltag</h2>
+
+        <div class="quote-block">
+          <p>„Gönnen Sie sich mehr freie Zeit und Lebensqualität. Gemeinsam finden wir die passende Unterstützung für Ihren Alltag – damit Ihr Leben leichter wird."</p>
+        </div>
+
+        <div class="ueber-body">
+          <p>Als Alltagshelfer aus Ihrer Region ist es mir ein persönliches Anliegen, Menschen zu entlasten, die im Alltag Unterstützung benötigen – ob vorübergehend oder regelmäßig.</p>
+          <p>Ich lege großen Wert auf Vertrauen, Zuverlässigkeit und eine menschliche, respektvolle Zusammenarbeit. Bei mir sind Sie keine Nummer – Sie sind mein Auftraggeber und verdienen den besten Service.</p>
+        </div>
+
+        <ul class="values-list" aria-label="Meine Werte">
+          <li class="value-item">
+            <span class="value-check" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Pünktlich und zuverlässig
+          </li>
+          <li class="value-item">
+            <span class="value-check" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Ehrlich und transparent
+          </li>
+          <li class="value-item">
+            <span class="value-check" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Diskret und vertrauenswürdig
+          </li>
+          <li class="value-item">
+            <span class="value-check" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Freundlich und geduldig
+          </li>
+        </ul>
+
+        <a href="#kontakt" class="btn btn-primary">
+          Unverbindlich anfragen
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     KONTAKT
+══════════════════════════════════════════ -->
+<section id="kontakt" class="section" aria-labelledby="kontakt-h2">
+  <div class="container">
+    <div class="kontakt-layout">
+
+      <!-- Linke Seite: Direktkontakt -->
+      <div class="kontakt-info reveal">
+        <span class="eyebrow">Ich freue mich auf Sie</span>
+        <h2 id="kontakt-h2">Einfach melden –<br>ich bin für Sie da.</h2>
+        <p>Egal ob kurze Frage oder konkreter Auftrag: Rufen Sie mich einfach an. Ich melde mich auch schnell per WhatsApp oder E-Mail zurück.</p>
+
+        <div class="contact-options">
+          <a href="tel:+490000000000" class="contact-btn">
+            <span class="contact-btn-icon tel" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.59 1.31h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+            </span>
+            <div class="contact-btn-label">
+              <small>Anrufen</small>
+              <strong>+49 (0) 000 000 000</strong>
+            </div>
+          </a>
+
+          <a href="https://wa.me/490000000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihre%20Leistungen."
+             class="contact-btn" target="_blank" rel="noopener noreferrer">
+            <span class="contact-btn-icon wa" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.379 0 0 5.376 0 12.024c0 2.126.559 4.12 1.533 5.848L0 24l6.306-1.511a12.02 12.02 0 0 0 5.725 1.457C18.685 23.946 24 18.57 24 11.922 24 5.376 18.685 0 12.031 0zm.003 21.78a9.982 9.982 0 0 1-5.1-1.397l-.365-.217-3.742.898.934-3.639-.237-.375a9.948 9.948 0 0 1-1.547-5.306c0-5.491 4.476-9.962 9.972-9.962 5.494 0 9.971 4.47 9.971 9.962 0 5.491-4.477 9.036-9.886 9.036zm5.485-7.44c-.299-.15-1.769-.873-2.044-.972-.274-.1-.473-.15-.672.15-.2.3-.772.972-.946 1.172-.174.2-.349.225-.647.074-.299-.15-1.26-.465-2.4-1.483-.888-.79-1.487-1.766-1.661-2.065-.173-.3-.018-.46.13-.61.134-.133.299-.348.448-.522.15-.174.2-.3.3-.498.099-.2.049-.374-.025-.524-.075-.15-.672-1.62-.921-2.22-.243-.582-.489-.503-.672-.513l-.573-.01a1.099 1.099 0 0 0-.797.374c-.274.3-1.046 1.022-1.046 2.49 0 1.469 1.071 2.888 1.22 3.088.15.2 2.108 3.216 5.108 4.508.714.308 1.272.492 1.706.629.717.228 1.37.196 1.886.119.575-.085 1.769-.722 2.019-1.42.249-.698.249-1.297.174-1.422-.074-.124-.274-.2-.573-.348z"/></svg>
+            </span>
+            <div class="contact-btn-label">
+              <small>WhatsApp</small>
+              <strong>Nachricht schreiben</strong>
+            </div>
+          </a>
+
+          <a href="mailto:info@ihr-alltagshelfer.de" class="contact-btn">
+            <span class="contact-btn-icon email" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <div class="contact-btn-label">
+              <small>E-Mail</small>
+              <strong>info@ihr-alltagshelfer.de</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Rechte Seite: Formular -->
+      <div class="reveal">
+        <div class="form-card">
+          <h3>Anfrage senden</h3>
+          <p>Ihr E-Mail-Programm (Gmail, Outlook, Apple Mail) öffnet sich mit Ihrer Nachricht – fertig vorausgefüllt.</p>
+
+          <form id="kontaktform" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="f-name">Ihr Name <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="f-name" name="name" autocomplete="name"
+                  required aria-required="true" placeholder="Maria Mustermann">
+                <span class="field-err" id="err-name" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="f-contact">Telefon oder E-Mail <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="f-contact" name="contact"
+                  required aria-required="true" placeholder="0172 … / ihre@email.de">
+                <span class="field-err" id="err-contact" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-service">Gewünschte Leistung</label>
+              <select id="f-service" name="service">
+                <option value="">Bitte wählen …</option>
+                <option>Einkäufe</option>
+                <option>Gartenarbeit</option>
+                <option>Grabpflege</option>
+                <option>Kleine Reparaturen</option>
+                <option>Fahrdienste</option>
+                <option>Haushalt &amp; Wohnung</option>
+                <option>Hilfe beim Kfz</option>
+                <option>Sonstiges</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="f-msg">Ihre Nachricht <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="f-msg" name="message"
+                required aria-required="true"
+                placeholder="Beschreiben Sie kurz, womit ich Ihnen helfen kann …"></textarea>
+              <span class="field-err" id="err-msg" role="alert"></span>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Nachricht senden
+              </button>
+              <p class="form-hint">
+                <strong>Kein Spam.</strong> Öffnet Ihr E-Mail-Programm mit fertig ausgefüllter Nachricht an mich.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo.avif" alt="Alltagshelfer" class="logo-footer"
+             onerror="this.style.display='none'">
+        <p>Zuverlässige Alltagshilfe aus Ihrer Region – persönlich, fair und mit echtem Engagement für Ihre Lebensqualität.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Leistungen</h5>
+        <ul>
+          <li><a href="#leistungen">Einkäufe</a></li>
+          <li><a href="#leistungen">Gartenarbeit</a></li>
+          <li><a href="#leistungen">Grabpflege</a></li>
+          <li><a href="#leistungen">Reparaturen</a></li>
+          <li><a href="#leistungen">Fahrdienste</a></li>
+          <li><a href="#leistungen">Haushalt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Rechtliches</h5>
+        <ul>
+          <li><a href="#" id="btn-impressum">Impressum</a></li>
+          <li><a href="#" id="btn-datenschutz">Datenschutz</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="tel:+490000000000">+49 (0) 000 000 000</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Alltagshelfer. Alle Rechte vorbehalten.</span>
+      <button class="pwa-install" id="pwa-btn" aria-label="Als App installieren">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        App installieren
+      </button>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     MODALS
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-impressum" role="dialog" aria-modal="true" aria-labelledby="mti">
+  <div class="modal-box">
+    <div class="modal-top">
+      <h2 id="mti">Impressum</h2>
+      <button class="modal-close" data-close="modal-impressum" aria-label="Schließen">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <h3>Angaben gemäß § 5 TMG</h3>
+    <address>Vorname Nachname<br>Musterstraße 1<br>12345 Musterstadt</address>
+    <h3>Kontakt</h3>
+    <p>Telefon: +49 (0) 000 000 000<br>E-Mail: info@ihr-alltagshelfer.de</p>
+    <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+    <p>Vorname Nachname (Anschrift wie oben)</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-datenschutz" role="dialog" aria-modal="true" aria-labelledby="mtd">
+  <div class="modal-box">
+    <div class="modal-top">
+      <h2 id="mtd">Datenschutzerklärung</h2>
+      <button class="modal-close" data-close="modal-datenschutz" aria-label="Schließen">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <h3>1. Verantwortlicher</h3>
+    <p>Vorname Nachname, Musterstraße 1, 12345 Musterstadt – info@ihr-alltagshelfer.de</p>
+    <h3>2. Erhobene Daten</h3>
+    <p>Diese Website speichert keine personenbezogenen Daten auf einem Server. Das Kontaktformular öffnet Ihr lokales E-Mail-Programm – Ihre Daten werden ausschließlich über Ihre eigene E-Mail übermittelt.</p>
+    <h3>3. Cookies & Tracking</h3>
+    <p>Es werden keine Tracking-Cookies, Analytics oder externe Dienste eingesetzt. Der Service Worker speichert ausschließlich die Website-Dateien lokal auf Ihrem Gerät für die Offline-Nutzung (PWA-Funktion).</p>
+    <h3>4. Ihre Rechte</h3>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten. Kontakt: info@ihr-alltagshelfer.de</p>
+  </div>
+</div>
+
+<script>
+  /* ── Service Worker ─────────────────────────── */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+
+  /* ── Header Scroll ──────────────────────────── */
+  const hdr = document.getElementById('header');
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Mobile Navigation ──────────────────────── */
+  const toggle = document.querySelector('.nav-toggle');
+  const menu   = document.getElementById('mobile-menu');
+
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }));
+
+  /* ── Intersection Observer (Scroll Reveal) ──── */
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }),
+    { threshold: 0.08, rootMargin: '0px 0px -48px 0px' }
+  );
+  document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+
+  /* ── Kontaktformular → mailto ───────────────── */
+  const form = document.getElementById('kontaktform');
+
+  function setErr(id, errId, msg) {
+    const el = document.getElementById(id);
+    el.setAttribute('aria-invalid', 'true');
+    const e = document.getElementById(errId);
+    e.textContent = msg;
+    e.classList.add('show');
+    return false;
+  }
+  function clearErr(id, errId) {
+    const el = document.getElementById(id);
+    el.removeAttribute('aria-invalid');
+    const e = document.getElementById(errId);
+    e.textContent = '';
+    e.classList.remove('show');
+    return true;
+  }
+
+  form.addEventListener('submit', ev => {
+    ev.preventDefault();
+
+    const name    = document.getElementById('f-name').value.trim();
+    const contact = document.getElementById('f-contact').value.trim();
+    const service = document.getElementById('f-service').value;
+    const msg     = document.getElementById('f-msg').value.trim();
+
+    let ok = true;
+    if (!name)    ok = setErr('f-name',    'err-name',    'Bitte geben Sie Ihren Namen ein.');
+    else clearErr('f-name', 'err-name');
+    if (!contact) ok = setErr('f-contact', 'err-contact', 'Bitte geben Sie Ihre Telefonnummer oder E-Mail ein.');
+    else clearErr('f-contact', 'err-contact');
+    if (!msg)     ok = setErr('f-msg',     'err-msg',     'Bitte schreiben Sie kurz Ihr Anliegen.');
+    else clearErr('f-msg', 'err-msg');
+
+    if (!ok) return;
+
+    const to      = 'info@ihr-alltagshelfer.de';
+    const subject = service
+      ? `Anfrage: ${service} von ${name}`
+      : `Allgemeine Anfrage von ${name}`;
+
+    const body = [
+      `Guten Tag,`,
+      ``,
+      `mein Name ist ${name}.`,
+      service ? `Ich interessiere mich für: ${service}` : '',
+      ``,
+      `Mein Anliegen:`,
+      msg,
+      ``,
+      `────────────────────`,
+      `Meine Kontaktdaten: ${contact}`,
+      ``,
+      `Diese Nachricht wurde über das Kontaktformular auf Ihrer Website erstellt.`,
+    ].join('\n');
+
+    window.location.href =
+      `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+
+  /* Fehler beim Tippen sofort löschen */
+  [['f-name','err-name'],['f-contact','err-contact'],['f-msg','err-msg']].forEach(([id, eid]) => {
+    document.getElementById(id).addEventListener('input', function () {
+      if (this.value.trim()) clearErr(id, eid);
+    });
+  });
+
+  /* ── Modals ─────────────────────────────────── */
+  const openModal  = id => { document.getElementById(id).classList.add('open');    document.body.style.overflow = 'hidden'; };
+  const closeModal = id => { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; };
+
+  document.getElementById('btn-impressum')  .addEventListener('click', e => { e.preventDefault(); openModal('modal-impressum');  });
+  document.getElementById('btn-datenschutz').addEventListener('click', e => { e.preventDefault(); openModal('modal-datenschutz'); });
+
+  document.querySelectorAll('.modal-close').forEach(btn =>
+    btn.addEventListener('click', () => closeModal(btn.dataset.close))
+  );
+  document.querySelectorAll('.modal-overlay').forEach(ov =>
+    ov.addEventListener('click', e => { if (e.target === ov) closeModal(ov.id); })
+  );
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape')
+      document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+  });
+
+  /* ── PWA Install ────────────────────────────── */
+  let pwaEvt;
+  const pwaBtn = document.getElementById('pwa-btn');
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    pwaEvt = e;
+    pwaBtn.classList.add('show');
+  });
+  pwaBtn.addEventListener('click', async () => {
+    if (!pwaEvt) return;
+    pwaEvt.prompt();
+    const { outcome } = await pwaEvt.userChoice;
+    if (outcome === 'accepted') pwaBtn.classList.remove('show');
+    pwaEvt = null;
+  });
+  window.addEventListener('appinstalled', () => pwaBtn.classList.remove('show'));
+</script>
+</body>
+</html>

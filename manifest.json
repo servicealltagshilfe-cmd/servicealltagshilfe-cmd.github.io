@@ -1,0 +1,40 @@
+{
+  "name": "Alltagshelfer – Ihr Service vor Ort",
+  "short_name": "Alltagshelfer",
+  "description": "Zuverlässige Alltagshilfe – Einkäufe, Gartenarbeit, Reparaturen, Fahrdienste und mehr.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF7",
+  "theme_color": "#2C5E43",
+  "orientation": "portrait",
+  "lang": "de",
+  "categories": ["lifestyle", "utilities"],
+  "icons": [
+    {
+      "src": "icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Jetzt anrufen",
+      "url": "tel:+490000000000",
+      "description": "Direkt anrufen"
+    },
+    {
+      "name": "Anfrage senden",
+      "url": "/#kontakt",
+      "description": "Kontaktformular"
+    }
+  ]
+}
