@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-Telefonempfang – Intelligenter Sprachassistent für jedes Unternehmen</title>
+<meta name="description" content="KI-gestützter Telefonempfangsdienst mit femininer Stimme. Automatische Geschlechtserkennung, Terminbuchung und -verwaltung für jede Branche.">
+<style>
+:root{
+  --bg:#0D0F14;
+  --bg2:#13161E;
+  --bg3:#1A1E2A;
+  --surface:#1F2433;
+  --surface2:#252B3B;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);
+  --primary:#7C6FFF;
+  --primary-d:#5E52D4;
+  --primary-l:#A99FFF;
+  --accent:#FF6B9D;
+  --accent2:#FFB347;
+  --green:#34D399;
+  --red:#F87171;
+  --text1:#F1F3F9;
+  --text2:#9CA3BE;
+  --text3:#5C6480;
+  --glow:rgba(124,111,255,0.25);
+  --glow2:rgba(255,107,157,0.20);
+  --r:12px;
+  --r2:18px;
+  --r3:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text1);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--surface2);border-radius:3px}
+
+/* ── NAVBAR ── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:100;
+  backdrop-filter:blur(20px);
+  background:rgba(13,15,20,0.85);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;
+  height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-size:1.1rem;font-weight:700;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.nav-logo svg{flex-shrink:0}
+.nav-links{display:flex;gap:28px}
+.nav-links a{
+  color:var(--text2);text-decoration:none;font-size:.9rem;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--text1)}
+.nav-cta{
+  background:linear-gradient(135deg,var(--primary),var(--primary-d));
+  color:#fff;border:none;border-radius:8px;
+  padding:8px 20px;font-size:.9rem;font-weight:600;
+  cursor:pointer;transition:transform .15s,box-shadow .15s;
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--glow)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:120px 24px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,111,255,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(255,107,157,0.10) 0%, transparent 60%);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(124,111,255,0.12);
+  border:1px solid rgba(124,111,255,0.25);
+  border-radius:999px;
+  padding:6px 16px;
+  font-size:.8rem;color:var(--primary-l);font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;
+  margin-bottom:28px;
+}
+.badge-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 8px var(--green);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.hero h1{
+  font-size:clamp(2.4rem,6vw,4.5rem);
+  font-weight:800;
+  line-height:1.1;
+  margin-bottom:20px;
+  letter-spacing:-0.02em;
+}
+.hero h1 span{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.25rem);
+  color:var(--text2);
+  max-width:620px;
+  margin:0 auto 44px;
+}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:64px}
+.btn-primary{
+  background:linear-gradient(135deg,var(--primary),var(--primary-d));
+  color:#fff;border:none;border-radius:10px;
+  padding:14px 32px;font-size:1rem;font-weight:700;
+  cursor:pointer;transition:transform .15s,box-shadow .15s;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--glow)}
+.btn-secondary{
+  background:transparent;
+  color:var(--text1);border:1px solid var(--border2);border-radius:10px;
+  padding:14px 32px;font-size:1rem;font-weight:600;
+  cursor:pointer;transition:background .2s,transform .15s;
+}
+.btn-secondary:hover{background:var(--surface);transform:translateY(-2px)}
+
+/* ── WAVEFORM DEMO ── */
+.wave-container{
+  background:var(--surface);
+  border:1px solid var(--border2);
+  border-radius:var(--r3);
+  padding:28px 32px;
+  max-width:720px;width:100%;
+  position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px var(--border);
+}
+.wave-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:20px;
+}
+.wave-status{
+  display:flex;align-items:center;gap:8px;
+  font-size:.85rem;color:var(--text2);
+}
+.status-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 10px var(--green);
+}
+.status-dot.inactive{background:var(--text3);box-shadow:none}
+.wave-gender{
+  display:flex;align-items:center;gap:6px;
+  font-size:.8rem;
+  background:rgba(255,107,157,0.12);
+  border:1px solid rgba(255,107,157,0.2);
+  border-radius:6px;padding:4px 12px;
+  color:var(--accent);
+}
+.waveform{
+  display:flex;align-items:center;justify-content:center;
+  gap:3px;height:60px;margin:8px 0 20px;
+}
+.wave-bar{
+  width:4px;border-radius:2px;
+  background:linear-gradient(180deg,var(--primary),var(--primary-d));
+  height:8px;
+  transition:height .1s ease;
+}
+.wave-bar.active{animation:waveAnim .6s ease-in-out infinite alternate;}
+.wave-bar:nth-child(odd).active{animation-delay:.1s}
+.wave-bar:nth-child(3n).active{animation-delay:.2s}
+.wave-bar:nth-child(4n).active{animation-delay:.05s}
+@keyframes waveAnim{
+  from{height:6px}
+  to{height:var(--h,40px)}
+}
+.wave-transcript{
+  background:var(--bg3);border-radius:var(--r);
+  padding:14px 16px;
+  min-height:52px;
+  font-size:.9rem;color:var(--text1);
+  border:1px solid var(--border);
+  margin-bottom:16px;
+  transition:all .3s;
+}
+.wave-transcript .ai-text{color:var(--primary-l)}
+.wave-transcript .user-text{color:var(--text1)}
+.wave-controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.demo-btn{
+  display:flex;align-items:center;gap:8px;
+  background:var(--surface2);border:1px solid var(--border2);
+  border-radius:8px;padding:8px 16px;
+  font-size:.85rem;color:var(--text1);
+  cursor:pointer;transition:background .2s,transform .15s;
+}
+.demo-btn:hover{background:var(--bg3);transform:translateY(-1px)}
+.demo-btn.active{
+  background:rgba(124,111,255,0.15);
+  border-color:rgba(124,111,255,0.3);
+  color:var(--primary-l);
+}
+
+/* ── SECTIONS LAYOUT ── */
+section{padding:80px 24px}
+.container{max-width:1100px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:60px}
+.section-label{
+  display:inline-block;
+  font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--primary);margin-bottom:12px;
+}
+.section-title{
+  font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;line-height:1.2;
+  letter-spacing:-0.02em;margin-bottom:16px;
+}
+.section-sub{font-size:1.05rem;color:var(--text2);max-width:580px;margin:0 auto}
+
+/* ── FEATURES GRID ── */
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+.feature-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r2);padding:28px;
+  transition:transform .2s,border-color .2s,box-shadow .2s;
+  position:relative;overflow:hidden;
+}
+.feature-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(124,111,255,0.05),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.feature-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(124,111,255,0.25);
+  box-shadow:0 12px 40px rgba(0,0,0,0.3);
+}
+.feature-card:hover::before{opacity:1}
+.feature-icon{
+  font-size:2rem;margin-bottom:16px;
+  display:block;
+}
+.feature-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.feature-card p{font-size:.9rem;color:var(--text2);line-height:1.6}
+
+/* ── HOW IT WORKS ── */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:0;
+  position:relative;
+}
+.steps::before{
+  content:'';
+  position:absolute;top:40px;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border2),transparent);
+}
+.step{text-align:center;padding:24px 20px}
+.step-num{
+  width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-d));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;font-weight:800;
+  margin:0 auto 16px;
+  box-shadow:0 4px 20px var(--glow);
+  position:relative;z-index:1;
+}
+.step h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+.step p{font-size:.875rem;color:var(--text2)}
+
+/* ── INDUSTRIES ── */
+.industries-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:12px;
+}
+.industry-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);padding:20px 16px;
+  text-align:center;cursor:pointer;
+  transition:all .2s;
+}
+.industry-card:hover,.industry-card.active{
+  background:rgba(124,111,255,0.12);
+  border-color:rgba(124,111,255,0.3);
+  transform:translateY(-3px);
+}
+.industry-card.active{box-shadow:0 4px 20px var(--glow)}
+.industry-emoji{font-size:2rem;display:block;margin-bottom:8px}
+.industry-name{font-size:.8rem;font-weight:600;color:var(--text2)}
+
+/* ── DEMO CONFIGURATOR ── */
+.config-section{
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.config-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:start;
+}
+@media(max-width:768px){.config-grid{grid-template-columns:1fr}}
+.config-form{display:flex;flex-direction:column;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-label{font-size:.85rem;font-weight:600;color:var(--text2)}
+.form-input,.form-select{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:8px;padding:10px 14px;
+  color:var(--text1);font-size:.95rem;
+  transition:border-color .2s;
+  outline:none;
+}
+.form-input:focus,.form-select:focus{border-color:var(--primary)}
+.form-select option{background:var(--bg3)}
+.config-preview{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:var(--r2);padding:24px;
+  position:sticky;top:80px;
+}
+.config-preview h3{font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--primary-l)}
+.preview-service-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.preview-service{
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--bg3);border-radius:8px;padding:10px 14px;
+  font-size:.85rem;
+}
+.preview-service .duration{color:var(--text3);font-size:.78rem}
+.preview-service .price{color:var(--accent2);font-weight:600}
+
+/* ── CONVERSATION DEMO ── */
+.chat-demo{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:var(--r2);overflow:hidden;
+  max-width:600px;margin:0 auto;
+}
+.chat-header{
+  background:var(--bg3);border-bottom:1px solid var(--border);
+  padding:14px 20px;
+  display:flex;align-items:center;gap:12px;
+}
+.chat-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0;
+}
+.chat-name{font-weight:700;font-size:.95rem}
+.chat-status{font-size:.78rem;color:var(--green)}
+.chat-messages{
+  padding:20px;
+  display:flex;flex-direction:column;gap:12px;
+  min-height:280px;max-height:400px;overflow-y:auto;
+}
+.msg{
+  display:flex;gap:10px;
+  animation:msgIn .3s ease;
+}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.msg.user{flex-direction:row-reverse}
+.msg-bubble{
+  max-width:75%;background:var(--bg3);border-radius:14px;
+  padding:10px 14px;font-size:.88rem;
+  border:1px solid var(--border);
+}
+.msg.user .msg-bubble{
+  background:linear-gradient(135deg,var(--primary),var(--primary-d));
+  border:none;color:#fff;
+}
+.msg-time{font-size:.7rem;color:var(--text3);align-self:flex-end;margin-bottom:4px;flex-shrink:0}
+.typing{display:flex;gap:4px;padding:10px 14px;background:var(--bg3);border-radius:14px;width:fit-content}
+.typing span{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--text3);
+  animation:typingBounce .8s ease-in-out infinite;
+}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
+@keyframes typingBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.chat-input-row{
+  border-top:1px solid var(--border);
+  padding:14px 16px;
+  display:flex;gap:10px;
+}
+.chat-input{
+  flex:1;background:var(--bg3);border:1px solid var(--border2);
+  border-radius:8px;padding:8px 12px;color:var(--text1);font-size:.9rem;
+  outline:none;transition:border-color .2s;
+}
+.chat-input:focus{border-color:var(--primary)}
+.chat-send{
+  background:linear-gradient(135deg,var(--primary),var(--primary-d));
+  color:#fff;border:none;border-radius:8px;
+  padding:8px 16px;cursor:pointer;font-size:.85rem;font-weight:600;
+  transition:transform .15s,box-shadow .15s;
+}
+.chat-send:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--glow)}
+
+/* ── APPOINTMENT CALENDAR ── */
+.calendar-section{background:var(--bg2)}
+.calendar-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;
+}
+@media(max-width:700px){.calendar-grid{grid-template-columns:1fr}}
+.mini-calendar{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.cal-nav{background:none;border:1px solid var(--border2);color:var(--text2);
+  width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
+.cal-nav:hover{background:var(--surface2)}
+.cal-title{font-weight:700;font-size:.95rem}
+.cal-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:6px}
+.cal-wd{text-align:center;font-size:.72rem;font-weight:600;color:var(--text3);padding:4px 0}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-day{
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;border-radius:8px;cursor:pointer;
+  transition:background .15s;
+  position:relative;
+}
+.cal-day:hover{background:var(--surface2)}
+.cal-day.today{background:rgba(124,111,255,0.15);color:var(--primary-l);font-weight:700}
+.cal-day.has-appt::after{
+  content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);
+  width:4px;height:4px;border-radius:50%;background:var(--accent);
+}
+.cal-day.selected{background:var(--primary);color:#fff}
+.cal-day.other-month{color:var(--text3)}
+.appt-list{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px}
+.appt-list-header{font-weight:700;margin-bottom:16px;font-size:.95rem;color:var(--text1)}
+.appt-item{
+  display:flex;align-items:center;gap:12px;
+  padding:12px;background:var(--bg3);border-radius:var(--r);
+  margin-bottom:8px;border:1px solid var(--border);
+  transition:border-color .2s;
+}
+.appt-item:hover{border-color:var(--border2)}
+.appt-time{
+  font-size:.8rem;font-weight:700;color:var(--primary-l);
+  background:rgba(124,111,255,0.12);border-radius:6px;
+  padding:4px 8px;white-space:nowrap;
+}
+.appt-info{flex:1}
+.appt-name{font-size:.9rem;font-weight:600}
+.appt-service{font-size:.78rem;color:var(--text2)}
+.appt-gender-icon{font-size:.9rem}
+.appt-actions{display:flex;gap:6px}
+.appt-btn{
+  background:none;border:1px solid var(--border2);border-radius:6px;
+  padding:4px 10px;font-size:.75rem;color:var(--text2);cursor:pointer;
+  transition:all .15s;
+}
+.appt-btn:hover{background:var(--surface2);color:var(--text1)}
+.appt-btn.cancel:hover{background:rgba(248,113,113,0.12);border-color:var(--red);color:var(--red)}
+
+/* ── STATS GRID ── */
+.stats-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;margin-bottom:40px;
+}
+.stat-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r2);padding:20px;text-align:center;
+}
+.stat-value{font-size:2.2rem;font-weight:800;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  line-height:1.1;
+}
+.stat-label{font-size:.8rem;color:var(--text2);margin-top:4px}
+
+/* ── GENDER INDICATOR ── */
+.gender-indicator{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:var(--r3);padding:12px 20px;
+  font-size:.9rem;
+}
+.gender-bar{
+  height:8px;border-radius:4px;
+  background:linear-gradient(90deg,var(--accent),var(--primary));
+  width:120px;
+  position:relative;overflow:hidden;
+}
+.gender-fill{
+  position:absolute;top:0;left:0;bottom:0;
+  background:linear-gradient(90deg,var(--accent),var(--primary));
+  transition:width .5s ease;
+}
+.gender-labels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--text3)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bg2);border-top:1px solid var(--border);
+  padding:48px 24px;text-align:center;
+}
+footer .footer-logo{
+  font-size:1.3rem;font-weight:800;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:16px;
+}
+footer p{color:var(--text3);font-size:.875rem}
+footer a{color:var(--primary);text-decoration:none}
+footer a:hover{color:var(--primary-l)}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:4px;background:var(--bg3);border-radius:10px;padding:4px;margin-bottom:24px}
+.tab{
+  flex:1;text-align:center;padding:8px 16px;border-radius:8px;
+  font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;
+  color:var(--text2);
+}
+.tab.active{background:var(--surface2);color:var(--text1)}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+
+/* ── SETUP STEPS ── */
+.setup-timeline{display:flex;flex-direction:column;gap:0}
+.setup-step{
+  display:flex;gap:20px;
+  padding:20px 0;border-bottom:1px solid var(--border);
+}
+.setup-step:last-child{border-bottom:none}
+.setup-step-num{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-d));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:.9rem;flex-shrink:0;
+  box-shadow:0 2px 12px var(--glow);
+}
+.setup-step-content h3{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.setup-step-content p{font-size:.85rem;color:var(--text2)}
+code{
+  background:var(--bg3);border:1px solid var(--border2);
+  border-radius:5px;padding:2px 7px;font-size:.82rem;
+  font-family:'Fira Code','Cascadia Code',monospace;color:var(--primary-l);
+}
+pre{
+  background:var(--bg3);border:1px solid var(--border2);
+  border-radius:var(--r);padding:16px;
+  font-family:'Fira Code','Cascadia Code',monospace;
+  font-size:.82rem;color:var(--text1);overflow-x:auto;
+  line-height:1.7;
+}
+pre .comment{color:var(--text3)}
+pre .key{color:var(--accent2)}
+pre .value{color:var(--green)}
+
+/* ── COPY BUTTON ── */
+.code-block{position:relative}
+.copy-btn{
+  position:absolute;top:10px;right:10px;
+  background:var(--surface2);border:1px solid var(--border2);
+  border-radius:6px;padding:4px 10px;font-size:.75rem;
+  color:var(--text2);cursor:pointer;transition:all .15s;
+}
+.copy-btn:hover{background:var(--surface);color:var(--text1)}
+.copy-btn.copied{color:var(--green);border-color:var(--green)}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:24px;right:24px;
+  background:var(--surface2);border:1px solid var(--border2);
+  border-radius:10px;padding:12px 20px;
+  font-size:.9rem;color:var(--text1);
+  box-shadow:0 8px 30px rgba(0,0,0,0.4);
+  z-index:999;opacity:0;transform:translateY(10px);
+  transition:all .3s;pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .nav-links{display:none}
+  .hero h1{font-size:2.2rem}
+  .hero-btns{flex-direction:column;align-items:center}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps::before{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ NAVBAR ════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="10" stroke="url(#ng)" stroke-width="1.5"/>
+      <path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4" stroke="url(#ng)" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="12" cy="12" r="2" fill="url(#ng)"/>
+      <defs><linearGradient id="ng" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#7C6FFF"/><stop offset="1" stop-color="#FF6B9D"/>
+      </linearGradient></defs>
+    </svg>
+    Lisa KI-Empfang
+  </div>
+  <div class="nav-links">
+    <a href="#features">Funktionen</a>
+    <a href="#industries">Branchen</a>
+    <a href="#demo">Demo</a>
+    <a href="#setup">Einrichtung</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('setup').scrollIntoView({behavior:'smooth'})">Jetzt starten</button>
+</nav>
+
+<!-- ═══════════════════════════════ HERO ════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    KI-Telefonempfang · Echtzeit-Sprachanalyse
+  </div>
+  <h1>Ihre <span>KI-Empfangsdame Lisa</span><br>immer erreichbar</h1>
+  <p class="hero-sub">Professioneller Telefonempfang mit femininer Stimme, automatischer Geschlechtserkennung und vollständiger Terminverwaltung — für jede Branche und jeden Betrieb.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="startDemo()">▶ Live-Demo starten</button>
+    <button class="btn-secondary" onclick="document.getElementById('setup').scrollIntoView({behavior:'smooth'})">Einrichtung ansehen</button>
+  </div>
+
+  <!-- Waveform Demo -->
+  <div class="wave-container" id="waveContainer">
+    <div class="wave-header">
+      <div class="wave-status">
+        <span class="status-dot inactive" id="statusDot"></span>
+        <span id="statusText">Bereit für Demo-Anruf</span>
+      </div>
+      <div class="wave-gender" id="genderBadge" style="display:none">
+        <span id="genderIcon">👩</span>
+        <span id="genderText">Weiblich erkannt</span>
+      </div>
+    </div>
+    <div class="waveform" id="waveform">
+    </div>
+    <div class="wave-transcript" id="transcript">
+      <span style="color:var(--text3);font-size:.85rem">Klicke auf "Demo starten" um einen typischen Anruf zu simulieren...</span>
+    </div>
+    <div class="wave-controls">
+      <button class="demo-btn" onclick="startDemo()" id="demoStartBtn">
+        📞 Demo-Anruf starten
+      </button>
+      <button class="demo-btn" onclick="stopDemo()" id="demoStopBtn" style="display:none">
+        ⏹ Beenden
+      </button>
+      <button class="demo-btn" onclick="startMaleDemo()">
+        👨 Männlicher Anrufer
+      </button>
+      <button class="demo-btn" onclick="startFemaleDemo()">
+        👩 Weibliche Anruferin
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FEATURES ════════════════════════════ -->
+<section id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Funktionen</span>
+      <h2 class="section-title">Alles was Ihr Empfang braucht</h2>
+      <p class="section-sub">Lisa übernimmt alle eingehenden Anrufe automatisch — professionell, rund um die Uhr.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🎙️</span>
+        <h3>Feminine KI-Stimme</h3>
+        <p>ElevenLabs Multilingual v2 liefert eine warme, natürliche deutsche Stimme — nicht roboterhaft, sondern wie eine echte Empfangsdame.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔍</span>
+        <h3>Automatische Geschlechtserkennung</h3>
+        <p>Multisignal-Analyse: Stimmtonhöhe (Pitch-Autokorrelation), deutsche Grammatikmuster, Namensdatenbank und Gesprächskontext.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📅</span>
+        <h3>Vollständige Terminverwaltung</h3>
+        <p>Termine annehmen, buchen, verschieben und stornieren — vollautomatisch. Mit Konflikterkennung und Echtzeit-Verfügbarkeitsabfrage.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🏢</span>
+        <h3>Jede Branche</h3>
+        <p>10+ vorkonfigurierte Branchenvorlagen: Friseur, Arzt, Restaurant, Anwalt, Physiotherapie, Kosmetik, Nagelstudio, Zahnarzt und mehr.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🧠</span>
+        <h3>Claude AI Gehirn</h3>
+        <p>Anthropics Claude versteht natürliche Sprache, erkennt Absichten und führt strukturierte Gespräche für jede Situation.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h3>Dashboard & Analytics</h3>
+        <p>Alle Termine, Anruflogs, Geschlechterverteilung und Buchungsstatistiken auf einem Blick — über das Web-Dashboard.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔄</span>
+        <h3>Gesprächsgedächtnis</h3>
+        <p>Lisa merkt sich den gesamten Gesprächsverlauf, erkennt Stammkunden und kann nahtlos auf frühere Interaktionen eingehen.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌐</span>
+        <h3>Mehrsprachig</h3>
+        <p>Primär Deutsch optimiert. Erweiterbar auf Englisch, Französisch, Spanisch und weitere Sprachen durch Konfiguration.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <h3>Sub-Sekunden Antwortzeit</h3>
+        <p>Streaming-TTS und optimierte Claude-Prompts sorgen für natürliche Gesprächsflüsse ohne störende Pausen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ HOW IT WORKS ════════════════════════ -->
+<section style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Funktionsweise</span>
+      <h2 class="section-title">So arbeitet Lisa</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Anruf eingehend</h3>
+        <p>Twilio leitet eingehende Anrufe an den KI-Server weiter — sofort.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Stimme analysiert</h3>
+        <p>Pitch-Analyse + Namens-/Grammatikerkennung bestimmt das Geschlecht.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>KI versteht</h3>
+        <p>Claude analysiert die Anfrage und erkennt die Absicht (Termin, Info, etc.).</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Lisa antwortet</h3>
+        <p>ElevenLabs generiert eine natürliche, feminine Stimmantwort auf Deutsch.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <h3>Termin gebucht</h3>
+        <p>Termine werden automatisch in der Datenbank gespeichert und bestätigt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ INDUSTRIES ══════════════════════════ -->
+<section id="industries">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Branchen</span>
+      <h2 class="section-title">Für jede Art von Geschäft</h2>
+      <p class="section-sub">Klicke auf eine Branche um die vorkonfigurierten Leistungen zu sehen.</p>
+    </div>
+    <div class="industries-grid" id="industriesGrid"></div>
+    <div id="industryDetail" style="margin-top:28px;display:none">
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:var(--r2);padding:24px">
+        <h3 id="industryDetailTitle" style="margin-bottom:16px;font-size:1.1rem"></h3>
+        <div id="industryServiceList" class="preview-service-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ GENDER DETECTION ══════════════════════ -->
+<section style="background:var(--bg2)" id="gender-demo">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Geschlechtserkennung</span>
+      <h2 class="section-title">Multi-Signal Analyse</h2>
+      <p class="section-sub">Teste wie Lisa das Geschlecht aus deinem Text erkennt.</p>
+    </div>
+    <div style="max-width:600px;margin:0 auto">
+      <div class="form-group" style="margin-bottom:16px">
+        <label class="form-label">Text eingeben (wie ein Anrufer sprechen würde):</label>
+        <input type="text" class="form-input" id="genderTestInput"
+          placeholder='z.B. "Hier ist Sabine Müller, ich möchte einen Termin..."'
+          oninput="analyzeGender(this.value)">
+      </div>
+      <div id="genderResult" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <div>
+            <div style="font-size:1.5rem" id="genderResultIcon"></div>
+            <div style="font-weight:700;margin-top:4px" id="genderResultLabel"></div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:.8rem;color:var(--text2)">Konfidenz</div>
+            <div style="font-size:1.3rem;font-weight:800;color:var(--green)" id="genderResultConf"></div>
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <div style="font-size:.8rem;color:var(--text2);margin-bottom:6px">Erkannte Signale:</div>
+          <div id="genderSignals" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+        </div>
+        <div style="font-size:.85rem;color:var(--primary-l)" id="genderAnrede"></div>
+      </div>
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px">
+        <button class="demo-btn" onclick="document.getElementById('genderTestInput').value='Hier ist Frau Schmidt, ich würde gerne einen Termin machen.';analyzeGender(document.getElementById('genderTestInput').value)">Frau Schmidt</button>
+        <button class="demo-btn" onclick="document.getElementById('genderTestInput').value='Guten Tag, mein Name ist Thomas Müller.';analyzeGender(document.getElementById('genderTestInput').value)">Thomas Müller</button>
+        <button class="demo-btn" onclick="document.getElementById('genderTestInput').value='Ich heiße Maria, kann ich einen Termin für nächste Woche machen?';analyzeGender(document.getElementById('genderTestInput').value)">Maria</button>
+        <button class="demo-btn" onclick="document.getElementById('genderTestInput').value='Herr Becker hier, ich muss meinen Termin absagen.';analyzeGender(document.getElementById('genderTestInput').value)">Herr Becker</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CONVERSATION DEMO ══════════════════════ -->
+<section id="demo">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Interaktive Demo</span>
+      <h2 class="section-title">Sprich mit Lisa</h2>
+      <p class="section-sub">Simuliere ein echtes Gespräch mit der KI-Empfangsdame.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+      <div>
+        <div style="margin-bottom:16px">
+          <label class="form-label">Branche wählen:</label>
+          <select class="form-select" id="demoIndustry" onchange="changeDemoIndustry()" style="margin-top:6px;width:100%">
+            <option value="friseur">✂️ Friseursalon</option>
+            <option value="arzt">🩺 Arztpraxis</option>
+            <option value="restaurant">🍽️ Restaurant</option>
+            <option value="kosmetik">💄 Kosmetikstudio</option>
+            <option value="physiotherapie">💆 Physiotherapie</option>
+            <option value="zahnarzt">🦷 Zahnarztpraxis</option>
+            <option value="werkstatt">🔧 Autowerkstatt</option>
+            <option value="fitness">🏋️ Fitness/Yoga</option>
+          </select>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="demoCallCount">0</div>
+            <div class="stat-label">Nachrichten</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="demoGenderDetected">—</div>
+            <div class="stat-label">Geschlecht</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="demoApptBooked">0</div>
+            <div class="stat-label">Termine gebucht</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:16px">
+          <div style="font-size:.8rem;font-weight:700;color:var(--text2);margin-bottom:10px">SCHNELLANTWORTEN</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px" id="quickReplies"></div>
+        </div>
+      </div>
+      <div>
+        <div class="chat-demo" id="chatDemo">
+          <div class="chat-header">
+            <div class="chat-avatar">👩</div>
+            <div>
+              <div class="chat-name">Lisa – KI-Empfang</div>
+              <div class="chat-status">● Online</div>
+            </div>
+          </div>
+          <div class="chat-messages" id="chatMessages"></div>
+          <div class="chat-input-row">
+            <input type="text" class="chat-input" id="chatInput"
+              placeholder="Ihre Nachricht eingeben..."
+              onkeydown="if(event.key==='Enter')sendDemoMessage()">
+            <button class="chat-send" onclick="sendDemoMessage()">Senden</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ APPOINTMENT CALENDAR ═══════════════ -->
+<section class="calendar-section" id="appointments">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Terminverwaltung</span>
+      <h2 class="section-title">Alle Buchungen im Überblick</h2>
+    </div>
+    <div class="calendar-grid">
+      <div class="mini-calendar">
+        <div class="cal-header">
+          <button class="cal-nav" onclick="prevMonth()">‹</button>
+          <div class="cal-title" id="calTitle"></div>
+          <button class="cal-nav" onclick="nextMonth()">›</button>
+        </div>
+        <div class="cal-weekdays">
+          <div class="cal-wd">Mo</div><div class="cal-wd">Di</div>
+          <div class="cal-wd">Mi</div><div class="cal-wd">Do</div>
+          <div class="cal-wd">Fr</div><div class="cal-wd">Sa</div>
+          <div class="cal-wd">So</div>
+        </div>
+        <div class="cal-days" id="calDays"></div>
+      </div>
+      <div class="appt-list">
+        <div class="appt-list-header" id="apptListHeader">Termine heute</div>
+        <div id="apptListItems"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SETUP ════════════════════════════════ -->
+<section id="setup">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Einrichtung</span>
+      <h2 class="section-title">In 15 Minuten live gehen</h2>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('quick')">Schnellstart</div>
+      <div class="tab" onclick="switchTab('config')">Konfiguration</div>
+      <div class="tab" onclick="switchTab('deploy')">Deployment</div>
+    </div>
+
+    <div class="tab-pane active" id="tab-quick">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+        <div class="setup-timeline">
+          <div class="setup-step">
+            <div class="setup-step-num">1</div>
+            <div class="setup-step-content">
+              <h3>Repository klonen</h3>
+              <p>Server-Code herunterladen und Dependencies installieren.</p>
+              <div class="code-block" style="margin-top:8px">
+                <pre>git clone [repository-url]
+cd voice-receptionist/server
+npm install</pre>
+              </div>
+            </div>
+          </div>
+          <div class="setup-step">
+            <div class="setup-step-num">2</div>
+            <div class="setup-step-content">
+              <h3>API-Schlüssel einrichten</h3>
+              <p>Kopiere <code>.env.example</code> zu <code>.env</code> und trage deine Keys ein.</p>
+              <div class="code-block" style="margin-top:8px">
+                <pre>cp .env.example .env
+<span class="comment"># Dann bearbeiten:</span>
+<span class="key">TWILIO_ACCOUNT_SID</span>=<span class="value">ACxxx...</span>
+<span class="key">ANTHROPIC_API_KEY</span>=<span class="value">sk-ant-...</span>
+<span class="key">ELEVENLABS_API_KEY</span>=<span class="value">xxxx...</span>
+<span class="key">BUSINESS_NAME</span>=<span class="value">Mein Salon</span>
+<span class="key">BUSINESS_TYPE</span>=<span class="value">friseur</span></pre>
+                <button class="copy-btn" onclick="copyCode(this,'cp .env.example .env')">Kopieren</button>
+              </div>
+            </div>
+          </div>
+          <div class="setup-step">
+            <div class="setup-step-num">3</div>
+            <div class="setup-step-content">
+              <h3>Server starten</h3>
+              <p>Entwicklungsserver mit ngrok für lokale Tests starten.</p>
+              <div class="code-block" style="margin-top:8px">
+                <pre>npm run dev
+<span class="comment"># In zweitem Terminal:</span>
+ngrok http 3000</pre>
+              </div>
+            </div>
+          </div>
+          <div class="setup-step">
+            <div class="setup-step-num">4</div>
+            <div class="setup-step-content">
+              <h3>Twilio Webhook setzen</h3>
+              <p>In der Twilio Console bei deiner Rufnummer:</p>
+              <div class="code-block" style="margin-top:8px">
+                <pre>Incoming Call Webhook:
+https://[deine-url]/voice/incoming
+
+Status Callback:
+https://[deine-url]/voice/status</pre>
+              </div>
+            </div>
+          </div>
+          <div class="setup-step">
+            <div class="setup-step-num">5</div>
+            <div class="setup-step-content">
+              <h3>Anrufen &amp; testen!</h3>
+              <p>Rufe deine Twilio-Nummer an. Lisa meldet sich automatisch.</p>
+            </div>
+          </div>
+        </div>
+        <div style="position:sticky;top:80px">
+          <div style="background:var(--surface);border:1px solid var(--border2);border-radius:var(--r2);padding:24px">
+            <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--primary-l)">Benötigte Accounts</h3>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:start;gap:12px;padding:12px;background:var(--bg3);border-radius:var(--r)">
+                <span style="font-size:1.3rem">📞</span>
+                <div>
+                  <div style="font-weight:700;font-size:.9rem">Twilio</div>
+                  <div style="font-size:.8rem;color:var(--text2)">Telefonie-Plattform. Kostenloser Test-Account verfügbar.</div>
+                  <a href="#" style="font-size:.78rem;color:var(--primary)">twilio.com ↗</a>
+                </div>
+              </div>
+              <div style="display:flex;align-items:start;gap:12px;padding:12px;background:var(--bg3);border-radius:var(--r)">
+                <span style="font-size:1.3rem">🧠</span>
+                <div>
+                  <div style="font-weight:700;font-size:.9rem">Anthropic Claude</div>
+                  <div style="font-size:.8rem;color:var(--text2)">KI-Gehirn. API-Zugang über console.anthropic.com</div>
+                  <a href="#" style="font-size:.78rem;color:var(--primary)">anthropic.com ↗</a>
+                </div>
+              </div>
+              <div style="display:flex;align-items:start;gap:12px;padding:12px;background:var(--bg3);border-radius:var(--r)">
+                <span style="font-size:1.3rem">🎤</span>
+                <div>
+                  <div style="font-weight:700;font-size:.9rem">ElevenLabs</div>
+                  <div style="font-size:.8rem;color:var(--text2)">Feminine Stimme. Kostenloses Kontingent verfügbar.</div>
+                  <a href="#" style="font-size:.78rem;color:var(--primary)">elevenlabs.io ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tab-config">
+      <div style="max-width:700px">
+        <div class="config-form">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="form-group">
+              <label class="form-label">Unternehmensname</label>
+              <input type="text" class="form-input" id="cfgName" placeholder="Mein Salon" oninput="updateConfigPreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Branche</label>
+              <select class="form-select" id="cfgType" onchange="updateConfigPreview()">
+                <option value="friseur">✂️ Friseursalon</option>
+                <option value="arzt">🩺 Arztpraxis</option>
+                <option value="restaurant">🍽️ Restaurant</option>
+                <option value="anwalt">⚖️ Rechtsanwalt</option>
+                <option value="physiotherapie">💆 Physiotherapie</option>
+                <option value="kosmetik">💄 Kosmetik</option>
+                <option value="nagelstudio">💅 Nagelstudio</option>
+                <option value="zahnarzt">🦷 Zahnarzt</option>
+                <option value="fitness">🏋️ Fitness/Yoga</option>
+                <option value="werkstatt">🔧 Autowerkstatt</option>
+                <option value="allgemein">🏢 Allgemein</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="form-group">
+              <label class="form-label">Telefon</label>
+              <input type="text" class="form-input" id="cfgPhone" placeholder="+49 XXX XXXXXXXX" oninput="updateConfigPreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">E-Mail</label>
+              <input type="text" class="form-input" id="cfgEmail" placeholder="info@beispiel.de" oninput="updateConfigPreview()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Adresse</label>
+            <input type="text" class="form-input" id="cfgAddress" placeholder="Musterstraße 1, 12345 Musterstadt" oninput="updateConfigPreview()">
+          </div>
+          <button class="btn-primary" onclick="generateEnvFile()" style="margin-top:8px">
+            .env Datei generieren
+          </button>
+        </div>
+        <div id="generatedEnv" style="display:none;margin-top:20px">
+          <div style="font-weight:700;margin-bottom:8px;font-size:.9rem">.env Konfiguration:</div>
+          <div class="code-block">
+            <pre id="generatedEnvContent"></pre>
+            <button class="copy-btn" onclick="copyEnvContent()">Kopieren</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tab-deploy">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px">
+          <div style="font-size:1.5rem;margin-bottom:12px">🚂</div>
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:8px">Railway</h3>
+          <p style="font-size:.85rem;color:var(--text2);margin-bottom:16px">Einfachste Methode. Direkt aus GitHub deployen.</p>
+          <div class="code-block">
+            <pre style="font-size:.75rem"># railway.toml
+[build]
+  builder = "NIXPACKS"
+[deploy]
+  startCommand = "npm start"</pre>
+          </div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px">
+          <div style="font-size:1.5rem;margin-bottom:12px">🟣</div>
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:8px">Heroku</h3>
+          <p style="font-size:.85rem;color:var(--text2);margin-bottom:16px">Klassische PaaS-Plattform, einfaches Setup.</p>
+          <div class="code-block">
+            <pre style="font-size:.75rem">heroku create mein-empfang
+heroku config:set \
+  TWILIO_ACCOUNT_SID=xxx \
+  ANTHROPIC_API_KEY=yyy
+git push heroku main</pre>
+          </div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px">
+          <div style="font-size:1.5rem;margin-bottom:12px">🌊</div>
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:8px">DigitalOcean</h3>
+          <p style="font-size:.85rem;color:var(--text2);margin-bottom:16px">VPS für volle Kontrolle, ab 6$/Monat.</p>
+          <div class="code-block">
+            <pre style="font-size:.75rem">npm install -g pm2
+pm2 start server.js \
+  --name "lisa-empfang"
+pm2 save && pm2 startup</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer>
+  <div class="footer-logo">👩 Lisa KI-Telefonempfang</div>
+  <p style="margin-bottom:12px">Gebaut mit Claude AI · ElevenLabs · Twilio</p>
+  <p>Node.js Backend · GitHub Pages Frontend · Offen für jede Branche</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ════════════════════════════════════════════════════════════════════════════
+//  DATEN
+// ════════════════════════════════════════════════════════════════════════════
+
+const INDUSTRIES = {
+  friseur:       { label:'Friseursalon',        emoji:'✂️',  services:[{name:'Damenhaarschnitt',duration:60,price:45},{name:'Herrenhaarschnitt',duration:30,price:25},{name:'Coloration',duration:120,price:80},{name:'Strähnchen',duration:150,price:95},{name:'Dauerwelle',duration:120,price:75},{name:'Kinderhaarschnitt',duration:30,price:18}]},
+  arzt:          { label:'Arztpraxis',           emoji:'🩺',  services:[{name:'Erstgespräch',duration:30,price:0},{name:'Vorsorgeuntersuchung',duration:45,price:0},{name:'Akutsprechstunde',duration:20,price:0},{name:'Impftermin',duration:15,price:0},{name:'Blutabnahme',duration:15,price:0}]},
+  restaurant:    { label:'Restaurant',           emoji:'🍽️', services:[{name:'Tisch für 2',duration:120,price:0},{name:'Tisch für 4',duration:120,price:0},{name:'Gruppenreservierung',duration:180,price:0},{name:'Private Feier',duration:240,price:0}]},
+  anwalt:        { label:'Rechtsanwalt',         emoji:'⚖️',  services:[{name:'Erstberatung 30 Min.',duration:30,price:90},{name:'Rechtsberatung 60 Min.',duration:60,price:180},{name:'Mandatsgespräch',duration:60,price:180}]},
+  physiotherapie:{ label:'Physiotherapie',       emoji:'💆',  services:[{name:'Physiotherapie',duration:45,price:60},{name:'Massage 30 Min.',duration:30,price:40},{name:'Massage 60 Min.',duration:60,price:70},{name:'Manualtherapie',duration:45,price:65}]},
+  kosmetik:      { label:'Kosmetikstudio',       emoji:'💄',  services:[{name:'Gesichtsbehandlung',duration:60,price:65},{name:'Peeling',duration:45,price:50},{name:'Wimpernverlängerung',duration:120,price:120},{name:'Make-up',duration:90,price:80}]},
+  nagelstudio:   { label:'Nagelstudio',          emoji:'💅',  services:[{name:'Gelnägel Neuaufbau',duration:90,price:60},{name:'Gelnägel Auffüllen',duration:60,price:45},{name:'Maniküre',duration:45,price:35},{name:'Pediküre',duration:60,price:45}]},
+  zahnarzt:      { label:'Zahnarztpraxis',       emoji:'🦷',  services:[{name:'Vorsorgeuntersuchung',duration:30,price:0},{name:'Zahnreinigung',duration:60,price:100},{name:'Akutbehandlung',duration:30,price:0},{name:'Röntgenaufnahme',duration:20,price:0}]},
+  fitness:       { label:'Fitness/Yoga',         emoji:'🏋️', services:[{name:'Probestunde (kostenlos)',duration:60,price:0},{name:'Personal Training',duration:60,price:75},{name:'Yoga-Kurs',duration:60,price:18},{name:'Ernährungsberatung',duration:60,price:80}]},
+  werkstatt:     { label:'Autowerkstatt',        emoji:'🔧',  services:[{name:'Hauptinspektion',duration:120,price:180},{name:'Ölwechsel',duration:45,price:80},{name:'TÜV Vorbereitung',duration:60,price:90},{name:'Reifenwechsel',duration:60,price:60}]},
+};
+
+// Demo-Gespräche pro Branche
+const DEMO_CONVERSATIONS = {
+  friseur: {
+    greeting: 'Herzlich willkommen bei Salon Bella! Sie haben uns angerufen, wie kann ich Ihnen helfen?',
+    quickReplies: ['Ich möchte einen Termin','Ich heiße Sabine Müller','Haarschnitt bitte','Nächsten Montag um 10 Uhr','Wie sind Ihre Öffnungszeiten?'],
+    responses: {
+      termin: 'Gerne vereinbare ich einen Termin für Sie! Welche Leistung wünschen Sie? Wir haben Haarschnitt, Coloration, Strähnchen und mehr im Angebot.',
+      haarschnitt: 'Sehr gerne! Ein Damenhaarschnitt dauert ca. 60 Minuten und kostet 45€. Wann würde es Ihnen passen? Ich habe noch freie Termine diese Woche.',
+      montag: 'Montag um 10 Uhr ist leider bereits belegt. Ich hätte noch 11:15 Uhr oder 14:30 Uhr frei. Was passt Ihnen besser?',
+      name: 'Danke, Frau Müller! Ich buche für Sie: Damenhaarschnitt am Montag, 10. Juni um 11:15 Uhr. Ist das so in Ordnung?',
+      oeffnung: 'Wir sind Montag bis Freitag von 9 bis 18 Uhr geöffnet, Samstag von 10 bis 14 Uhr. Sonntags sind wir geschlossen.',
+      default: 'Ich helfe Ihnen gerne weiter! Möchten Sie einen Termin vereinbaren oder haben Sie eine andere Frage?',
+    }
+  },
+  arzt: {
+    greeting: 'Praxis Dr. Weber, guten Tag! Was kann ich für Sie tun?',
+    quickReplies: ['Ich möchte einen Termin','Ich habe Rückenschmerzen','Vorsorgeuntersuchung bitte','Mein Name ist Michael Braun','Ist morgen noch etwas frei?'],
+    responses: {
+      termin: 'Gerne! Handelt es sich um eine Vorsorgeuntersuchung oder haben Sie akute Beschwerden?',
+      schmerzen: 'Das klingt nach einem Akutfall. Ich würde Ihnen gerne noch heute einen Termin in der Akutsprechstunde geben. Wann könnten Sie kommen?',
+      vorsorge: 'Für eine Vorsorgeuntersuchung haben wir nächste Woche Dienstag um 14 Uhr einen Termin frei. Würde das für Sie passen?',
+      default: 'Natürlich, ich helfe Ihnen gerne. Wie kann ich Ihnen weiterhelfen?',
+    }
+  },
+  restaurant: {
+    greeting: 'Restaurant La Bella, guten Tag! Wie kann ich Ihnen helfen?',
+    quickReplies: ['Ich möchte reservieren','Tisch für 2 Personen','Nächsten Freitag um 19 Uhr','Haben Sie vegetarische Optionen?','Ich heiße Familie Schmidt'],
+    responses: {
+      reserv: 'Natürlich! Für wie viele Personen und an welchem Tag möchten Sie reservieren?',
+      tisch: 'Tisch für 2 Personen – wunderbar! An welchem Tag und um welche Uhrzeit?',
+      freitag: 'Freitagabend um 19 Uhr haben wir noch einen schönen Tisch am Fenster frei. Darf ich Ihren Namen notieren?',
+      vegetarisch: 'Ja, wir haben eine umfangreiche vegetarische und vegane Auswahl auf unserer Karte. Allergien berücksichtigen wir selbstverständlich gerne.',
+      default: 'Gerne! Wie kann ich Ihnen behilflich sein?',
+    }
+  }
+};
+
+// ════════════════════════════════════════════════════════════════════════════
+//  WAVEFORM DEMO
+// ════════════════════════════════════════════════════════════════════════════
+
+let demoInterval = null;
+let demoStep = 0;
+let demoGender = 'female';
+
+const DEMO_SCRIPT_FEMALE = [
+  { speaker:'ai',  text:'Herzlich willkommen bei unserem Salon! Ich bin Lisa, Ihre Empfangsdame. Wie kann ich Ihnen helfen?' },
+  { speaker:'user',text:'Guten Tag, hier ist Sabine Müller. Ich würde gerne einen Termin für einen Haarschnitt machen.' },
+  { speaker:'detect', gender:'female', text:'Frauenstimme erkannt · Anrede: "Frau Müller"' },
+  { speaker:'ai',  text:'Guten Tag, Frau Müller! Gerne helfe ich Ihnen. Für einen Damenhaarschnitt hätte ich nächsten Montag um 11:15 Uhr oder Mittwoch um 14:30 Uhr – was passt Ihnen besser?' },
+  { speaker:'user',text:'Montag wäre perfekt, um 11:15 Uhr.' },
+  { speaker:'ai',  text:'Wunderbar! Ich buche für Sie: Damenhaarschnitt, Montag den 9. Juni um 11:15 Uhr. Bitte reservieren Sie ca. 60 Minuten. Soll ich den Termin so bestätigen?' },
+  { speaker:'user',text:'Ja, das ist perfekt. Danke!' },
+  { speaker:'ai',  text:'Ihr Termin ist bestätigt, Frau Müller! Wir freuen uns auf Ihren Besuch. Auf Wiederhören!' },
+  { speaker:'done', text:'Anruf beendet · 1 Termin gebucht' },
+];
+
+const DEMO_SCRIPT_MALE = [
+  { speaker:'ai',  text:'Herzlich willkommen! Ich bin Lisa, Ihre Empfangsdame. Wie kann ich Ihnen helfen?' },
+  { speaker:'user',text:'Ja, guten Tag, hier ist Thomas Berger. Ich muss leider meinen Termin absagen.' },
+  { speaker:'detect', gender:'male', text:'Männerstimme erkannt · Anrede: "Herr Berger"' },
+  { speaker:'ai',  text:'Guten Tag, Herr Berger! Kein Problem, ich helfe Ihnen gerne. Können Sie mir Ihre Telefonnummer oder das Datum Ihres Termins nennen?' },
+  { speaker:'user',text:'Es war am Donnerstag um 14 Uhr.' },
+  { speaker:'ai',  text:'Ich habe Ihren Termin vom Donnerstag, 12. Juni um 14 Uhr gefunden. Möchten Sie ihn komplett stornieren oder sollen wir einen neuen Termin vereinbaren?' },
+  { speaker:'user',text:'Ich storniere erst mal und melde mich später.' },
+  { speaker:'ai',  text:'Verstanden, Herr Berger. Ich habe Ihren Termin storniert. Melden Sie sich gerne, wenn Sie einen neuen Termin wünschen. Auf Wiederhören!' },
+  { speaker:'done', text:'Anruf beendet · 1 Termin storniert' },
+];
+
+function buildWaveform() {
+  const wf = document.getElementById('waveform');
+  wf.innerHTML = '';
+  for (let i = 0; i < 40; i++) {
+    const bar = document.createElement('div');
+    bar.className = 'wave-bar';
+    const h = 6 + Math.random() * 10;
+    bar.style.setProperty('--h', `${h}px`);
+    wf.appendChild(bar);
+  }
+}
+
+function animateWave(active) {
+  const bars = document.querySelectorAll('.wave-bar');
+  bars.forEach((b, i) => {
+    b.classList.toggle('active', active);
+    const h = active ? 8 + Math.random() * 45 : 6 + Math.random() * 10;
+    b.style.setProperty('--h', `${h}px`);
+  });
+}
+
+function startDemo() {
+  runDemoScript(DEMO_SCRIPT_FEMALE, 'female');
+}
+function startFemaleDemo() { runDemoScript(DEMO_SCRIPT_FEMALE, 'female'); }
+function startMaleDemo()   { runDemoScript(DEMO_SCRIPT_MALE,   'male');   }
+
+function runDemoScript(script, gender) {
+  stopDemo();
+  demoStep = 0;
+  demoGender = gender;
+
+  document.getElementById('statusDot').classList.remove('inactive');
+  document.getElementById('statusText').textContent = 'Anruf aktiv';
+  document.getElementById('demoStartBtn').style.display = 'none';
+  document.getElementById('demoStopBtn').style.display = 'flex';
+  document.getElementById('genderBadge').style.display = 'none';
+
+  function runStep() {
+    if (demoStep >= script.length) { stopDemo(); return; }
+    const step = script[demoStep++];
+
+    if (step.speaker === 'detect') {
+      const gb = document.getElementById('genderBadge');
+      gb.style.display = 'flex';
+      document.getElementById('genderIcon').textContent = step.gender === 'female' ? '👩' : '👨';
+      document.getElementById('genderText').textContent = step.text;
+      animateWave(false);
+      demoInterval = setTimeout(runStep, 1500);
+      return;
+    }
+
+    if (step.speaker === 'done') {
+      document.getElementById('transcript').innerHTML =
+        `<span style="color:var(--green)">✓ ${step.text}</span>`;
+      animateWave(false);
+      setTimeout(stopDemo, 2000);
+      return;
+    }
+
+    const isAi = step.speaker === 'ai';
+    animateWave(isAi);
+    document.getElementById('statusText').textContent = isAi ? 'Lisa spricht...' : 'Anrufer spricht...';
+    document.getElementById('transcript').innerHTML =
+      `<span class="${isAi ? 'ai-text' : 'user-text'}">${isAi ? '🤖 Lisa: ' : '👤 Anrufer: '}"${step.text}"</span>`;
+
+    const delay = 800 + step.text.length * 35;
+    demoInterval = setTimeout(runStep, delay);
+  }
+
+  demoInterval = setTimeout(runStep, 500);
+}
+
+function stopDemo() {
+  clearTimeout(demoInterval);
+  demoInterval = null;
+  document.getElementById('statusDot').classList.add('inactive');
+  document.getElementById('statusText').textContent = 'Bereit für Demo-Anruf';
+  document.getElementById('demoStartBtn').style.display = 'flex';
+  document.getElementById('demoStopBtn').style.display = 'none';
+  animateWave(false);
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  INDUSTRIES GRID
+// ════════════════════════════════════════════════════════════════════════════
+
+function buildIndustriesGrid() {
+  const grid = document.getElementById('industriesGrid');
+  grid.innerHTML = Object.entries(INDUSTRIES).map(([id, ind]) =>
+    `<div class="industry-card" onclick="showIndustryDetail('${id}',this)">
+       <span class="industry-emoji">${ind.emoji}</span>
+       <div class="industry-name">${ind.label}</div>
+     </div>`
+  ).join('');
+}
+
+function showIndustryDetail(id, el) {
+  document.querySelectorAll('.industry-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  const ind = INDUSTRIES[id];
+  document.getElementById('industryDetailTitle').textContent = `${ind.emoji} ${ind.label} – Leistungen`;
+  document.getElementById('industryServiceList').innerHTML = ind.services.map(s =>
+    `<div class="preview-service">
+       <span>${s.name}</span>
+       <span class="duration">${s.duration} Min.</span>
+       ${s.price ? `<span class="price">${s.price}€</span>` : '<span class="price">GKV</span>'}
+     </div>`
+  ).join('');
+  document.getElementById('industryDetail').style.display = 'block';
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  GENDER DETECTION (Browser-Simulation)
+// ════════════════════════════════════════════════════════════════════════════
+
+const FEMALE_NAMES_LIST = ['anna','maria','laura','julia','sarah','lisa','lena','emma','sophie','mia','lea','hannah','sophia','nina','claudia','andrea','sabine','karin','susanne','christine','barbara','petra','monika','ulrike','ingrid','helga','gertrud','brigitte','ursula','elfriede','hildegard','charlotte','marie','luisa','emilia','johanna','leonie','amelie','clara','friederike','josephine','katharina','magdalena','theresa','veronika','natalie','jessica','stefanie','angela','martina','birgit','renate','elke','gisela','irmgard','christel','marianne','ilse','hannelore','heidi','sigrid','roswitha','dagmar','anke','bettina','silke','tanja','anja','nadine','melanie','jennifer','michelle','vanessa','stephanie','nicole','diana','katja','mandy'];
+const MALE_NAMES_LIST = ['thomas','michael','andreas','stefan','christian','daniel','markus','martin','johannes','wolfgang','hans','karl','friedrich','walter','herbert','heinz','werner','günter','horst','gerhard','helmut','dieter','jürgen','frank','peter','bernd','ulrich','rainer','alexander','felix','maximilian','jonas','lukas','jakob','leon','noah','tim','jan','nico','ben','david','paul','simon','julian','tobias','sebastian','philipp','fabian','florian','patrick','marc','marco','oliver','dominik','kevin','dennis','mario','nils','sven'];
+
+function analyzeGender(text) {
+  if (!text.trim()) { document.getElementById('genderResult').style.display='none'; return; }
+
+  const lower = text.toLowerCase();
+  let femaleScore = 0, maleScore = 0;
+  const signals = [];
+
+  if (/\bfrau\b/.test(lower))  { femaleScore+=3; signals.push({t:'Anrede: Frau',c:'female'}); }
+  if (/\bherr\b/.test(lower))  { maleScore+=3;   signals.push({t:'Anrede: Herr',c:'male'}); }
+  if (/\bsie\s+(?:ist|war|hat)\b/.test(lower)) { femaleScore+=1; signals.push({t:'Pronomen: sie',c:'female'}); }
+  if (/\ber\s+(?:ist|war|hat)\b/.test(lower))  { maleScore+=1;   signals.push({t:'Pronomen: er',c:'male'}); }
+
+  const words = lower.split(/\s+/);
+  for (const w of words) {
+    const clean = w.replace(/[^a-zäöüß]/g,'');
+    if (FEMALE_NAMES_LIST.includes(clean)) { femaleScore+=4; signals.push({t:`Frauenname: ${clean}`,c:'female'}); break; }
+    if (MALE_NAMES_LIST.includes(clean))   { maleScore+=4;   signals.push({t:`Männername: ${clean}`,c:'male'}); break; }
+  }
+
+  const nameIntro = text.match(/(?:ich heiße|mein name ist|hier (?:ist|spricht)|ich bin)\s+([A-ZÄÖÜ][a-zäöüß]+)/i);
+  if (nameIntro) {
+    const n = nameIntro[1].toLowerCase();
+    if (FEMALE_NAMES_LIST.includes(n)) { femaleScore+=5; signals.push({t:`Vorgestellt: ${nameIntro[1]}`,c:'female'}); }
+    if (MALE_NAMES_LIST.includes(n))   { maleScore+=5;   signals.push({t:`Vorgestellt: ${nameIntro[1]}`,c:'male'}); }
+  }
+
+  const total = femaleScore + maleScore;
+  let gender = 'unknown', confidence = 0;
+  if (total > 0) {
+    if (femaleScore > maleScore)       { gender='female'; confidence=Math.min(femaleScore/total,1); }
+    else if (maleScore > femaleScore)  { gender='male';   confidence=Math.min(maleScore/total,1); }
+  }
+
+  const el = document.getElementById('genderResult');
+  el.style.display = 'block';
+  document.getElementById('genderResultIcon').textContent = gender==='female'?'👩':gender==='male'?'👨':'❓';
+  document.getElementById('genderResultLabel').textContent = gender==='female'?'Weiblich':gender==='male'?'Männlich':'Unbekannt';
+  document.getElementById('genderResultConf').textContent = total>0 ? Math.round(confidence*100)+'%' : '—';
+  document.getElementById('genderSignals').innerHTML = signals.length
+    ? signals.map(s=>`<span style="background:rgba(${s.c==='female'?'255,107,157':'124,111,255'},0.15);border:1px solid rgba(${s.c==='female'?'255,107,157':'124,111,255'},0.3);border-radius:6px;padding:3px 10px;font-size:.78rem;color:${s.c==='female'?'var(--accent)':'var(--primary-l)'}">${s.t}</span>`).join('')
+    : '<span style="color:var(--text3);font-size:.8rem">Keine eindeutigen Signale</span>';
+  document.getElementById('genderAnrede').textContent = gender==='female'?'Lisa würde sagen: "Guten Tag, Frau [Nachname]!"':gender==='male'?'Lisa würde sagen: "Guten Tag, Herr [Nachname]!"':'Lisa würde neutral grüßen: "Guten Tag! Wie kann ich Ihnen helfen?"';
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  CHAT DEMO
+// ════════════════════════════════════════════════════════════════════════════
+
+let currentIndustry = 'friseur';
+let chatMessageCount = 0;
+let chatGender = 'unknown';
+let chatApptBooked = 0;
+
+function changeDemoIndustry() {
+  currentIndustry = document.getElementById('demoIndustry').value;
+  initChat();
+}
+
+function initChat() {
+  const msgs = document.getElementById('chatMessages');
+  msgs.innerHTML = '';
+  chatMessageCount = 0;
+  chatGender = 'unknown';
+  const conv = DEMO_CONVERSATIONS[currentIndustry] || DEMO_CONVERSATIONS.friseur;
+  setTimeout(() => {
+    addChatMessage('ai', conv.greeting);
+    updateDemoStats();
+    buildQuickReplies();
+  }, 400);
+}
+
+function addChatMessage(speaker, text) {
+  const msgs = document.getElementById('chatMessages');
+  const now = new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+  const div = document.createElement('div');
+  div.className = `msg ${speaker === 'user' ? 'user' : ''}`;
+  div.innerHTML = `
+    <div class="msg-time">${now}</div>
+    <div class="msg-bubble">${text}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  chatMessageCount++;
+  updateDemoStats();
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chatMessages');
+  const d = document.createElement('div');
+  d.className = 'msg';
+  d.id = 'typingIndicator';
+  d.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+  msgs.appendChild(d);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+  const t = document.getElementById('typingIndicator');
+  if (t) t.remove();
+}
+
+function sendDemoMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+
+  addChatMessage('user', text);
+
+  // Geschlecht aus Text erkennen
+  const lower = text.toLowerCase();
+  if (chatGender === 'unknown') {
+    for (const n of FEMALE_NAMES_LIST) { if (lower.includes(n)) { chatGender='female'; break; } }
+    if (chatGender === 'unknown') for (const n of MALE_NAMES_LIST) { if (lower.includes(n)) { chatGender='male'; break; } }
+    if (/\bfrau\b/.test(lower)) chatGender = 'female';
+    if (/\bherr\b/.test(lower)) chatGender = 'male';
+    document.getElementById('demoGenderDetected').textContent = chatGender==='female'?'👩 Frau':chatGender==='male'?'👨 Mann':'❓';
+  }
+
+  showTyping();
+  const delay = 800 + Math.random() * 600;
+  setTimeout(() => {
+    removeTyping();
+    const response = getDemoResponse(text.toLowerCase(), currentIndustry);
+    addChatMessage('ai', response);
+    if (/buche|bestätigt|gebucht|reserviert/i.test(response)) {
+      chatApptBooked++;
+      updateDemoStats();
+    }
+  }, delay);
+}
+
+function getDemoResponse(input, industry) {
+  const conv = DEMO_CONVERSATIONS[industry] || DEMO_CONVERSATIONS.friseur;
+  const r = conv.responses;
+  if (/termin|buchen|reservier|vereinbar/i.test(input)) return r.termin || r.reserv || r.default;
+  if (/haarschnitt|schnitt|haare/i.test(input)) return r.haarschnitt || r.default;
+  if (/montag|dienstag|mittwoch|donnerstag|freitag/i.test(input)) return r.montag || r.freitag || r.default;
+  if (/name|ich heiße|ich bin|ich heiß/i.test(input)) return r.name || r.default;
+  if (/öffnungszeit|wann|geöffnet/i.test(input)) return r.oeffnung || r.default;
+  if (/schmerz|krank|akut/i.test(input)) return r.schmerzen || r.default;
+  if (/vorsorge|untersuchung/i.test(input)) return r.vorsorge || r.default;
+  if (/vegetarisch|vegan|allergie/i.test(input)) return r.vegetarisch || r.default;
+  if (/stornieren|absagen|absage|storno/i.test(input)) return 'Kein Problem! Ich storniere gerne Ihren Termin. Können Sie mir Ihr Datum oder Ihre Telefonnummer nennen?';
+  if (/ja|gerne|richtig|korrekt|stimmt|okay/i.test(input)) return 'Wunderbar! Ihr Termin ist bestätigt. Wir freuen uns auf Ihren Besuch!';
+  if (/danke|tschüss|auf wiedersehen|wiederhören/i.test(input)) return 'Gerne! Auf Wiederhören und bis bald!';
+  return r.default || 'Ich helfe Ihnen gerne weiter. Wie kann ich für Sie tätig sein?';
+}
+
+function buildQuickReplies() {
+  const conv = DEMO_CONVERSATIONS[currentIndustry] || DEMO_CONVERSATIONS.friseur;
+  const el = document.getElementById('quickReplies');
+  el.innerHTML = (conv.quickReplies || []).map(r =>
+    `<button class="demo-btn" onclick="document.getElementById('chatInput').value='${r}';sendDemoMessage()">${r}</button>`
+  ).join('');
+}
+
+function updateDemoStats() {
+  document.getElementById('demoCallCount').textContent = chatMessageCount;
+  document.getElementById('demoApptBooked').textContent = chatApptBooked;
+  if (chatGender !== 'unknown') {
+    document.getElementById('demoGenderDetected').textContent = chatGender==='female'?'👩 Frau':'👨 Mann';
+  }
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  KALENDER
+// ════════════════════════════════════════════════════════════════════════════
+
+let calYear, calMonth, calSelectedDate;
+const sampleAppointments = [
+  { date: getTodayStr(0), time:'09:30', name:'Sabine Müller',    service:'Damenhaarschnitt', gender:'female' },
+  { date: getTodayStr(0), time:'11:15', name:'Petra Koch',       service:'Coloration',       gender:'female' },
+  { date: getTodayStr(0), time:'14:00', name:'Thomas Berger',    service:'Herrenhaarschnitt',gender:'male'   },
+  { date: getTodayStr(1), time:'10:00', name:'Anna Schmidt',     service:'Strähnchen',       gender:'female' },
+  { date: getTodayStr(1), time:'14:30', name:'Klaus Weber',      service:'Herrenhaarschnitt',gender:'male'   },
+  { date: getTodayStr(2), time:'09:00', name:'Maria Hoffmann',   service:'Dauerwelle',       gender:'female' },
+  { date: getTodayStr(3), time:'11:00', name:'Frank Bauer',      service:'Herrenhaarschnitt',gender:'male'   },
+  { date: getTodayStr(5), time:'15:00', name:'Lisa Zimmermann',  service:'Styling',          gender:'female' },
+];
+
+function getTodayStr(daysAhead) {
+  const d = new Date();
+  d.setDate(d.getDate() + daysAhead);
+  return d.toISOString().split('T')[0];
+}
+
+function initCalendar() {
+  const now = new Date();
+  calYear = now.getFullYear();
+  calMonth = now.getMonth();
+  calSelectedDate = getTodayStr(0);
+  renderCalendar();
+  renderAppointments(calSelectedDate);
+}
+
+function renderCalendar() {
+  const months = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  document.getElementById('calTitle').textContent = `${months[calMonth]} ${calYear}`;
+
+  const firstDay = new Date(calYear, calMonth, 1);
+  const lastDay  = new Date(calYear, calMonth+1, 0);
+  let startDow = firstDay.getDay(); // 0=Sun
+  if (startDow === 0) startDow = 7; // Mon=1
+  startDow--;
+
+  const today = new Date().toISOString().split('T')[0];
+  const datesWithAppt = new Set(sampleAppointments.map(a => a.date));
+
+  let html = '';
+  // Leerzeilen vor dem 1.
+  for (let i = 0; i < startDow; i++) html += '<div class="cal-day other-month"></div>';
+  // Tage
+  for (let d = 1; d <= lastDay.getDate(); d++) {
+    const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    let cls = 'cal-day';
+    if (dateStr === today) cls += ' today';
+    if (dateStr === calSelectedDate) cls += ' selected';
+    if (datesWithAppt.has(dateStr)) cls += ' has-appt';
+    html += `<div class="${cls}" onclick="selectCalDay('${dateStr}')">${d}</div>`;
+  }
+  document.getElementById('calDays').innerHTML = html;
+}
+
+function selectCalDay(dateStr) {
+  calSelectedDate = dateStr;
+  renderCalendar();
+  renderAppointments(dateStr);
+}
+
+function renderAppointments(dateStr) {
+  const d = new Date(dateStr+'T00:00:00');
+  const label = d.toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'});
+  document.getElementById('apptListHeader').textContent = `Termine: ${label}`;
+  const appts = sampleAppointments.filter(a => a.date === dateStr);
+  const el = document.getElementById('apptListItems');
+  if (!appts.length) {
+    el.innerHTML = '<div style="text-align:center;color:var(--text3);padding:20px;font-size:.85rem">Keine Termine an diesem Tag</div>';
+    return;
+  }
+  el.innerHTML = appts.map(a =>
+    `<div class="appt-item">
+       <div class="appt-time">${a.time}</div>
+       <div class="appt-info">
+         <div class="appt-name">${a.name}</div>
+         <div class="appt-service">${a.service}</div>
+       </div>
+       <div class="appt-gender-icon">${a.gender==='female'?'👩':'👨'}</div>
+       <div class="appt-actions">
+         <button class="appt-btn">↔ Verschieben</button>
+         <button class="appt-btn cancel" onclick="cancelAppt(this,'${a.name}')">✕</button>
+       </div>
+     </div>`
+  ).join('');
+}
+
+function cancelAppt(btn, name) {
+  if (confirm(`Termin von ${name} stornieren?`)) {
+    btn.closest('.appt-item').style.opacity='0.4';
+    btn.closest('.appt-item').style.pointerEvents='none';
+    showToast(`Termin von ${name} storniert`);
+  }
+}
+
+function prevMonth() { calMonth--; if(calMonth<0){calMonth=11;calYear--;} renderCalendar(); }
+function nextMonth() { calMonth++; if(calMonth>11){calMonth=0;calYear++;} renderCalendar(); }
+
+// ════════════════════════════════════════════════════════════════════════════
+//  CONFIG GENERATOR
+// ════════════════════════════════════════════════════════════════════════════
+
+function updateConfigPreview() { /* noop – nur bei Generierung */ }
+
+function generateEnvFile() {
+  const name    = document.getElementById('cfgName').value    || 'Mein Unternehmen';
+  const type    = document.getElementById('cfgType').value    || 'allgemein';
+  const phone   = document.getElementById('cfgPhone').value   || '+49XXXXXXXXXX';
+  const email   = document.getElementById('cfgEmail').value   || 'info@beispiel.de';
+  const address = document.getElementById('cfgAddress').value || 'Musterstraße 1, 12345 Musterstadt';
+
+  const content = `# KI-Telefonempfang Konfiguration
+# Generiert am ${new Date().toLocaleDateString('de-DE')}
+
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_PHONE_NUMBER=${phone}
+
+ANTHROPIC_API_KEY=sk-ant-api03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+ELEVENLABS_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ELEVENLABS_VOICE_ID=EXAVITQu4vr4xnSDxMaL
+ELEVENLABS_MODEL_ID=eleven_multilingual_v2
+
+PORT=3000
+BASE_URL=https://dein-server.beispiel.de
+
+BUSINESS_NAME=${name}
+BUSINESS_TYPE=${type}
+BUSINESS_PHONE=${phone}
+BUSINESS_EMAIL=${email}
+BUSINESS_ADDRESS=${address}
+
+ADMIN_SECRET=aendere_dies_zu_einem_sicheren_geheimnis
+LANGUAGE=de
+MAX_CALL_DURATION=10
+AVAILABILITY_DAYS=14`;
+
+  document.getElementById('generatedEnvContent').textContent = content;
+  document.getElementById('generatedEnv').style.display = 'block';
+  showToast('Konfiguration generiert!');
+}
+
+function copyEnvContent() {
+  const content = document.getElementById('generatedEnvContent').textContent;
+  navigator.clipboard.writeText(content).then(() => showToast('In Zwischenablage kopiert!'));
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  TABS
+// ════════════════════════════════════════════════════════════════════════════
+
+function switchTab(id) {
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', ['quick','config','deploy'][i]===id));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id===`tab-${id}`));
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  HELPERS
+// ════════════════════════════════════════════════════════════════════════════
+
+function copyCode(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Kopiert!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent='Kopieren'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildWaveform();
+  buildIndustriesGrid();
+  initChat();
+  initCalendar();
+});
+</script>
+</body>
+</html>
