@@ -1,0 +1,6 @@
+node_modules/
+.env
+data/appointments.db
+public/audio/tts_*.mp3
+*.log
+.DS_Store
