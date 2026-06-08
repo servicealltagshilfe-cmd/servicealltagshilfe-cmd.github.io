@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A complete blueprint for creating a global, apolitical veteran tribute video channel — medals, stories, music licensing, production tools, and viral strategy.">
+  <meta property="og:title" content="Veteran Tribute Video Blueprint — Global Research Report">
+  <meta property="og:description" content="The definitive creator's guide: highest valor medals, emotional cross-border stories, legal music, production tools, and viral strategy.">
+  <meta property="og:type" content="article">
+  <title>Veteran Tribute Video Blueprint — Global Research Report</title>
+  <style>
+    /* ═══════════════════════════════════════
+       DESIGN TOKENS
+    ═══════════════════════════════════════ */
+    :root {
+      --bg:            #FAFAF7;
+      --bg-alt:        #F0EAE0;
+      --surface:       #FFFFFF;
+      --primary:       #2C5E43;
+      --primary-d:     #1E4530;
+      --primary-l:     #3A7558;
+      --primary-faint: rgba(44,94,67,0.09);
+      --accent:        #A04500;
+      --accent-h:      #883A00;
+      --accent-faint:  rgba(160,69,0,0.10);
+      --warn:          #8B5A00;
+      --warn-bg:       #FEF3C7;
+      --warn-border:   #F59E0B;
+      --danger:        #991B1B;
+      --danger-bg:     #FEE2E2;
+      --danger-border: #EF4444;
+      --success:       #166534;
+      --success-bg:    #DCFCE7;
+      --success-border:#22C55E;
+      --info:          #1E40AF;
+      --info-bg:       #DBEAFE;
+      --info-border:   #3B82F6;
+      --text-1:        #1C1917;
+      --text-2:        #4C4743;
+      --text-3:        #96908A;
+      --border:        rgba(28,25,23,0.10);
+      --border-s:      rgba(28,25,23,0.06);
+
+      --sh-xs: 0 1px 2px rgba(28,25,23,0.05), 0 0 0 1px rgba(28,25,23,0.04);
+      --sh-sm: 0 1px 3px rgba(28,25,23,0.05), 0 3px 8px rgba(28,25,23,0.06), 0 0 0 1px rgba(28,25,23,0.04);
+      --sh-md: 0 2px 6px rgba(28,25,23,0.05), 0 8px 24px rgba(28,25,23,0.08), 0 0 0 1px rgba(28,25,23,0.04);
+      --sh-lg: 0 4px 12px rgba(28,25,23,0.06), 0 20px 48px rgba(28,25,23,0.10), 0 0 0 1px rgba(28,25,23,0.04);
+
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-o: cubic-bezier(0.16, 1, 0.3, 1);
+
+      --font:    system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --fs-xs:   0.8125rem;
+      --fs-sm:   0.9375rem;
+      --fs-md:   1.0625rem;
+      --fs-base: 1.125rem;
+      --fs-lg:   1.375rem;
+      --fs-xl:   1.75rem;
+      --fs-2xl:  clamp(2rem, 4vw, 2.75rem);
+      --fs-3xl:  clamp(2.5rem, 6vw, 3.75rem);
+
+      --sp-2:4px; --sp-4:8px; --sp-6:12px; --sp-8:16px;
+      --sp-10:20px; --sp-12:24px; --sp-16:32px; --sp-20:40px;
+      --sp-24:48px; --sp-32:64px; --sp-40:80px; --sp-48:96px;
+
+      --r-sm:  8px;
+      --r-md:  12px;
+      --r-lg:  18px;
+      --r-xl:  24px;
+      --r-full:9999px;
+
+      --max-w: 1100px;
+      --prose: 72ch;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:           #141210;
+        --bg-alt:       #1C1916;
+        --surface:      #211F1C;
+        --primary:      #4A9B6F;
+        --primary-d:    #3A7D5A;
+        --primary-l:    #5CB882;
+        --primary-faint:rgba(74,155,111,0.12);
+        --accent:       #CF6B1A;
+        --accent-h:     #E07820;
+        --accent-faint: rgba(207,107,26,0.13);
+        --warn:         #D97706;
+        --warn-bg:      rgba(217,119,6,0.15);
+        --warn-border:  #D97706;
+        --danger:       #F87171;
+        --danger-bg:    rgba(248,113,113,0.12);
+        --danger-border:#EF4444;
+        --success:      #4ADE80;
+        --success-bg:   rgba(74,222,128,0.12);
+        --success-border:#22C55E;
+        --info:         #60A5FA;
+        --info-bg:      rgba(96,165,250,0.12);
+        --info-border:  #3B82F6;
+        --text-1:       #F5F0EB;
+        --text-2:       #B0A89F;
+        --text-3:       #7A736C;
+        --border:       rgba(245,240,235,0.10);
+        --border-s:     rgba(245,240,235,0.06);
+        --sh-xs: 0 1px 2px rgba(0,0,0,0.25);
+        --sh-sm: 0 1px 3px rgba(0,0,0,0.2), 0 3px 8px rgba(0,0,0,0.25);
+        --sh-md: 0 2px 6px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.3);
+        --sh-lg: 0 4px 12px rgba(0,0,0,0.25), 0 20px 48px rgba(0,0,0,0.35);
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: var(--fs-base);
+      line-height: 1.7;
+      color: var(--text-1);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--text-1);
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: var(--fs-3xl); }
+    h2 { font-size: var(--fs-2xl); }
+    h3 { font-size: var(--fs-xl); }
+    h4 { font-size: var(--fs-lg); }
+
+    p { color: var(--text-2); }
+    strong { color: var(--text-1); font-weight: 600; }
+    em { font-style: italic; }
+
+    a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--primary-d); }
+
+    ul, ol { padding-left: var(--sp-16); color: var(--text-2); }
+    li { margin-bottom: var(--sp-4); }
+    li::marker { color: var(--primary); }
+
+    blockquote {
+      border-left: 3px solid var(--primary);
+      padding: var(--sp-8) var(--sp-16);
+      margin: var(--sp-16) 0;
+      background: var(--primary-faint);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      font-style: italic;
+      color: var(--text-2);
+    }
+
+    code {
+      font-family: 'SF Mono', 'Cascadia Code', monospace;
+      font-size: 0.88em;
+      background: var(--bg-alt);
+      padding: 2px 6px;
+      border-radius: var(--r-sm);
+      color: var(--primary);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: var(--sp-32) 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ═══════════════════════════════════════
+       LAYOUT
+    ═══════════════════════════════════════ */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--sp-20);
+    }
+
+    .prose { max-width: var(--prose); }
+
+    .section { padding: var(--sp-48) 0; }
+    .section-alt { background: var(--bg-alt); }
+
+    /* ═══════════════════════════════════════
+       STICKY HEADER
+    ═══════════════════════════════════════ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,250,247,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-s);
+      padding: var(--sp-8) 0;
+      transition: box-shadow 0.2s;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .site-header { background: rgba(20,18,16,0.88); }
+    }
+
+    .site-header.scrolled { box-shadow: var(--sh-sm); }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-12);
+    }
+
+    .site-title {
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: var(--sp-6);
+    }
+
+    .site-title-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .toc-toggle {
+      display: none;
+      background: var(--primary-faint);
+      border: none;
+      border-radius: var(--r-md);
+      padding: var(--sp-6) var(--sp-10);
+      font-size: var(--fs-sm);
+      color: var(--primary);
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    @media (max-width: 900px) { .toc-toggle { display: flex; align-items: center; gap: var(--sp-4); } }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    .hero {
+      padding: var(--sp-40) 0 var(--sp-32);
+      background: linear-gradient(160deg, var(--primary-faint) 0%, transparent 60%);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-6);
+      background: var(--primary-faint);
+      border: 1px solid var(--primary);
+      border-radius: var(--r-full);
+      padding: var(--sp-4) var(--sp-12);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--sp-16);
+    }
+
+    .hero h1 {
+      margin-bottom: var(--sp-16);
+      max-width: 20ch;
+    }
+
+    .hero-lead {
+      font-size: var(--fs-lg);
+      color: var(--text-2);
+      max-width: 62ch;
+      line-height: 1.65;
+      margin-bottom: var(--sp-24);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-12);
+      font-size: var(--fs-xs);
+      color: var(--text-3);
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+
+    /* ═══════════════════════════════════════
+       TL;DR SUMMARY BAR
+    ═══════════════════════════════════════ */
+    .tldr {
+      background: var(--primary);
+      color: #fff;
+      padding: var(--sp-24) 0;
+    }
+
+    .tldr-inner {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--sp-20);
+      align-items: start;
+    }
+
+    .tldr-label {
+      background: rgba(255,255,255,0.18);
+      border-radius: var(--r-md);
+      padding: var(--sp-6) var(--sp-10);
+      font-size: var(--fs-xs);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      align-self: start;
+      margin-top: 2px;
+    }
+
+    .tldr-pills {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-8);
+    }
+
+    .tldr-pill {
+      font-size: var(--fs-sm);
+      line-height: 1.55;
+      opacity: 0.92;
+    }
+
+    .tldr-pill::before {
+      content: "▸ ";
+      opacity: 0.6;
+    }
+
+    @media (max-width: 600px) {
+      .tldr-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════
+       TWO-COLUMN LAYOUT (TOC + CONTENT)
+    ═══════════════════════════════════════ */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--sp-32);
+      align-items: start;
+      padding: var(--sp-32) 0 var(--sp-48);
+    }
+
+    @media (max-width: 900px) {
+      .main-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════
+       TABLE OF CONTENTS (sidebar)
+    ═══════════════════════════════════════ */
+    .toc {
+      position: sticky;
+      top: 80px;
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh-md);
+      padding: var(--sp-16);
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+
+    .toc-title {
+      font-size: var(--fs-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-3);
+      margin-bottom: var(--sp-12);
+      padding-bottom: var(--sp-8);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .toc-list li { margin: 0; }
+
+    .toc-list a {
+      display: block;
+      padding: var(--sp-6) var(--sp-8);
+      border-radius: var(--r-sm);
+      font-size: var(--fs-xs);
+      color: var(--text-2);
+      text-decoration: none;
+      line-height: 1.45;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .toc-list a:hover,
+    .toc-list a.active {
+      background: var(--primary-faint);
+      color: var(--primary);
+    }
+
+    .toc-list .toc-sub { padding-left: var(--sp-12); font-size: 0.8rem; }
+
+    @media (max-width: 900px) {
+      .toc {
+        position: static;
+        display: none;
+        max-height: none;
+      }
+      .toc.open { display: block; margin-bottom: var(--sp-24); }
+    }
+
+    /* ═══════════════════════════════════════
+       CONTENT AREA
+    ═══════════════════════════════════════ */
+    .content > * + * { margin-top: var(--sp-40); }
+
+    .part-header {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-12);
+      margin-bottom: var(--sp-20);
+    }
+
+    .part-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      font-size: var(--fs-md);
+      border-radius: var(--r-md);
+      flex-shrink: 0;
+    }
+
+    .part-header h2 { margin: 0; font-size: var(--fs-xl); }
+
+    /* ═══════════════════════════════════════
+       CARD COMPONENTS
+    ═══════════════════════════════════════ */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--sp-16);
+    }
+
+    .card-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: var(--sp-16);
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh-sm);
+      padding: var(--sp-20);
+      transition: box-shadow 0.2s var(--ease-o), transform 0.2s var(--ease-o);
+    }
+
+    .card:hover {
+      box-shadow: var(--sh-md);
+      transform: translateY(-2px);
+    }
+
+    .card-flag {
+      font-size: 1.75rem;
+      margin-bottom: var(--sp-8);
+      line-height: 1;
+    }
+
+    .card-title {
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: var(--sp-4);
+    }
+
+    .card-sub {
+      font-size: var(--fs-xs);
+      color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--sp-8);
+    }
+
+    .card p {
+      font-size: var(--fs-sm);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .card-story {
+      border-left: 3px solid var(--primary);
+      padding-left: var(--sp-16);
+    }
+
+    .card-story .card-title { color: var(--primary-d); }
+
+    /* ═══════════════════════════════════════
+       ALERT / CALLOUT BOXES
+    ═══════════════════════════════════════ */
+    .alert {
+      border-radius: var(--r-lg);
+      padding: var(--sp-16) var(--sp-20);
+      margin: var(--sp-20) 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--sp-12);
+      align-items: start;
+    }
+
+    .alert-icon {
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .alert-title {
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      margin-bottom: var(--sp-4);
+    }
+
+    .alert p, .alert ul {
+      font-size: var(--fs-sm);
+      margin: 0;
+    }
+
+    .alert ul { margin-top: var(--sp-6); }
+
+    .alert-danger { background: var(--danger-bg); border: 1px solid var(--danger-border); }
+    .alert-danger .alert-title { color: var(--danger); }
+
+    .alert-warn { background: var(--warn-bg); border: 1px solid var(--warn-border); }
+    .alert-warn .alert-title { color: var(--warn); }
+
+    .alert-success { background: var(--success-bg); border: 1px solid var(--success-border); }
+    .alert-success .alert-title { color: var(--success); }
+
+    .alert-info { background: var(--info-bg); border: 1px solid var(--info-border); }
+    .alert-info .alert-title { color: var(--info); }
+
+    /* ═══════════════════════════════════════
+       MUSIC TABLE
+    ═══════════════════════════════════════ */
+    .music-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh-sm);
+    }
+
+    .music-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      font-size: var(--fs-sm);
+    }
+
+    .music-table th {
+      background: var(--primary);
+      color: #fff;
+      text-align: left;
+      padding: var(--sp-10) var(--sp-16);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .music-table th:first-child { border-radius: var(--r-lg) 0 0 0; }
+    .music-table th:last-child  { border-radius: 0 var(--r-lg) 0 0; }
+
+    .music-table td {
+      padding: var(--sp-10) var(--sp-16);
+      border-bottom: 1px solid var(--border-s);
+      vertical-align: top;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+
+    .music-table tr:last-child td { border-bottom: none; }
+    .music-table tr:hover td { background: var(--primary-faint); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: var(--r-full);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .badge-safe { background: var(--success-bg); color: var(--success); border: 1px solid var(--success-border); }
+    .badge-warn { background: var(--warn-bg);    color: var(--warn);    border: 1px solid var(--warn-border); }
+    .badge-danger { background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger-border); }
+
+    /* ═══════════════════════════════════════
+       HOOK EXAMPLES
+    ═══════════════════════════════════════ */
+    .hook-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-8);
+    }
+
+    .hook-item {
+      background: var(--surface);
+      border-radius: var(--r-md);
+      box-shadow: var(--sh-xs);
+      padding: var(--sp-12) var(--sp-16);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-10);
+      font-size: var(--fs-sm);
+      color: var(--text-1);
+      font-weight: 600;
+      line-height: 1.5;
+      border-left: 3px solid var(--primary);
+    }
+
+    .hook-item::before {
+      content: '"';
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--primary);
+      margin-top: -4px;
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════
+       STAGE TIMELINE
+    ═══════════════════════════════════════ */
+    .stage-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .stage-list::before {
+      content: '';
+      position: absolute;
+      left: 22px;
+      top: 44px;
+      bottom: 24px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--primary-l), transparent);
+    }
+
+    .stage {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: var(--sp-16);
+      padding-bottom: var(--sp-24);
+      align-items: start;
+    }
+
+    .stage-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      font-size: var(--fs-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stage-content { padding-top: var(--sp-4); }
+
+    .stage-label {
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--sp-4);
+    }
+
+    .stage-title {
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: var(--sp-8);
+    }
+
+    .stage-body {
+      font-size: var(--fs-sm);
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+
+    .stage-body ul { margin-top: var(--sp-6); }
+
+    /* ═══════════════════════════════════════
+       VIDEO STRUCTURE
+    ═══════════════════════════════════════ */
+    .arc-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-8);
+      counter-reset: arc;
+    }
+
+    .arc-step {
+      background: var(--surface);
+      border-radius: var(--r-md);
+      box-shadow: var(--sh-xs);
+      padding: var(--sp-12) var(--sp-16) var(--sp-12) var(--sp-20);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--sp-12);
+      align-items: center;
+      counter-increment: arc;
+    }
+
+    .arc-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary-faint);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: var(--fs-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .arc-label { font-weight: 700; color: var(--text-1); font-size: var(--fs-sm); }
+    .arc-desc  { font-size: var(--fs-xs); color: var(--text-3); margin-top: 2px; }
+
+    /* ═══════════════════════════════════════
+       HASHTAG CHIPS
+    ═══════════════════════════════════════ */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-6);
+      margin-top: var(--sp-8);
+    }
+
+    .tag-chip {
+      background: var(--primary-faint);
+      border: 1px solid var(--primary);
+      border-radius: var(--r-full);
+      padding: 3px 10px;
+      font-size: var(--fs-xs);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════
+       MEDALS TABLE (nations list)
+    ═══════════════════════════════════════ */
+    .nations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--sp-10);
+    }
+
+    .nation-pill {
+      background: var(--surface);
+      border-radius: var(--r-md);
+      box-shadow: var(--sh-xs);
+      padding: var(--sp-10) var(--sp-12);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-8);
+      font-size: var(--fs-sm);
+    }
+
+    .nation-pill-flag { font-size: 1.4rem; line-height: 1; }
+    .nation-pill-text strong { display: block; font-size: var(--fs-sm); color: var(--text-1); }
+    .nation-pill-text span { font-size: var(--fs-xs); color: var(--text-3); }
+
+    /* ═══════════════════════════════════════
+       CAVEATS SECTION
+    ═══════════════════════════════════════ */
+    .caveat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--sp-16);
+    }
+
+    .caveat-card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh-sm);
+      padding: var(--sp-20);
+      border-top: 3px solid var(--accent);
+    }
+
+    .caveat-card h4 {
+      font-size: var(--fs-md);
+      color: var(--accent);
+      margin-bottom: var(--sp-8);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-6);
+    }
+
+    .caveat-card p { font-size: var(--fs-sm); }
+
+    /* ═══════════════════════════════════════
+       KEY FINDINGS SUMMARY
+    ═══════════════════════════════════════ */
+    .findings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--sp-16);
+      margin-top: var(--sp-24);
+    }
+
+    .finding-card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh-sm);
+      padding: var(--sp-20);
+    }
+
+    .finding-num {
+      font-size: var(--fs-xs);
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--sp-8);
+    }
+
+    .finding-card h4 { font-size: var(--fs-md); margin-bottom: var(--sp-8); }
+    .finding-card p  { font-size: var(--fs-sm); }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    .site-footer {
+      background: var(--primary-d);
+      color: rgba(255,255,255,0.75);
+      padding: var(--sp-24) 0;
+      font-size: var(--fs-sm);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-12);
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-inner a { color: rgba(255,255,255,0.85); }
+
+    /* ═══════════════════════════════════════
+       PRINT
+    ═══════════════════════════════════════ */
+    @media print {
+      .site-header, .toc, .toc-toggle { display: none !important; }
+      .main-layout { grid-template-columns: 1fr; }
+      .card:hover { transform: none; box-shadow: var(--sh-xs); }
+      a { color: var(--text-2); text-decoration: none; }
+    }
+
+    /* ═══════════════════════════════════════
+       REVEAL ANIMATIONS
+    ═══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s var(--ease-o), transform 0.5s var(--ease-o);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.45s var(--ease-o), transform 0.45s var(--ease-o);
+    }
+
+    .stagger.in > * { opacity: 1; transform: translateY(0); }
+
+    .stagger.in > *:nth-child(1) { transition-delay: 0.04s; }
+    .stagger.in > *:nth-child(2) { transition-delay: 0.10s; }
+    .stagger.in > *:nth-child(3) { transition-delay: 0.16s; }
+    .stagger.in > *:nth-child(4) { transition-delay: 0.22s; }
+    .stagger.in > *:nth-child(5) { transition-delay: 0.28s; }
+    .stagger.in > *:nth-child(6) { transition-delay: 0.34s; }
+    .stagger.in > *:nth-child(7) { transition-delay: 0.40s; }
+    .stagger.in > *:nth-child(8) { transition-delay: 0.46s; }
+
+    /* ═══════════════════════════════════════
+       BACK TO TOP
+    ═══════════════════════════════════════ */
+    .back-top {
+      position: fixed;
+      bottom: var(--sp-20);
+      right: var(--sp-20);
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--r-full);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--sh-md);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s var(--spring);
+      z-index: 200;
+    }
+
+    .back-top.visible { opacity: 1; pointer-events: auto; }
+    .back-top:hover   { transform: scale(1.1); }
+
+    @media (max-width: 480px) {
+      .card-grid, .card-grid-2, .nations-grid, .caveat-grid, .findings-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- STICKY HEADER -->
+<header class="site-header" id="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="site-title">
+        <div class="site-title-icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 1L10 6H15L11 9.5L12.5 14.5L8 11.5L3.5 14.5L5 9.5L1 6H6L8 1Z" fill="white"/>
+          </svg>
+        </div>
+        Veteran Tribute Blueprint
+      </a>
+      <button class="toc-toggle" id="toc-toggle" aria-expanded="false" aria-controls="toc-sidebar">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 3.5h10M2 7h10M2 10.5h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Contents
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M6 0.5L7.5 4.5H11.5L8.5 7L9.5 11L6 8.75L2.5 11L3.5 7L0.5 4.5H4.5L6 0.5Z" fill="currentColor"/>
+      </svg>
+      Global Research Report
+    </div>
+    <h1>Veteran Tribute Video Blueprint</h1>
+    <p class="hero-lead">
+      The complete creator's guide for building a global, apolitical veteran tribute channel — covering the world's highest valor medals, cross-border human stories, legally safe music, production tools, and viral strategy.
+    </p>
+    <div class="hero-meta">
+      <span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M7 4V7.5L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        5 parts · comprehensive guide
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M7 1L9 5H13L10 7.5L11 12L7 9.5L3 12L4 7.5L1 5H5L7 1Z" fill="currentColor" opacity="0.4"/>
+          <path d="M7 1L9 5H13L10 7.5L11 12L7 9.5L3 12L4 7.5L1 5H5L7 1Z" stroke="currentColor" stroke-width="1"/>
+        </svg>
+        Valor medals from 20+ nations
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <rect x="2" y="3" width="10" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 3V2M9 3V2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M2 6h10" stroke="currentColor" stroke-width="1"/>
+        </svg>
+        3-stage production roadmap
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- TL;DR -->
+<div class="tldr">
+  <div class="container">
+    <div class="tldr-inner">
+      <div class="tldr-label">TL;DR</div>
+      <div class="tldr-pills">
+        <div class="tldr-pill">A truly apolitical, all-nations tribute is built on three universal pillars: the world's highest valor medals, emotional cross-border human stories, and cinematic-but-legally-safe music.</div>
+        <div class="tldr-pill">The single biggest legal risk is music — Two Steps From Hell, Hans Zimmer, and John Williams tracks are Content ID-registered and <em>will</em> trigger demonetization. Use Epidemic Sound, Artlist, Uppbeat, or the free YouTube Audio Library instead.</div>
+        <div class="tldr-pill">Edit in CapCut (short-form) or DaVinci Resolve (long-form), pull footage from NARA/Internet Archive (public domain), hook viewers in the first 3 seconds, post Shorts on Friday evenings, and frame every story around shared humanity.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="container">
+  <div class="main-layout">
+
+    <!-- TABLE OF CONTENTS -->
+    <nav class="toc" id="toc-sidebar" aria-label="Table of contents">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list" role="list">
+        <li><a href="#key-findings">Key Findings</a></li>
+        <li><a href="#part1">Part 1: Medals &amp; Honors</a></li>
+        <li class="toc-sub"><a href="#major-medals">Major Medals</a></li>
+        <li class="toc-sub"><a href="#nations-medals">Nations Overview</a></li>
+        <li class="toc-sub"><a href="#female-recipients">Female Recipients</a></li>
+        <li class="toc-sub"><a href="#most-decorated">Most Decorated</a></li>
+        <li><a href="#part2">Part 2: Iconic Stories</a></li>
+        <li class="toc-sub"><a href="#self-sacrifice">Self-Sacrifice</a></li>
+        <li class="toc-sub"><a href="#pows">POW Survivors</a></li>
+        <li class="toc-sub"><a href="#mercy">Mercy Across Lines</a></li>
+        <li><a href="#part3">Part 3: Music Guide</a></li>
+        <li class="toc-sub"><a href="#do-not-use">Do NOT Use</a></li>
+        <li class="toc-sub"><a href="#safe-music">Safe Alternatives</a></li>
+        <li><a href="#part4">Part 4: Production Guide</a></li>
+        <li class="toc-sub"><a href="#software">Software</a></li>
+        <li class="toc-sub"><a href="#footage">Footage &amp; Photos</a></li>
+        <li><a href="#part5">Part 5: Viral Strategy</a></li>
+        <li class="toc-sub"><a href="#hooks">Hooks</a></li>
+        <li class="toc-sub"><a href="#video-arc">Story Arc</a></li>
+        <li class="toc-sub"><a href="#hashtags">Hashtags</a></li>
+        <li class="toc-sub"><a href="#posting">Posting Times</a></li>
+        <li><a href="#roadmap">3-Stage Roadmap</a></li>
+        <li><a href="#caveats">Caveats</a></li>
+      </ul>
+    </nav>
+
+    <!-- CONTENT -->
+    <main class="content" id="main-content">
+
+      <!-- KEY FINDINGS -->
+      <section id="key-findings">
+        <h2 class="reveal">Key Findings</h2>
+        <div class="findings-grid stagger">
+          <div class="finding-card">
+            <div class="finding-num">Finding 01</div>
+            <h4>The Story Is Universal — the Framing Must Be Neutral</h4>
+            <p>Valor decorations exist in nearly every country and reward the same human qualities: courage, self-sacrifice, devotion to comrades. Pairing a Medal of Honor recipient with a VC winner, a Param Vir Chakra recipient, and a Soviet sniper creates a "united across nations" narrative without favoring any side.</p>
+          </div>
+          <div class="finding-card">
+            <div class="finding-num">Finding 02</div>
+            <h4>Music Is the Make-or-Break Legal Decision</h4>
+            <p>Creators instinctively reach for "epic" trailer music. These tracks are copyrighted and Content ID-registered — they will be claimed and demonetized. Safe, similar-sounding alternatives exist at affordable prices or for free.</p>
+          </div>
+          <div class="finding-card">
+            <div class="finding-num">Finding 03</div>
+            <h4>The Craft Is Accessible to Beginners</h4>
+            <p>Free tools (CapCut, DaVinci Resolve) plus free public-domain archives (NARA, Internet Archive) mean a compelling tribute can be produced at near-zero cost with no prior video experience.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 1 -->
+      <section id="part1">
+        <div class="part-header reveal">
+          <div class="part-number">1</div>
+          <div>
+            <h2>Military Medals &amp; Highest Honors Worldwide</h2>
+            <p style="margin:0; font-size: var(--fs-sm); color: var(--text-3);">The universal language of valor — from 1856 to today, across every nation</p>
+          </div>
+        </div>
+
+        <h3 id="major-medals" class="reveal" style="margin-bottom: var(--sp-16);">Major Medals in Depth</h3>
+        <div class="card-grid stagger">
+
+          <div class="card">
+            <div class="card-flag">🇺🇸</div>
+            <div class="card-sub">United States</div>
+            <div class="card-title">Medal of Honor</div>
+            <p>The highest US military decoration, created during the Civil War. Awarded for <em>"gallantry and intrepidity at the risk of life above and beyond the call of duty."</em> Over 3,520 awarded; since WWII, ≈61% posthumous. The first Army recipient was Pvt. Jacob Parrott (Great Locomotive Chase). The only female recipient: Civil War surgeon Dr. Mary Edwards Walker. Iconic recipients include Desmond Doss, Audie Murphy, and Alvin York.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-flag">🇬🇧</div>
+            <div class="card-sub">United Kingdom &amp; Commonwealth</div>
+            <div class="card-title">Victoria Cross</div>
+            <p>Instituted by Queen Victoria on 29 January 1856 (backdated to Crimea). Inscribed <em>"For Valour."</em> 1,358 awarded since inception — 626 in WWI, 181 in WWII. Traditionally cast from bronze captured from Russian cannon. Youngest recipient: 15-year-old Hospital Apprentice Andrew Fitzgibbon (1860). Three men won it twice: Arthur Martin-Leake, Noel Chavasse, Charles Upham.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-flag">🇮🇳</div>
+            <div class="card-sub">India</div>
+            <div class="card-title">Param Vir Chakra</div>
+            <p>India's highest wartime decoration, established 1950. Designed by Savitri Khanolkar. Only 21 have ever been awarded — 14 posthumously. The first recipient was Major Somnath Sharma. The medal's design symbolizes the four divine weapons of Brahma, Vishnu, and Shiva.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-flag">🇷🇺</div>
+            <div class="card-sub">Soviet Union / Russia</div>
+            <div class="card-title">Hero of the Soviet Union</div>
+            <p>The USSR's highest distinction, awarded with the Gold Star medal. The all-female 588th Night Bomber Regiment ("Night Witches") produced multiple Heroes of the Soviet Union, including Natalya Meklin. Russia's modern equivalent is Hero of the Russian Federation.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-flag">🇩🇪</div>
+            <div class="card-sub">Germany</div>
+            <div class="card-title">Knight's Cross / Iron Cross</div>
+            <p>The Iron Cross was established in 1813 during the Napoleonic Wars. The Knight's Cross of the Iron Cross was WWII's highest German award in five escalating grades. Only one man received the top "Golden Oak Leaves" grade: Stuka pilot Hans-Ulrich Rudel. <strong>Note:</strong> Use only denazified post-1957 designs to maintain neutral framing.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-flag">🇫🇷</div>
+            <div class="card-sub">France</div>
+            <div class="card-title">Légion d'honneur &amp; Croix de Guerre</div>
+            <p>The Légion d'honneur was instituted by Napoleon in 1802 and remains France's highest order. The Croix de Guerre (instituted 1915) honors combat bravery. Many foreign soldiers received both, including American Audie Murphy who received both the French and Belgian Croix de Guerre.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-flag">🇬🇧</div>
+            <div class="card-sub">United Kingdom</div>
+            <div class="card-title">George Cross</div>
+            <p>Instituted 1940 by King George VI for "conspicuous bravery not in the presence of the enemy" — awarded to civilians and military alike. Equal in precedence to the Victoria Cross since 1940. Youngest recipient: 15-year-old John Bamford, who rescued his brothers from a burning house.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-flag">🇵🇰</div>
+            <div class="card-sub">Pakistan</div>
+            <div class="card-title">Nishan-e-Haider</div>
+            <p>Pakistan's highest military honor. Every single recipient to date has received it posthumously — making it one of the most poignant decorations in the world, a silent testament to ultimate sacrifice.</p>
+          </div>
+
+        </div>
+
+        <h3 id="nations-medals" class="reveal" style="margin: var(--sp-32) 0 var(--sp-16);">Valor Decorations by Nation</h3>
+        <div class="nations-grid stagger">
+          <div class="nation-pill"><div class="nation-pill-flag">🇦🇺</div><div class="nation-pill-text"><strong>Victoria Cross for Australia</strong><span>Established 1991</span></div></div>
+          <div class="nation-pill"><div class="nation-pill-flag">🇨🇦</div><div class="nation-pill-text"><strong>Victoria Cross of Canada</strong><span>Established 1993</span></div></div>
+          <div class="nation-pill"><div class="nation-pill-flag">🇳🇿</div><div class="nation-pill-text"><strong>VC for New Zealand</strong><span>Awarded once — Willie Apiata, 2007</span></div></div>
+          <div class="nation-pill"><div class="nation-pill-flag">🇮🇱</div><div class="nation-pill-text"><strong>Medal of Valor</strong><span>Ot HaGvura — Israel</span></div></div>
+          <div class="nation-pill"><div class="nation-pill-flag">🇵🇱</div><div class="nation-pill-text"><strong>Virtuti Militari</strong><span>One of Europe's oldest medals</span></div></div>
+          <div class="nation-pill"><div class="nation-pill-flag">🇺🇦</div><div class="nation-pill-text"><strong>Hero of Ukraine</strong><span>Order of the Gold Star</span></div></div>
+          <div class="nation-pill"><div class="nation-pill-flag">🇰🇷</div><div class="nation-pill-text"><strong>Taegeuk Order</strong><span>Military Merit — South Korea</span></div></div>
+          <div class="nation-pill"><div class="nation-pill-flag">🇧🇩</div><div class="nation-pill-text"><strong>Bir Sreshtho</strong><span>Liberation War 1971</span></div></div>
+          <div class="nation-pill"><div class="nation-pill-flag">🇯🇵</div><div class="nation-pill-text"><strong>Order of the Rising Sun</strong><span>Distinguished service</span></div></div>
+          <div class="nation-pill"><div class="nation-pill-flag">🇨🇳</div><div class="nation-pill-text"><strong>Order of Bayi</strong><span>Established 1955</span></div></div>
+          <div class="nation-pill"><div class="nation-pill-flag">🇧🇪</div><div class="nation-pill-text"><strong>Croix de Guerre</strong><span>Belgium — combat bravery</span></div></div>
+          <div class="nation-pill"><div class="nation-pill-flag">🇹🇷</div><div class="nation-pill-text"><strong>Independence Medal</strong><span>İstiklâl Madalyası</span></div></div>
+        </div>
+
+        <h3 id="female-recipients" class="reveal" style="margin: var(--sp-32) 0 var(--sp-16);">Remarkable Female Recipients</h3>
+        <div class="card-grid-2 stagger">
+          <div class="card card-story">
+            <div class="card-sub">USA — Civil War</div>
+            <div class="card-title">Dr. Mary Edwards Walker</div>
+            <p>The only female Medal of Honor recipient. A Civil War surgeon who served on the front lines and was captured as a prisoner of war. Congress revoked the medal in 1917 but she refused to return it; it was posthumously restored in 1977.</p>
+          </div>
+          <div class="card card-story">
+            <div class="card-sub">Soviet Union — WWII</div>
+            <div class="card-title">Lyudmila Pavlichenko</div>
+            <p>One of the deadliest snipers in history with 309 confirmed kills, including 36 enemy snipers. At 25 she toured the US and UK in 1942 and befriended Eleanor Roosevelt. In Chicago she declared: <em>"Don't you think, gentlemen, that you have been hiding behind my back for too long?"</em></p>
+          </div>
+          <div class="card card-story">
+            <div class="card-sub">UK/SOE — WWII</div>
+            <div class="card-title">Nancy Wake — "The White Mouse"</div>
+            <p>One of the most decorated Allied servicewomen of WWII. The Gestapo's most-wanted person in occupied France, codenamed "The White Mouse" for her ability to evade capture. She led Maquis resistance fighters and personally executed a German sentry to prevent her unit's exposure.</p>
+          </div>
+          <div class="card card-story">
+            <div class="card-sub">Iraq — 2005</div>
+            <div class="card-title">Sgt. Leigh Ann Hester</div>
+            <p>The first woman since WWII to receive the Silver Star for direct combat valor. During an ambush in Iraq, Hester outflanked insurgents, assaulted a trench line, and eliminated three enemies in close combat.</p>
+          </div>
+        </div>
+
+        <h3 id="most-decorated" class="reveal" style="margin: var(--sp-32) 0 var(--sp-16);">Most Decorated Soldiers Across Nations</h3>
+        <div class="card-grid stagger">
+          <div class="card">
+            <div class="card-flag">🇺🇸</div>
+            <div class="card-title">Audie Murphy (USA)</div>
+            <p>The most decorated US soldier of WWII. Received every US Army valor award plus French and Belgian honors. Earned the Medal of Honor at age 19 for single-handedly holding off an entire German company at the Colmar Pocket — standing on a burning tank destroyer.</p>
+          </div>
+          <div class="card">
+            <div class="card-flag">🇬🇧</div>
+            <div class="card-title">William Coltman (UK)</div>
+            <p>The most decorated "other rank" of WWI. Won the VC, DCM and Bar, and Military Medal and Bar — all as a stretcher-bearer who never once fired a shot. He spent 48 hours carrying wounded comrades across no-man's-land without rest.</p>
+          </div>
+          <div class="card">
+            <div class="card-flag">🇩🇪</div>
+            <div class="card-title">Hans-Ulrich Rudel (Germany)</div>
+            <p>The sole recipient of the Knight's Cross with Golden Oak Leaves, Swords and Diamonds — the highest possible grade. Despite his exceptional military record, content creators should focus on individual acts of skill rather than regime associations.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 2 -->
+      <section id="part2">
+        <div class="part-header reveal">
+          <div class="part-number">2</div>
+          <div>
+            <h2>Most Emotional &amp; Iconic Veteran Stories</h2>
+            <p style="margin:0; font-size: var(--fs-sm); color: var(--text-3);">The emotional heart of any apolitical tribute — stories of mercy, survival, and shared humanity</p>
+          </div>
+        </div>
+
+        <h3 id="self-sacrifice" class="reveal" style="margin-bottom: var(--sp-16);">Self-Sacrifice / Saving Many Lives</h3>
+        <div class="card-grid-2 stagger">
+          <div class="card card-story">
+            <div class="card-sub">USA · WWII · Okinawa 1945</div>
+            <div class="card-title">Desmond Doss — Hacksaw Ridge</div>
+            <p>A Seventh-day Adventist medic and conscientious objector who refused to carry a weapon. At Hacksaw Ridge he single-handedly lowered approximately 75 wounded men down a 400-foot escarpment under enemy fire — working alone through the night, praying "Lord, help me get just one more." The first conscientious objector to receive the Medal of Honor. He even treated a wounded Japanese soldier. <em>Subject of the 2016 film Hacksaw Ridge.</em></p>
+          </div>
+          <div class="card card-story">
+            <div class="card-sub">UK · WWI · Western Front</div>
+            <div class="card-title">William Coltman — The Unarmed Hero</div>
+            <p>Repeatedly carried wounded comrades on his back across no-man's-land for 48 continuous hours without rest or relief. His absolute refusal to carry a weapon never diminished his extraordinary courage. He ended WWI as the most decorated non-commissioned officer in the British Army.</p>
+          </div>
+        </div>
+
+        <h3 id="pows" class="reveal" style="margin: var(--sp-32) 0 var(--sp-16);">POW Survivors Who Kept Their Humanity</h3>
+        <div class="card-grid-2 stagger">
+          <div class="card card-story">
+            <div class="card-sub">USA · WWII Pacific</div>
+            <div class="card-title">Louis Zamperini — Unbroken</div>
+            <p>Olympic runner turned B-24 bombardier. After his plane crashed in the Pacific he survived 47 days adrift on a rubber raft — fending off sharks, a strafing enemy aircraft, and starvation. He was then captured and endured over 2 years of brutal Japanese POW camps under a sadistic guard nicknamed "The Bird." Postwar he battled PTSD and alcoholism before becoming an evangelist who publicly returned to Japan to forgive his former captors. <em>Subject of the memoir and film Unbroken.</em></p>
+          </div>
+        </div>
+
+        <h3 id="mercy" class="reveal" style="margin: var(--sp-32) 0 var(--sp-16);">
+          Cross-Border Mercy — Brotherhood Across Enemy Lines
+        </h3>
+        <p class="reveal" style="margin-bottom: var(--sp-16);">These stories are the <strong>emotional heart of an apolitical tribute</strong> — universal, shareable, and impossible to frame as propaganda for any side.</p>
+        <div class="card-grid stagger">
+          <div class="card card-story">
+            <div class="card-sub">Germany &amp; USA · WWII 1943</div>
+            <div class="card-title">Franz Stigler &amp; Charlie Brown</div>
+            <p>German ace Franz Stigler pulled alongside a crippled, limping American B-17 ("Ye Olde Pub") — saw the wounded crew visible through the shattered fuselage — and chose to escort them to safety rather than shoot them down. He saluted the American pilot and peeled away. The two men found each other in 1990 and became close friends until both died in 2008. Basis of the book <em>A Higher Call</em>.</p>
+          </div>
+          <div class="card card-story">
+            <div class="card-sub">UK &amp; Germany · Christmas 1914</div>
+            <div class="card-title">The Christmas Truce</div>
+            <p>On Christmas Eve and Christmas Day, British and German troops spontaneously left their trenches along much of the Western Front. They exchanged gifts, sang carols together in the freezing mud, shared photographs of their families, and played impromptu football matches in no-man's-land. Officers on both sides observed in disbelief. Nothing was ordered; nothing was permitted. It simply happened.</p>
+          </div>
+          <div class="card card-story">
+            <div class="card-sub">Anzac &amp; Turkish · Gallipoli May 1915</div>
+            <div class="card-title">The Gallipoli Truce</div>
+            <p>Anzac and Turkish soldiers negotiated a temporary ceasefire to bury their dead together. They shared cigarettes, traded small items, and helped carry each other's fallen. Private Richard Eardley and a Turkish soldier reportedly saved each other's lives in separate incidents during the same battle — enemies who became, briefly, something else.</p>
+          </div>
+          <div class="card card-story">
+            <div class="card-sub">Germany &amp; USA · Battle of the Bulge 1944</div>
+            <div class="card-title">Elisabeth Vincken's Christmas Cabin</div>
+            <p>In the frozen Hürtgen Forest on Christmas Eve, German mother Elisabeth Vincken sheltered both American and German soldiers in her remote cabin for one peaceful night. She made every soldier leave his weapons outside her door. They shared her Christmas meal, a German medic treated American wounds, and in the morning both groups went their separate ways. None were reported; all survived.</p>
+          </div>
+          <div class="card card-story">
+            <div class="card-sub">Japan &amp; USA · WWII 1945</div>
+            <div class="card-title">Hideichi Kaiho &amp; Hap Halloran</div>
+            <p>Japanese pilot Hideichi Kaiho chose to protect — rather than shoot — a parachuting American airman named Raymond "Hap" Halloran as he descended helplessly over Japan. Decades later the two met face-to-face, embraced, and became friends. A story of the man behind the cockpit.</p>
+          </div>
+          <div class="card card-story">
+            <div class="card-sub">Germany · WWII North Africa</div>
+            <div class="card-title">Erwin Rommel — The Decent Enemy</div>
+            <p>Field Marshal Erwin Rommel refused direct orders from Hitler to execute captured Jewish soldiers and commandos. He released Allied prisoners when resupply was impossible rather than let them starve or die in captivity. Posthumously, captured British officers wrote letters praising his conduct. An example of individual honor within a dishonorable war.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 3 -->
+      <section id="part3">
+        <div class="part-header reveal">
+          <div class="part-number">3</div>
+          <div>
+            <h2>Epic Cinematic Music — and the Legal Reality</h2>
+            <p style="margin:0; font-size: var(--fs-sm); color: var(--text-3);">This decision will make or break your channel. Read every word carefully.</p>
+          </div>
+        </div>
+
+        <div class="alert alert-warn reveal">
+          <div class="alert-icon">⚠️</div>
+          <div>
+            <div class="alert-title">Critical: "Royalty-Free" ≠ "Claim-Free"</div>
+            <p>The term <strong>"royalty-free"</strong> describes a <em>licensing model</em> (no per-use royalties), NOT a guarantee that a track won't generate a YouTube Content ID claim. A track registered with Content ID can still trigger a claim even when marketed as "no copyright music." Always verify the actual source and license terms.</p>
+          </div>
+        </div>
+
+        <h3 id="do-not-use" class="reveal" style="margin: var(--sp-24) 0 var(--sp-16);">Do NOT Use — Will Be Claimed &amp; Demonetized</h3>
+
+        <div class="alert alert-danger reveal">
+          <div class="alert-icon">🚫</div>
+          <div>
+            <div class="alert-title">Blocked: Two Steps From Hell, Hans Zimmer, John Williams</div>
+            <ul>
+              <li><strong>Two Steps From Hell</strong> ("Heart of Courage," "Victory," "Star Sky," "Archangel") — copyrighted by Two Steps From Hell LLC; licensing administered by Extreme Music (Sony). Their Spotify albums are public for <em>listening</em> but NOT licensed for video. No self-serve creator license exists; B2B only.</li>
+              <li><strong>Hans Zimmer</strong> ("Time," Gladiator OST, Dunkirk OST) — fully copyrighted; requires both a sync license and a master-use license. Real creators report blocked videos from Warner Bros. Content ID claims.</li>
+              <li><strong>John Williams</strong> (Saving Private Ryan, Schindler's List) — same situation; off-platform misuse can carry statutory damages up to $150,000.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 id="safe-music" class="reveal" style="margin: var(--sp-24) 0 var(--sp-16);">Safe, Similar-Sounding Alternatives</h3>
+
+        <div class="music-table-wrap reveal">
+          <table class="music-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Cost</th>
+                <th>Safety Level</th>
+                <th>Key Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>YouTube Audio Library</strong></td>
+                <td>Free</td>
+                <td><span class="badge badge-safe">Safest</span></td>
+                <td>Built into YouTube Studio. YouTube's official guarantee: won't be claimed via Content ID. 1,000+ tracks. Some CC-BY tracks require attribution — check the License column. Smaller/more "stock" sounding selection.</td>
+              </tr>
+              <tr>
+                <td><strong>Artlist</strong></td>
+                <td>~$9.99–16.58/mo</td>
+                <td><span class="badge badge-safe">Safest for long-term</span></td>
+                <td>Grants <strong>lifetime usage rights</strong> even after subscription ends — the safest long-term model. Film-grade orchestral mastering. "Clearlist" protection. Best choice if you plan to monetize seriously.</td>
+              </tr>
+              <tr>
+                <td><strong>Epidemic Sound</strong></td>
+                <td>~$9.99–17.99/mo</td>
+                <td><span class="badge badge-safe">Safe</span></td>
+                <td>Owns 100% of its catalog; pre-cleared for Content ID. Dedicated "Epic" and "Epic Storytelling" mood pages. <strong>Caveat:</strong> license tied to active subscription — old videos exposed if you cancel.</td>
+              </tr>
+              <tr>
+                <td><strong>Uppbeat</strong></td>
+                <td>Free / ~$5.59/mo</td>
+                <td><span class="badge badge-safe">Safe</span></td>
+                <td>Best budget option. Free tier gives 5 claim-releases/month. Integrated Claim Release tool. Good for testing format before investing in a paid library.</td>
+              </tr>
+              <tr>
+                <td><strong>Soundstripe</strong></td>
+                <td>$9.99–19.99/mo</td>
+                <td><span class="badge badge-safe">Safe</span></td>
+                <td>Fully YouTube-safe. Offers indemnification on single-use licenses. Student pricing available.</td>
+              </tr>
+              <tr>
+                <td><strong>Bensound / Free Stock Music</strong></td>
+                <td>Free / low cost</td>
+                <td><span class="badge badge-warn">Verify license</span></td>
+                <td>Additional royalty-free options. Verify CC license type before monetizing — avoid CC-BY-NC if you're monetizing videos.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert alert-info reveal" style="margin-top: var(--sp-20);">
+          <div class="alert-icon">🎵</div>
+          <div>
+            <div class="alert-title">Style Guidance: Emotion Without Nationalism</div>
+            <p>Search for: <strong>emotional orchestral · solemn · mournful · hopeful · cinematic piano · choir swell · uplifting strings</strong></p>
+            <p style="margin-top: var(--sp-6);">Avoid searching: patriotic · anthem · march · battle · military</p>
+            <p style="margin-top: var(--sp-6);">The most powerful combination for sacrifice and gratitude: <strong>solo piano + slow strings + a single choir swell</strong>. Always download from the official source and keep license PDFs.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 4 -->
+      <section id="part4">
+        <div class="part-header reveal">
+          <div class="part-number">4</div>
+          <div>
+            <h2>Video Production Guide for Beginners</h2>
+            <p style="margin:0; font-size: var(--fs-sm); color: var(--text-3);">Near-zero cost, professional results — using tools built for creators</p>
+          </div>
+        </div>
+
+        <h3 id="software" class="reveal" style="margin-bottom: var(--sp-16);">Editing Software</h3>
+        <div class="card-grid stagger">
+          <div class="card">
+            <div class="card-sub">Free · Short-Form Best</div>
+            <div class="card-title">CapCut</div>
+            <p>Best for Shorts/TikTok/Reels (sub-3 minutes). Auto-captions in 20+ languages, templates, beat-sync, no watermark on desktop exports. Ideal for starting out. Some AI tools require CapCut Pro (~$20/mo).</p>
+          </div>
+          <div class="card">
+            <div class="card-sub">Free · Long-Form Best</div>
+            <div class="card-title">DaVinci Resolve</div>
+            <p>Professional-grade, ideal for long-form YouTube. Free version supports up to 4K 60fps with no watermark. Steeper learning curve (5–10 hours) but unmatched color and audio tools (Fairlight audio engine). The industry standard for cinematic post-production.</p>
+          </div>
+          <div class="card">
+            <div class="card-sub">Free · Open Source</div>
+            <div class="card-title">Shotcut</div>
+            <p>Lightweight, cross-platform Windows/Mac/Linux option. Lower learning curve than DaVinci Resolve. Good stepping stone before committing to a full NLE.</p>
+          </div>
+          <div class="card">
+            <div class="card-sub">Free · Mac &amp; iOS</div>
+            <div class="card-title">iMovie</div>
+            <p>The simplest entry point for Mac/iPhone users. Projects migrate directly to Final Cut Pro when you're ready to upgrade. Limited compared to DaVinci Resolve but zero barriers to starting.</p>
+          </div>
+        </div>
+
+        <h3 id="footage" class="reveal" style="margin: var(--sp-32) 0 var(--sp-16);">Free Public-Domain Footage &amp; Photos</h3>
+
+        <div class="alert alert-warn reveal">
+          <div class="alert-icon">📋</div>
+          <div>
+            <div class="alert-title">Always verify each item's rights individually</div>
+            <p>"Public domain in the US" is not automatically public domain worldwide. Some donated NARA materials carry donor restrictions. For a global tribute, mix archives from multiple nations and verify each clip's license before publishing.</p>
+          </div>
+        </div>
+
+        <div class="card-grid stagger">
+          <div class="card">
+            <div class="card-sub">USA — Official Archives</div>
+            <div class="card-title">U.S. National Archives (NARA)</div>
+            <p>Extensive WWI/WWII film collections, mostly public domain. GetArchive.net provides NARA stills flagged "free for commercial use, no attribution required." The single best free source for American military footage.</p>
+          </div>
+          <div class="card">
+            <div class="card-sub">Global — Digital Library</div>
+            <div class="card-title">Internet Archive (archive.org)</div>
+            <p>Large WWII footage collections from multiple countries. Many films explicitly marked as public domain. Cross-reference with other sources for non-US content.</p>
+          </div>
+          <div class="card">
+            <div class="card-sub">Commercial Libraries</div>
+            <div class="card-title">Buyout Footage / Footage Farm</div>
+            <p>Public-domain combat stock libraries with additional curation and easier search. Good for finding specific event footage quickly without combing through raw archive collections.</p>
+          </div>
+          <div class="card">
+            <div class="card-sub">UK — Official Archives</div>
+            <div class="card-title">Imperial War Museums (IWM)</div>
+            <p>Extensive collections covering WWI, WWII, and post-war conflicts. Check each item's individual license — some are open for non-commercial use only. Perfect for British and Commonwealth veteran stories.</p>
+          </div>
+        </div>
+
+        <div class="alert alert-success reveal" style="margin-top: var(--sp-20);">
+          <div class="alert-icon">🎬</div>
+          <div>
+            <div class="alert-title">Syncing Cuts to Music Beats</div>
+            <p>Place dramatic photo reveals and cut transitions on musical downbeats or the "swell." CapCut shows a waveform with beat markers. <strong>Cut on the rise of a string/choir swell</strong> for emotional payoff — not at the peak. Pace cuts faster as music builds; slower on the resolution. The swell does the emotional work; your job is to meet it.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 5 -->
+      <section id="part5">
+        <div class="part-header reveal">
+          <div class="part-number">5</div>
+          <div>
+            <h2>Viral Strategy for Tribute Content</h2>
+            <p style="margin:0; font-size: var(--fs-sm); color: var(--text-3);">The first 3 seconds are the new thumbnail — here's how to use them</p>
+          </div>
+        </div>
+
+        <h3 id="hooks" class="reveal" style="margin-bottom: var(--sp-16);">Opening Hooks — The First 3 Seconds</h3>
+
+        <p class="reveal">Per a joint Facebook/Nielsen study, <strong>65% of viewers who watch the first 3 seconds will continue for at least 10 seconds, and 45% will stay for 30 seconds or more.</strong> 47% of the total value in a video campaign is delivered in the first 3 seconds alone. Use emotion + curiosity together:</p>
+
+        <div class="hook-list stagger">
+          <div class="hook-item">He saved 75 men without ever firing a single shot.</div>
+          <div class="hook-item">This enemy pilot refused to pull the trigger — and saved 10 lives.</div>
+          <div class="hook-item">The youngest war hero in history was just 15 years old.</div>
+          <div class="hook-item">They were enemies. On Christmas, they sang together.</div>
+          <div class="hook-item">She killed 309 soldiers. Then she walked into the White House.</div>
+          <div class="hook-item">He survived 47 days adrift. What he did next changed everything.</div>
+        </div>
+
+        <div class="alert alert-info reveal" style="margin-top: var(--sp-20);">
+          <div class="alert-icon">💡</div>
+          <div>
+            <div class="alert-title">Pair Text Hook with a Visual Pattern Interrupt</div>
+            <p>The hook text works best alongside a striking archival face or image — a close-up of a medal, a soldier's weary eyes, hands shaking across a no-man's-land. The image creates the emotional signal; the text creates the curiosity gap. Both must land in the first 3 seconds.</p>
+          </div>
+        </div>
+
+        <h3 id="video-arc" class="reveal" style="margin: var(--sp-32) 0 var(--sp-16);">Story Arc — Structure for Watch Time &amp; Emotion</h3>
+
+        <div class="arc-list stagger">
+          <div class="arc-step">
+            <div class="arc-num">0–3s</div>
+            <div>
+              <div class="arc-label">Hook</div>
+              <div class="arc-desc">The most arresting fact or image. Make them feel something before they can decide to leave.</div>
+            </div>
+          </div>
+          <div class="arc-step">
+            <div class="arc-num">3–15s</div>
+            <div>
+              <div class="arc-label">Setup</div>
+              <div class="arc-desc">Name, nation, the impossible situation. Enough context to care, not enough to know the outcome.</div>
+            </div>
+          </div>
+          <div class="arc-step">
+            <div class="arc-num">15–45s</div>
+            <div>
+              <div class="arc-label">Escalation</div>
+              <div class="arc-desc">The act of courage or sacrifice. Cut on the music build. Show — don't just tell — the stakes.</div>
+            </div>
+          </div>
+          <div class="arc-step">
+            <div class="arc-num">45–55s</div>
+            <div>
+              <div class="arc-label">Emotional Peak</div>
+              <div class="arc-desc">The cost, the reunion, the moment of recognition. Land this on the music swell.</div>
+            </div>
+          </div>
+          <div class="arc-step">
+            <div class="arc-num">Final 5s</div>
+            <div>
+              <div class="arc-label">Universal Close</div>
+              <div class="arc-desc">"Across every flag, the same courage." Soft call to action: "Honor them — follow for more."</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="hashtags" class="reveal" style="margin: var(--sp-32) 0 var(--sp-16);">Hashtag Strategy</h3>
+        <p class="reveal">Mix broad + niche + branded. The <code>#veterans</code> tag on TikTok has billions of cumulative views. Keep to 3–5 relevant tags on YouTube Shorts; slightly more on TikTok. Avoid politically charged tags.</p>
+
+        <div class="reveal">
+          <div style="margin-bottom: var(--sp-8); font-size: var(--fs-sm); font-weight: 600; color: var(--text-2);">Always include on YouTube Shorts:</div>
+          <div class="tag-cloud">
+            <span class="tag-chip">#Shorts</span>
+          </div>
+          <div style="margin: var(--sp-12) 0 var(--sp-8); font-size: var(--fs-sm); font-weight: 600; color: var(--text-2);">Core tribute tags:</div>
+          <div class="tag-cloud">
+            <span class="tag-chip">#veterans</span>
+            <span class="tag-chip">#veteran</span>
+            <span class="tag-chip">#militaryhistory</span>
+            <span class="tag-chip">#tribute</span>
+            <span class="tag-chip">#history</span>
+            <span class="tag-chip">#ww2</span>
+            <span class="tag-chip">#lestweforget</span>
+            <span class="tag-chip">#neverforget</span>
+            <span class="tag-chip">#bravery</span>
+            <span class="tag-chip">#heroes</span>
+          </div>
+        </div>
+
+        <h3 id="posting" class="reveal" style="margin: var(--sp-32) 0 var(--sp-16);">Optimal Posting Times &amp; Frequency</h3>
+        <div class="card-grid stagger">
+          <div class="card">
+            <div class="card-sub">Platform Strategy</div>
+            <div class="card-title">YouTube Shorts</div>
+            <p>Best engagement: <strong>Fridays, late afternoon/evening (4–7 PM)</strong>. Weekends are strong. Afternoon (2–4 PM) and evening (8–11 PM) windows get markedly more first-24-hour views. YouTube doesn't penalize Shorts frequency — 2–3 per day at spaced times is viable.</p>
+          </div>
+          <div class="card">
+            <div class="card-sub">Platform Strategy</div>
+            <div class="card-title">TikTok</div>
+            <p>Peak engagement: <strong>mid-morning and evenings (7–11 PM)</strong>. The veterans community is large and active on TikTok — lean into it early for fast organic growth.</p>
+          </div>
+          <div class="card">
+            <div class="card-sub">Platform Strategy</div>
+            <div class="card-title">Long-Form YouTube</div>
+            <p>Best upload time: <strong>mornings</strong>. Align uploads ahead of key dates: <strong>Memorial Day (US)</strong>, <strong>Remembrance/Armistice Day (Nov 11, global)</strong>, <strong>Anzac Day (Apr 25)</strong>, and <strong>Veterans Day (Nov 11 US)</strong> for major seasonal traffic surges.</p>
+          </div>
+          <div class="card">
+            <div class="card-sub">Key Rule</div>
+            <div class="card-title">Use Your Own Analytics</div>
+            <p>Posted times are population averages. Once you have 50+ videos, check <strong>YouTube Studio → Analytics → "When your viewers are on YouTube"</strong>. Your specific audience's watch patterns override any general guideline.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROADMAP -->
+      <section id="roadmap">
+        <div class="part-header reveal">
+          <div class="part-number" style="background: var(--accent);">→</div>
+          <div>
+            <h2>3-Stage Production Roadmap</h2>
+            <p style="margin:0; font-size: var(--fs-sm); color: var(--text-3);">From first video to established channel — with measurable benchmarks at each stage</p>
+          </div>
+        </div>
+
+        <div class="stage-list stagger">
+          <div class="stage">
+            <div class="stage-num">1</div>
+            <div class="stage-content">
+              <div class="stage-label">Weeks 1–2</div>
+              <div class="stage-title">Pilot — Validate the Format</div>
+              <div class="stage-body">
+                Produce 3 short-form tributes (9:16 vertical, 30–45 seconds each) in CapCut using free YouTube Audio Library music and NARA/Internet Archive public-domain footage.
+                <ul>
+                  <li>Profile one veteran from a different nation each: e.g., Doss (USA), a VC stretcher-bearer (UK), Pavlichenko (USSR)</li>
+                  <li>Test multiple hooks on the same story</li>
+                  <li>Benchmark targets: ≥60% three-second hold rate, ≥50% average view duration</li>
+                </ul>
+                If a video clears these benchmarks, the format works. If not, shorten setup and move the emotional peak earlier.
+              </div>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-num">2</div>
+            <div class="stage-content">
+              <div class="stage-label">Weeks 3–8</div>
+              <div class="stage-title">Format Lock — Build Cadence</div>
+              <div class="stage-body">
+                Lock a recognizable visual template: consistent fonts, lower-third name/nation/date cards, intro/outro. Post Shorts and TikTok 1–2× per day at peak windows (Friday evenings prioritized).
+                <ul>
+                  <li>Launch a parallel 5–8 minute long-form "United in Valor" series on YouTube monthly</li>
+                  <li>Upgrade to a paid music library once publishing regularly — Artlist (lifetime rights) or Epidemic Sound (deepest epic catalog)</li>
+                  <li>Scale spending threshold: a Short exceeding ~20K views OR a long-form video holding &gt;45% average view duration</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-num">3</div>
+            <div class="stage-content">
+              <div class="stage-label">Months 3+</div>
+              <div class="stage-title">Scale &amp; Protect</div>
+              <div class="stage-body">
+                Batch-produce and schedule via a cross-platform tool. Repurpose long-form into Shorts systematically. <strong>Cross-border "enemies who showed mercy" stories (Stigler/Brown, Christmas Truce) are your highest-emotion, most-shareable, most-neutral content</strong> — lead with them.
+                <ul>
+                  <li>Always keep music license PDFs on file</li>
+                  <li>If music claims appear despite "royalty-free" sourcing → switch to YouTube Audio Library or Artlist (lifetime) and use claim-release tools</li>
+                  <li>If any video draws nationalistic comment wars → tighten framing, remove era-specific political insignia, re-center on shared humanity</li>
+                  <li>If retention drops mid-video → shorten setup, move emotional peak earlier, trim to tighten pacing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CAVEATS -->
+      <section id="caveats">
+        <div class="part-header reveal">
+          <div class="part-number" style="background: var(--accent);">!</div>
+          <div>
+            <h2>Caveats &amp; Important Cautions</h2>
+            <p style="margin:0; font-size: var(--fs-sm); color: var(--text-3);">These are the failure modes — know them before you publish</p>
+          </div>
+        </div>
+
+        <div class="caveat-grid stagger">
+          <div class="caveat-card">
+            <h4>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L1 14H15L8 1Z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 6V10M8 11.5V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Neutrality Is Fragile
+            </h4>
+            <p>WWII Axis material is legitimate military-history content but easily misread. Never display Nazi swastika insignia. Contextualize German and Japanese stories around individual humanity (mercy, reunion) rather than regimes. Treat all veterans as human beings, not symbols of their governments.</p>
+          </div>
+
+          <div class="caveat-card">
+            <h4>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L1 14H15L8 1Z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 6V10M8 11.5V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Source Reliability Varies
+            </h4>
+            <p>Some valor stories are partly legend. The Henry Tandey / Hitler story, for example, is historically disputed. Flag uncertain claims as "said to" or "reportedly" rather than stating them as fact. Kill counts (e.g., Pavlichenko's 309) are officially credited figures and may be debated by historians.</p>
+          </div>
+
+          <div class="caveat-card">
+            <h4>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L1 14H15L8 1Z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 6V10M8 11.5V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Music Licensing Changes
+            </h4>
+            <p>Pricing and Content ID policies shift without notice. Subscription licenses protect you only while active — except Artlist's lifetime model and the free YouTube Audio Library. Verify current terms before subscribing to any platform.</p>
+          </div>
+
+          <div class="caveat-card">
+            <h4>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L1 14H15L8 1Z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 6V10M8 11.5V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Footage Rights Require Verification
+            </h4>
+            <p>"Public domain in the US" is not automatically public domain worldwide. For a global audience, confirm each clip's status and prefer clearly licensed archives. Some donated NARA materials carry donor restrictions that aren't visible in the catalog.</p>
+          </div>
+
+          <div class="caveat-card">
+            <h4>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L1 14H15L8 1Z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 6V10M8 11.5V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Platform Metrics Are Directional
+            </h4>
+            <p>"Best posting times" are population-level averages measured across millions of channels. Your own analytics override them the moment you have enough data — usually after 20–30 published videos. Check YouTube Studio → Analytics first.</p>
+          </div>
+
+          <div class="caveat-card">
+            <h4>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1L1 14H15L8 1Z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 6V10M8 11.5V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Living Veterans Require Consent
+            </h4>
+            <p>Using footage or stories of living veterans — particularly for commercial content — may require their explicit consent depending on jurisdiction. Historical figures and public records are generally safe; private individuals and recent conflicts require more caution.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <strong style="color: #fff;">Veteran Tribute Video Blueprint</strong> — Global Research Report
+      </div>
+      <div>
+        Research compiled for educational and creator-guidance purposes. All valor stories and medal details sourced from publicly available historical records.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="back-top" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path d="M8 12V4M4 8l4-4 4 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<script>
+  /* Header scroll */
+  const hdr = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    hdr.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* Back to top */
+  const btn = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* TOC mobile toggle */
+  const tocToggle = document.getElementById('toc-toggle');
+  const toc = document.getElementById('toc-sidebar');
+  tocToggle.addEventListener('click', () => {
+    const open = toc.classList.toggle('open');
+    tocToggle.setAttribute('aria-expanded', open);
+  });
+
+  /* Reveal animation */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+
+  /* Active TOC link */
+  const sections = document.querySelectorAll('section[id], h3[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+
+  const ioToc = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        tocLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(s => ioToc.observe(s));
+</script>
+
+</body>
+</html>
