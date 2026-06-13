@@ -1,0 +1,41 @@
+{
+  "name": "CarBro – Dein KFZ Starter Guide",
+  "short_name": "CarBro",
+  "description": "Auto kaufen, warten und verstehen – einfach erklärt. Gebrauchtwagen-Check, Service-Anleitungen, Reifenwechsel, Winter-Check, Unfall-Hilfe und KFZ-Wissen für Anfänger.",
+  "id": "/carbro/",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#08132a",
+  "theme_color": "#08132a",
+  "lang": "de",
+  "dir": "ltr",
+  "categories": ["auto", "education", "lifestyle", "utilities"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Gebrauchtwagen-Check",
+      "short_name": "Kauf-Check",
+      "url": "./#kauf",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Unfall-Guide",
+      "short_name": "Unfall",
+      "url": "./#unfall",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Service-Guides",
+      "short_name": "Service",
+      "url": "./#service",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

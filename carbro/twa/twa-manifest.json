@@ -1,0 +1,51 @@
+{
+  "packageId": "de.carbro.app",
+  "host": "servicealltagshilfe-cmd.github.io",
+  "name": "CarBro – Dein KFZ Starter Guide",
+  "launcherName": "CarBro",
+  "display": "standalone",
+  "orientation": "portrait",
+  "themeColor": "#08132a",
+  "themeColorDark": "#08132a",
+  "navigationColor": "#08132a",
+  "navigationColorDark": "#08132a",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#08132a",
+  "enableNotifications": false,
+  "startUrl": "/carbro/",
+  "iconUrl": "https://servicealltagshilfe-cmd.github.io/carbro/icons/icon-512.png",
+  "maskableIconUrl": "https://servicealltagshilfe-cmd.github.io/carbro/icons/maskable-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "carbro"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [
+    {
+      "name": "Gebrauchtwagen-Check",
+      "shortName": "Kauf-Check",
+      "url": "/carbro/#kauf",
+      "chosenIconUrl": "https://servicealltagshilfe-cmd.github.io/carbro/icons/icon-192.png"
+    },
+    {
+      "name": "Unfall-Guide",
+      "shortName": "Unfall",
+      "url": "/carbro/#unfall",
+      "chosenIconUrl": "https://servicealltagshilfe-cmd.github.io/carbro/icons/icon-192.png"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://servicealltagshilfe-cmd.github.io/carbro/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": { "enabled": false },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://servicealltagshilfe-cmd.github.io/carbro/",
+  "minSdkVersion": 21,
+  "appVersion": "1.0.0"
+}

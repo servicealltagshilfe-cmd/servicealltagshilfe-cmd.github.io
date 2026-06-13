@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="marine">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="CarBro – Dein KFZ Starter Guide. Gebrauchtwagen-Check, Service-Anleitungen, Reifenwechsel, Unfall-Hilfe und KFZ-Wissen. Einfach erklärt für Anfänger.">
+<meta name="theme-color" content="#08132a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CarBro">
+<meta property="og:title" content="CarBro – Dein KFZ Starter Guide">
+<meta property="og:description" content="Auto kaufen, warten & verstehen – einfach erklärt. Der digitale Beifahrer für Anfänger.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<title>CarBro – Dein KFZ Starter Guide</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<!-- ══════════ Drawer / Menü ══════════ -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <h2>CarBro</h2>
+  <div class="ver">AutoMaster4You · v1.0.0</div>
+  <nav>
+    <a href="#home" data-nav><span class="material-symbols-outlined">home</span> Home</a>
+    <a href="#kauf" data-nav><span class="material-symbols-outlined">directions_car</span> Kauf-Check</a>
+    <a href="#service" data-nav><span class="material-symbols-outlined">build</span> Service-Guides</a>
+    <a href="#wissen" data-nav><span class="material-symbols-outlined">menu_book</span> KFZ-Wissen</a>
+    <a href="#unfall" data-nav><span class="material-symbols-outlined">e911_emergency</span> Unfall-Guide</a>
+    <a href="datenschutz.html"><span class="material-symbols-outlined">shield</span> Datenschutz</a>
+  </nav>
+  <div class="theme-switch">
+    <span class="label">Design</span>
+    <div class="theme-opts" id="themeOpts">
+      <button class="theme-opt" data-set-theme="marine"><span class="sw-dot" style="background:#00daf3"></span>Marine</button>
+      <button class="theme-opt" data-set-theme="drive"><span class="sw-dot" style="background:#a9f900"></span>Drive</button>
+    </div>
+  </div>
+</aside>
+
+<!-- ══════════ Header ══════════ -->
+<header class="app-header">
+  <div class="app-header__row">
+    <button class="icon-btn" id="menuBtn" aria-label="Menü öffnen"><span class="material-symbols-outlined">menu</span></button>
+    <a href="#home" class="brand" data-nav><img src="icons/icon-192.png" alt=""><span><b>Car</b><span class="sub">Bro</span></span></a>
+    <button class="icon-btn" id="themeBtn" aria-label="Design wechseln"><span class="material-symbols-outlined">contrast</span></button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ══════════ HOME ══════════ -->
+  <section class="view" id="view-home">
+    <h1 class="h-xl">Moin Anfänger!<br>Welches Projekt steht an?</h1>
+    <p class="lead">Lass uns dein nächstes Automobil-Abenteuer starten. Egal ob Kauf, Service oder Wissen – hier bist du richtig.</p>
+
+    <div class="grid section-gap">
+      <!-- Kauf-Check -->
+      <button class="card feature" data-go="kauf">
+        <span class="chip chip--red"><span class="material-symbols-outlined" style="font-size:14px">flag</span> Red Flag</span>
+        <h3 class="h-card">Gebrauchtwagen-Kauf: Check die Karre bevor du zahlst</h3>
+        <p class="muted">Vermeide die typischen Anfängerfehler. Unser interaktiver Check zeigt dir, worauf du bei der Probefahrt wirklich achten musst.</p>
+        <span class="btn" style="align-self:flex-end">Check starten <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></span>
+      </button>
+
+      <!-- Service-Hack -->
+      <button class="card tile" data-go="guide-oel" style="flex-direction:column;align-items:stretch;gap:14px">
+        <div class="row-between">
+          <span class="feature-icon"><span class="material-symbols-outlined fill">build</span></span>
+          <span class="label" style="color:var(--text-2)">Service-Hack</span>
+        </div>
+        <div>
+          <h3 class="h-card">Öl, Luft &amp; Liebe für dein Auto</h3>
+          <p class="muted">Die Basics der Wartung einfach erklärt. So sparst du dir den Werkstattbesuch für die kleinen Dinge.</p>
+        </div>
+        <div>
+          <div class="progress"><i data-progress="cl-oel"></i></div>
+          <p class="muted" style="text-align:right;margin-top:6px;font-size:13px" data-progress-label="cl-oel">0/3 Schritte erledigt</p>
+        </div>
+      </button>
+
+      <!-- Daily Wissens-Snack -->
+      <button class="card tile" data-go="wissen">
+        <span class="feature-icon" style="background:var(--accent-soft)"><span class="material-symbols-outlined fill">school</span></span>
+        <div>
+          <span class="label">Daily Wissens-Snack</span>
+          <h3 class="h-card" style="margin-top:2px">Was ist eigentlich ein Turbolader?</h3>
+          <p class="muted" style="font-size:14px">Kompaktes Wissen für deinen nächsten Talk an der Tankstelle.</p>
+        </div>
+        <span class="material-symbols-outlined" style="margin-left:auto;color:var(--accent)">play_arrow</span>
+      </button>
+    </div>
+
+    <!-- Top Tips -->
+    <div class="section-gap">
+      <div class="row-between" style="margin-bottom:12px">
+        <h2 class="h-md">Top Tips für heute</h2>
+        <a class="link-more" href="#wissen" data-nav>Alle ansehen <span class="material-symbols-outlined" style="font-size:16px">chevron_right</span></a>
+      </div>
+      <div class="hscroll">
+        <div class="tip"><div class="tip-art"><span class="material-symbols-outlined">tire_repair</span></div><h4>Reifendruck checken</h4><p>Spart Sprit &amp; rettet Leben.</p></div>
+        <div class="tip"><div class="tip-art"><span class="material-symbols-outlined">water_drop</span></div><h4>Wischwasser auffüllen</h4><p>Sicht ist Sicherheit im Herbst.</p></div>
+        <div class="tip"><div class="tip-art"><span class="material-symbols-outlined">electric_car</span></div><h4>E-Auto Mythen</h4><p>Was stimmt wirklich?</p></div>
+        <div class="tip"><div class="tip-art"><span class="material-symbols-outlined">ac_unit</span></div><h4>Winter-Check</h4><p>Mach dein Auto frostfest.</p></div>
+      </div>
+    </div>
+    <p class="disclaimer">CarBro ersetzt keine Fachwerkstatt. Im Zweifel immer eine Fachkraft hinzuziehen.</p>
+  </section>
+
+  <!-- ══════════ KAUF-CHECK ══════════ -->
+  <section class="view" id="view-kauf">
+    <h1 class="h-xl">Kauf-Check: Lass dich nicht abziehen!</h1>
+    <p class="lead">Check die Karre durch, bevor du Cash auf den Tisch legst. Safe kaufen, No-Go-Zones vermeiden und Verhandlungs-Base sichern.</p>
+
+    <div class="sticky-progress">
+      <div class="progress-row">
+        <span class="label">Status</span>
+        <span class="progress-pct" data-progress-label="cl-kauf">0% erledigt</span>
+      </div>
+      <div class="progress"><i data-progress="cl-kauf"></i></div>
+    </div>
+
+    <div data-checklist="cl-kauf">
+      <article class="card section-gap" style="margin-top:0">
+        <div class="card-head"><span class="material-symbols-outlined fill">directions_car</span><h3>Außen-Check</h3></div>
+        <div class="checklist">
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Spaltmaße</span><span class="check-sub">Sind die Abstände zwischen Türen/Hauben gleichmäßig?</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Rost an Radläufen</span><span class="check-sub check-warn">Bläschen unter dem Lack? (No-Go-Zone!)</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Reifenprofil</span><span class="check-sub">Mindestens 4mm? Gleiche Marke pro Achse?</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Lack-Unterschiede</span><span class="check-sub">Sieht eine Tür anders aus? (Unfallschaden-Verdacht)</span></span></label>
+        </div>
+      </article>
+
+      <article class="card section-gap">
+        <div class="card-head"><span class="material-symbols-outlined fill">build</span><h3>Motor &amp; Technik</h3></div>
+        <div class="checklist">
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Ölstand prüfen</span><span class="check-sub">Zwischen Min und Max? Schwarz ist ok, milchig ist bad.</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Schleim im Deckel?</span><span class="check-sub check-warn">Gelber/weißer Schmodder am Öldeckel = Kopfdichtung kaputt!</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Motorgeräusche</span><span class="check-sub">Klackert oder rasselt was beim Kaltstart?</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Bremsen-Check</span><span class="check-sub">Fühlen sich die Scheiben rillig an? Dicke Kante?</span></span></label>
+        </div>
+      </article>
+
+      <article class="card section-gap">
+        <div class="card-head"><span class="material-symbols-outlined fill">speed</span><h3>Probefahrt-Vibe</h3></div>
+        <div class="checklist">
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Lenkrad gerade?</span><span class="check-sub">Zieht das Auto auf gerader Strecke zur Seite?</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Schaltet sauber?</span><span class="check-sub">Kupplung rutscht nicht? Automatik ruckelt nicht?</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Bremsverhalten</span><span class="check-sub">Vibriert das Lenkrad beim starken Bremsen?</span></span></label>
+        </div>
+      </article>
+    </div>
+
+    <article class="card section-gap" style="border-color:var(--error)">
+      <div class="card-head" style="border:none;margin:0;padding:0"><span class="material-symbols-outlined fill" style="color:var(--error)">warning</span><h3 style="color:var(--error)">Red Flags Galerie</h3></div>
+      <p class="muted" style="margin:10px 0 14px">Wenn du das siehst: Lauf. Oder drück den Preis extrem (Verhandlungs-Base!).</p>
+      <div class="grid grid-2">
+        <div class="card-2 card card-flat" style="display:flex;align-items:center;gap:12px;padding:14px"><span class="material-symbols-outlined" style="color:var(--orange);font-size:30px">grain</span><div><strong>Rostbläschen</strong><br><span class="muted" style="font-size:13px">am Radlauf</span></div></div>
+        <div class="card-2 card card-flat" style="display:flex;align-items:center;gap:12px;padding:14px"><span class="material-symbols-outlined" style="color:var(--orange);font-size:30px">opacity</span><div><strong>Ölschlamm</strong><br><span class="muted" style="font-size:13px">am Zylinderkopf</span></div></div>
+      </div>
+    </article>
+
+    <div class="protip section-gap">
+      <span class="material-symbols-outlined fill">tips_and_updates</span>
+      <div><span class="label">Pro-Tipp</span><p>Nimm immer eine Taschenlampe mit. Die besten Mängel verstecken sich im Dunkeln der Radkästen und unterm Motorblock.</p></div>
+    </div>
+    <a class="reset-cl" data-reset="cl-kauf"><span class="material-symbols-outlined" style="font-size:16px">restart_alt</span> Checkliste zurücksetzen</a>
+  </section>
+
+  <!-- ══════════ SERVICE HUB ══════════ -->
+  <section class="view" id="view-service">
+    <h1 class="h-xl">Service-Guide:<br>Mach deine Karre langlebig</h1>
+    <p class="lead">Schritt-für-Schritt-Anleitungen für die wichtigsten Checks. Hake ab, was erledigt ist.</p>
+
+    <div class="grid section-gap">
+      <button class="card tile" data-go="guide-oel">
+        <span class="feature-icon"><span class="material-symbols-outlined fill">water_drop</span></span>
+        <div><h3 class="h-card">Öl-Check &amp; Nachfüllen</h3><p class="muted" style="font-size:14px">Ölstand richtig messen und auffüllen.</p></div>
+        <span class="material-symbols-outlined" style="margin-left:auto;color:var(--accent)">chevron_right</span>
+      </button>
+      <button class="card tile" data-go="guide-reifen">
+        <span class="feature-icon"><span class="material-symbols-outlined fill">tire_repair</span></span>
+        <div><h3 class="h-card">Reifenwechsel</h3><p class="muted" style="font-size:14px">Dein Weg zum Boxenstopp-Pro.</p></div>
+        <span class="material-symbols-outlined" style="margin-left:auto;color:var(--accent)">chevron_right</span>
+      </button>
+      <button class="card tile" data-go="guide-winter">
+        <span class="feature-icon"><span class="material-symbols-outlined fill">ac_unit</span></span>
+        <div><h3 class="h-card">Winter-Ready-Check</h3><p class="muted" style="font-size:14px">Mach dein Auto frostfest.</p></div>
+        <span class="material-symbols-outlined" style="margin-left:auto;color:var(--accent)">chevron_right</span>
+      </button>
+      <button class="card tile" data-go="unfall" style="border-color:var(--error)">
+        <span class="feature-icon" style="background:var(--error-bg);color:var(--error)"><span class="material-symbols-outlined fill">e911_emergency</span></span>
+        <div><h3 class="h-card">Unfall-Guide</h3><p class="muted" style="font-size:14px">Keep Calm &amp; Safe, Bro.</p></div>
+        <span class="material-symbols-outlined" style="margin-left:auto;color:var(--error)">chevron_right</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ══════════ GUIDE: ÖL-CHECK ══════════ -->
+  <section class="view" id="view-guide-oel">
+    <a class="back" data-go="service"><span class="material-symbols-outlined" style="font-size:18px">arrow_back</span> Service-Guides</a>
+    <span class="chip chip--tut">Tutorial</span>
+    <h1 class="h-xl" style="margin-top:10px">Öl-Check &amp; Nachfüllen</h1>
+    <p class="lead">Schritt für Schritt zum richtigen Ölstand. Hake ab, was erledigt ist.</p>
+
+    <div class="sticky-progress">
+      <div class="progress-row"><span class="label">Status</span><span class="progress-pct" data-progress-label="cl-oel">0% erledigt</span></div>
+      <div class="progress"><i data-progress="cl-oel"></i></div>
+    </div>
+
+    <article class="card" data-checklist="cl-oel">
+      <div class="card-head"><span class="material-symbols-outlined fill">water_drop</span><h3>Öl-Check</h3></div>
+      <div class="checklist">
+        <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Motor kalt? (Wichtig für Messung)</span></span></label>
+        <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Peilstab rausgezogen &amp; sauber abgewischt?</span></span></label>
+        <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Stand zwischen Min/Max?</span></span></label>
+      </div>
+    </article>
+
+    <div class="protip section-gap">
+      <span class="material-symbols-outlined fill">tips_and_updates</span>
+      <div><span class="label">Pro-Tipp</span><p>Füll immer nur in kleinen Schlucken (ca. 100–200 ml) nach und warte kurz vor der nächsten Messung. Zu viel Öl killt den Kat!</p></div>
+    </div>
+    <a class="reset-cl" data-reset="cl-oel"><span class="material-symbols-outlined" style="font-size:16px">restart_alt</span> Zurücksetzen</a>
+  </section>
+
+  <!-- ══════════ GUIDE: REIFENWECHSEL ══════════ -->
+  <section class="view" id="view-guide-reifen">
+    <a class="back" data-go="service"><span class="material-symbols-outlined" style="font-size:18px">arrow_back</span> Service-Guides</a>
+    <span class="chip chip--tut">Tutorial</span>
+    <h1 class="h-xl" style="margin-top:10px">Reifenwechsel: Dein Weg zum Boxenstopp-Pro</h1>
+    <p class="lead">Mach dich ready für den Saisonwechsel. Mit diesem Guide machst du den Reifenwechsel sicher, schnell und wie ein echter Pro. Let's go!</p>
+
+    <article class="card section-gap" data-checklist="cl-reifen-safe">
+      <div class="card-head"><span class="material-symbols-outlined fill" style="color:var(--error)">warning</span><h3>Safe First</h3></div>
+      <p class="muted" style="margin-bottom:12px">Bevor du den Wagenheber ansetzt, safe den Wagen ab!</p>
+      <div class="checklist">
+        <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Handbremse fest anziehen</span></span></label>
+        <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">1. Gang rein (Automatik: auf 'P' stellen)</span></span></label>
+        <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Wagenheber-Punkte im Handbuch checken</span></span></label>
+      </div>
+    </article>
+
+    <h2 class="h-md section-gap">Schritt für Schritt</h2>
+    <article class="card" style="margin-top:14px">
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><div class="step-title">Bolzen anlösen</div><p class="step-sub">Solange der Wagen noch auf dem Boden steht, alle Radmuttern eine halbe Umdrehung lösen. Geht viel leichter!</p></div>
+        <div class="step"><span class="step-num">2</span><div class="step-title">Hoch mit dem Bro</div><p class="step-sub">Wagenheber an der markierten Stelle ansetzen und pumpen, bis das Rad in der Luft schwebt.</p></div>
+        <div class="step"><span class="step-num">3</span><div class="step-title">Radwechsel</div><p class="step-sub">Bolzen komplett rausdrehen, altes Rad runter, neues drauf. Bolzen per Hand eindrehen.</p></div>
+        <div class="step"><span class="step-num">4</span><div class="step-title">Über Kreuz festziehen</div><p class="step-sub">Wagen ablassen, bis der Reifen den Boden berührt. Jetzt die Bolzen über Kreuz (!) mit dem Drehmomentschlüssel festziehen.</p></div>
+      </div>
+    </article>
+
+    <article class="card section-gap">
+      <div class="card-head"><span class="material-symbols-outlined fill">lightbulb</span><h3>Pro-Tipps</h3></div>
+      <ul style="display:flex;flex-direction:column;gap:12px">
+        <li class="muted"><strong style="color:var(--text)">Drehmoment beachten:</strong> Meistens 120–140 Nm. Check das Handbuch deines Autos. Zu fest ist genauso schlecht wie zu locker!</li>
+        <li class="muted"><strong style="color:var(--text)">Nach 50 km:</strong> Nachziehen nicht vergessen! Das Rad muss sich erst setzen.</li>
+      </ul>
+    </article>
+    <a class="reset-cl" data-reset="cl-reifen-safe"><span class="material-symbols-outlined" style="font-size:16px">restart_alt</span> Zurücksetzen</a>
+  </section>
+
+  <!-- ══════════ GUIDE: WINTER ══════════ -->
+  <section class="view" id="view-guide-winter">
+    <a class="back" data-go="service"><span class="material-symbols-outlined" style="font-size:18px">arrow_back</span> Service-Guides</a>
+    <span class="chip chip--cyan"><span class="material-symbols-outlined" style="font-size:14px">ac_unit</span> Saison-Check</span>
+    <h1 class="h-xl" style="margin-top:10px">Winter-Vibe: Mach dein Auto frostfest</h1>
+    <p class="lead">Bevor es richtig kalt wird – check die wichtigsten Punkte ab, damit du sicher durch den Winter kommst.</p>
+
+    <div class="sticky-progress">
+      <div class="progress-row"><span class="label">Status</span><span class="progress-pct" data-progress-label="cl-winter">0% erledigt</span></div>
+      <div class="progress"><i data-progress="cl-winter"></i></div>
+    </div>
+
+    <div data-checklist="cl-winter">
+      <article class="card" style="margin-top:0">
+        <div class="card-head"><span class="material-symbols-outlined fill">visibility</span><h3>Durchblick behalten</h3></div>
+        <div class="checklist">
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Frostschutz im Wischwasser</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Wischerblätter checken</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Eiskratzer &amp; Besen am Start?</span></span></label>
+        </div>
+      </article>
+      <article class="card section-gap">
+        <div class="card-head"><span class="material-symbols-outlined fill">battery_charging_full</span><h3>Technik-Check</h3></div>
+        <div class="checklist">
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Batterie-Spannung prüfen</span><span class="check-sub check-warn">Kälte killt Akkus!</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Frostschutz im Kühlwasser</span></span></label>
+        </div>
+      </article>
+      <article class="card section-gap">
+        <div class="card-head"><span class="material-symbols-outlined fill">tire_repair</span><h3>Grip-Level</h3></div>
+        <div class="checklist">
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Profiltiefe Winterreifen</span><span class="check-sub">Mind. 4 mm empfohlen</span></span></label>
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Reifendruck anpassen</span></span></label>
+        </div>
+      </article>
+      <article class="card section-gap">
+        <div class="card-head"><span class="material-symbols-outlined fill">water_drop</span><h3>Gummipflege</h3></div>
+        <div class="checklist">
+          <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Türgummis fetten</span><span class="check-sub">Damit nix zufriert</span></span></label>
+        </div>
+      </article>
+    </div>
+
+    <div class="protip section-gap">
+      <span class="material-symbols-outlined fill">tips_and_updates</span>
+      <div><span class="label">Pro-Tipp</span><p>Nicht warm laufen lassen im Stand – schadet dem Motor und der Umwelt. Lieber direkt losfahren und bei niedrigen Drehzahlen warm werden lassen!</p></div>
+    </div>
+    <a class="reset-cl" data-reset="cl-winter"><span class="material-symbols-outlined" style="font-size:16px">restart_alt</span> Zurücksetzen</a>
+  </section>
+
+  <!-- ══════════ UNFALL-GUIDE ══════════ -->
+  <section class="view" id="view-unfall">
+    <a class="back" data-go="service"><span class="material-symbols-outlined" style="font-size:18px">arrow_back</span> Service-Guides</a>
+    <div style="text-align:center;margin-bottom:8px">
+      <span class="material-symbols-outlined fill" style="color:var(--error);font-size:40px">warning</span>
+      <h1 class="h-xl" style="color:var(--text)">Unfall-Guide</h1>
+      <p class="muted">Keep Calm &amp; Safe, Bro.</p>
+    </div>
+
+    <div class="sos section-gap" style="margin-top:16px">
+      <span class="material-symbols-outlined fill">emergency</span>
+      <div><strong>Verletzte? Sofort Notruf!</strong><br><span class="muted" style="font-size:13px">Bei Verletzten keine Zeit verlieren.</span></div>
+      <a class="btn-call" href="tel:112"><span class="material-symbols-outlined" style="font-size:18px">call</span> 112</a>
+    </div>
+
+    <article class="card section-gap">
+      <div class="card-head"><span class="material-symbols-outlined fill">format_list_numbered</span><h3>What to do</h3></div>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><div class="step-title">Warnblinkanlage an</div><p class="step-sub">Chill, mach erstmal auf dich aufmerksam.</p></div>
+        <div class="step"><span class="step-num">2</span><div class="step-title">Warnweste anziehen</div><p class="step-sub">Bevor du aussteigst, Weste drüber.</p></div>
+        <div class="step"><span class="step-num">3</span><div class="step-title">Unfallstelle absichern</div><p class="step-sub">Warndreieck in ausreichendem Abstand platzieren.</p></div>
+        <div class="step"><span class="step-num">4</span><div class="step-title">Erste Hilfe leisten</div><p class="step-sub">Wenn nötig, hilf anderen. Sei ein Ehrenmann / eine Ehrenfrau.</p></div>
+        <div class="step"><span class="step-num">5</span><div class="step-title">Polizei rufen</div><p class="step-sub">Bei Verletzten oder hohem Sachschaden (über Bagatelle). Immer safe spielen.</p></div>
+      </div>
+    </article>
+
+    <article class="card section-gap" data-checklist="cl-unfall">
+      <div class="card-head"><span class="material-symbols-outlined fill">photo_camera</span><h3>Dokumentation</h3></div>
+      <p class="muted" style="margin-bottom:12px">Mach Beweise klar, bevor Autos bewegt werden (wenn möglich und safe).</p>
+      <div class="checklist">
+        <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Fotos: Gesamtübersicht</span></span></label>
+        <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Fotos: Detailschäden &amp; Kennzeichen</span></span></label>
+        <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Zeugen notieren (Namen/Nummer)</span></span></label>
+        <label class="check"><input type="checkbox"><span class="box"><span class="material-symbols-outlined fill">check</span></span><span class="check-text"><span class="check-title">Europäischen Unfallbericht ausfüllen</span></span></label>
+      </div>
+    </article>
+
+    <article class="card section-gap">
+      <div class="card-head"><span class="material-symbols-outlined fill">lightbulb</span><h3>Pro-Tips</h3></div>
+      <ul style="display:flex;flex-direction:column;gap:12px">
+        <li class="muted"><strong style="color:var(--text)">No-Go:</strong> Unterschreib nichts vor Ort – kein Schuldeingeständnis unterschreiben!</li>
+        <li class="muted">Bleib höflich, aber bestimmt. Lass dich nicht bequatschen.</li>
+      </ul>
+    </article>
+    <a class="reset-cl" data-reset="cl-unfall"><span class="material-symbols-outlined" style="font-size:16px">restart_alt</span> Zurücksetzen</a>
+  </section>
+
+  <!-- ══════════ WISSEN ══════════ -->
+  <section class="view" id="view-wissen">
+    <h1 class="h-xl">KFZ-Wissen: Kein Plan? Hier lang!</h1>
+    <p class="lead">Dein Expert Friend für alles rund ums Auto. Einfach erklärt, schnell kapiert.</p>
+
+    <h2 class="h-md section-gap">Kategorien</h2>
+    <div class="cats" style="margin-top:14px">
+      <button class="cat" data-filter="motor"><span class="material-symbols-outlined">settings</span><span>Motor</span></button>
+      <button class="cat" data-filter="getriebe"><span class="material-symbols-outlined">account_tree</span><span>Getriebe</span></button>
+      <button class="cat" data-filter="elektrik"><span class="material-symbols-outlined">bolt</span><span>Elektrik</span></button>
+      <button class="cat" data-filter="reifen"><span class="material-symbols-outlined">tire_repair</span><span>Reifen</span></button>
+    </div>
+
+    <h2 class="h-md section-gap"><span class="material-symbols-outlined fill" style="vertical-align:-4px;color:var(--accent)">lightbulb</span> Explain it like I'm 5</h2>
+    <div class="grid" style="margin-top:14px">
+      <article class="card know" data-cat="motor">
+        <span class="label"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px">speed</span> Motor &amp; Antrieb</span>
+        <h4>Drehmoment <small>(Der Bums beim Anfahren)</small></h4>
+        <p>Stell dir vor, du fährst Fahrrad. Die Kraft, mit der du in die Pedale trittst, ist das Drehmoment. Je mehr, desto fester drückt es dich beim Beschleunigen in den Sitz.</p>
+      </article>
+      <article class="card know" data-cat="motor">
+        <span class="label"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px">air</span> Motor &amp; Antrieb</span>
+        <h4>Turbolader <small>(Der Power-Booster)</small></h4>
+        <p>Ein Turbo nutzt die heißen Abgase, um eine Turbine anzutreiben, die frische Luft in den Motor presst. Mehr Luft = mehr Power aus dem gleichen Hubraum. Deshalb haben kleine Motoren heute oft richtig Bums.</p>
+      </article>
+      <article class="card know" data-cat="getriebe">
+        <span class="label"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px">account_tree</span> Getriebe</span>
+        <h4>Doppelkupplung (DSG) <small>(Schalten ohne Ruckeln)</small></h4>
+        <p>Zwei Kupplungen arbeiten im Team: Während du im einen Gang fährst, liegt der nächste schon bereit. Dadurch schaltet das Auto blitzschnell und fast ohne Zugkraft-Unterbrechung.</p>
+      </article>
+      <article class="card know" data-cat="elektrik">
+        <span class="label"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px">bolt</span> Elektrik</span>
+        <h4>Lichtmaschine <small>(Das Kraftwerk an Bord)</small></h4>
+        <p>Sie lädt während der Fahrt deine Batterie und versorgt alle Verbraucher mit Strom. Geht sie kaputt, leert sich die Batterie und das Auto bleibt irgendwann stehen.</p>
+      </article>
+      <article class="card know" data-cat="reifen">
+        <span class="label"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px">tire_repair</span> Reifen</span>
+        <h4>DOT-Nummer <small>(Das Geburtsdatum vom Reifen)</small></h4>
+        <p>Vier Ziffern auf der Reifenflanke verraten dir Produktionswoche und Jahr. "3823" heißt: 38. Woche 2023. Reifen über 6–8 Jahre solltest du checken lassen – Gummi altert!</p>
+      </article>
+      <article class="card know" data-cat="behoerden">
+        <span class="label"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px">fact_check</span> Behörden</span>
+        <h4>TÜV / HU <small>(Die Endgegner-Prüfung)</small></h4>
+        <p>Alle zwei Jahre muss dein Auto zum Gesundheitscheck. Ein Prüfer schaut, ob Bremsen, Licht und Karosserie sicher für dich und andere sind. Bestehst du, gibt's den begehrten Aufkleber (Plakette).</p>
+      </article>
+      <article class="card know" data-cat="identifikation">
+        <span class="label"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px">badge</span> Identifikation</span>
+        <h4>Fahrgestellnummer <small>(Der Ausweis vom Auto)</small></h4>
+        <p>Auch FIN (Fahrzeug-Identifizierungsnummer) genannt. Eine 17-stellige Kombi, die weltweit einmalig ist. Quasi die DNA deines Autos, um genau zu wissen, wann und wo es gebaut wurde.</p>
+      </article>
+    </div>
+    <p class="disclaimer">Alle Angaben ohne Gewähr. CarBro ersetzt keine Fachwerkstatt oder Rechtsberatung.</p>
+  </section>
+
+</main>
+
+<!-- ══════════ Bottom-Nav ══════════ -->
+<nav class="bottom-nav">
+  <button class="nav-btn" data-go="home"><span class="material-symbols-outlined">home</span>Home</button>
+  <button class="nav-btn" data-go="kauf"><span class="material-symbols-outlined">directions_car</span>Kauf-Check</button>
+  <button class="nav-btn" data-go="service"><span class="material-symbols-outlined">build</span>Service</button>
+  <button class="nav-btn" data-go="wissen"><span class="material-symbols-outlined">menu_book</span>Wissen</button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
