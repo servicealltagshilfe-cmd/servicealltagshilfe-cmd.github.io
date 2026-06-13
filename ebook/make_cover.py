@@ -128,7 +128,7 @@ centered("Mit vielen Beispielen und Tipps aus der Praxis",
          shadow_col=(120, 50, 50, 120))
 
 # Autorzeile ganz unten
-centered("Ein Wegweiser von Service Alltagshilfe", sans_bold, H - 180,
+centered("Ein Beziehungsratgeber von M. Zaebe", sans_bold, H - 180,
          (255, 255, 255, 240), shadow_col=(120, 50, 50, 120))
 
 # feiner Rahmen

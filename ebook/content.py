@@ -3,7 +3,7 @@
 
 BOOK_TITLE = "Herzenssache"
 BOOK_SUBTITLE = "Beziehungen verstehen, leben und lieben"
-AUTHOR = "Service Alltagshilfe"
+AUTHOR = "M. Zaebe"
 LANG = "de"
 
 CSS = """
